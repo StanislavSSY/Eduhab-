@@ -1,0 +1,5 @@
+DB_USER=artem
+DB_PASSWORD=qwertynomercy7
+DB_NAME=owngame
+PORT=3000
+SECRET_KEY_SESSION=vedro

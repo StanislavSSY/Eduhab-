@@ -7,8 +7,8 @@ import Navbar from "./components/Navbar/Navbar";
 function App(): JSX.Element {
   return (
     <>
-      <Auth />
       <Navbar />
+      <Auth />
       <Routes>
         <Route index element={<Main />} />
       </Routes>

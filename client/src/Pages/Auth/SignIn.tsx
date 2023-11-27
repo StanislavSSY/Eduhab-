@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "./Auth.module.css";
-function SignInForm() {
+import { useNavigate } from "react-router-dom";
+
+function SignInForm(): JSX.Element {
   const [state, setState] = React.useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
+
   const handleChange = (evt) => {
     const value = evt.target.value;
     setState({
@@ -13,17 +17,20 @@ function SignInForm() {
     });
   };
 
-  const handleOnSubmit = (evt) => {
+  const handleOnSubmit = async (evt) => {
     evt.preventDefault();
 
-    const { email, password } = state;
-    alert(`You are login with email: ${email} and password: ${password}`);
+    const response = await fetch(`${import.meta.env.VITE_URL}/users/login`, {
+      credentials: 'include',
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(state),
+    });
 
-    for (const key in state) {
-      setState({
-        ...state,
-        [key]: "",
-      });
+    if (response.status === 200) {
+      navigate('/');
     }
   };
 

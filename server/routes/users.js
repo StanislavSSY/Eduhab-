@@ -1,87 +1,78 @@
-const bcrypt = require('bcrypt');
-const router = require('express').Router();
+const bcrypt = require("bcrypt");
+const router = require("express").Router();
 
-const { User } = require('../db/models');
+const { User } = require("../db/models");
 
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    // console.log('req.body ------->', req.body);
-    // console.log('ищем пользователя ------->', email);
 
     const user = await User.findOne({ where: { email } });
     if (user) {
       const checkPass = await bcrypt.compare(password, user.password);
-      //   console.log('checkPass ------->', checkPass);
+
       if (checkPass) {
-        req.session.email = user.email; //
-        req.session.name = user.name;
-        res.json({ message: user.name });
+        req.session.email = user.email;
+        res.sendStatus(200);
       }
-      res.json({ message: 'Неверный пароль' });
+      res.json({ message: "Неверный пароль" });
     } else {
       res.sendStatus(400);
     }
   } catch (error) {
-    // console.log('вывалились в ошибку ------->', error);
     res.json();
   }
 });
 
-router.post('/reg', async (req, res) => {
+router.post("/reg", async (req, res) => {
   try {
-    const {
-      name, email, password,
-    } = req.body;
-    console.log('req.body; ------>', req.body);
+    const { firstName, lastName, email, password } = req.body;
 
     const checkUser = await User.findOne({ where: { email } });
     if (checkUser) {
-    //   console.log('Такой пользователь уже существует------>');
-
-      res.json({ message: 'Такой пользователь уже существует' });
+      res.json({ message: "Такой пользователь уже существует" });
     } else {
-    //   console.log('Пытаемся создать пользователя----->');
-      // используем bcrypt для хэширования пароля
       const hash = await bcrypt.hash(password, 10);
       await User.create({
-        name, email, password: hash,
+        firstName,
+        lastName,
+        email,
+        password: hash,
+        isAdmin: false,
       });
       req.session.email = email;
-      //   console.log('пользователь успешно создан------>');
-      res.json({ email, name, isLogged: true });
+
+      res.sendStatus(200);
     }
   } catch (err) {
-    // console.log(err, 'Какая-то ошибка...------>');
-    res.json();
+    res.sendStatus(400);
   }
 });
 
-router.get('/logout', (req, res) => {
-  // console.log('fethc ');
+router.get("/logout", (req, res) => {
   try {
     req.session.destroy((err) => {
       if (err) {
         res.sendStatus(400);
       }
-      res.clearCookie('owngame');
+      res.clearCookie("ownfinal");
       res.sendStatus(200);
     });
   } catch (err) {
-    console.log(err);
+    res.sendStatus(400);
   }
 });
 
-router.get('/sessions', async (req, res) => {
+router.get("/sessions", async (req, res) => {
   try {
-    const { email, name } = req.session;
+    const { email } = req.session;
     if (email) {
-      res.json({ email, name });
+      res.json({ email });
     } else {
       res.sendStatus(400);
     }
   } catch (error) {
-    res.json();
+    res.sendStatus(400);
   }
 });
 

@@ -1,0 +1,74 @@
+.containernavbar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100px;
+  background-color: grey;
+}
+
+
+.leftcont {
+  display: flex;
+}
+
+.titlecont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 25px;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.coursecont, .couchcont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 25px;
+}
+
+.course, .couching {
+  font-size: 20px;
+}
+
+.rightcont {
+  display: flex;
+}
+
+.signincont {
+  margin-right: 35px;
+}
+
+.title, .course, .couching {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.authcont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authcont {
+  cursor: pointer;
+  height: 35px;
+  width: 150px;
+  border: solid 2px rgba(255,255,255, 0.4);
+  border-radius: 10px;
+  transition: 1s;
+}
+
+.authcont:hover {
+  border: solid 2px rgba(255,255,255, 1);
+  transition: 1s;
+}
+
+.auth {
+  text-decoration: none;
+  color: black;
+}

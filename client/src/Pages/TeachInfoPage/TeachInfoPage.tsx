@@ -108,7 +108,7 @@ export default function TeachInfoPage(): JSX.Element {
           </div>
         </div>
       </div>
-      <div className={styled.footercontent}>
+      {/* <div className={styled.footercontent}>
         <div className={styled.leftcontainerfoot}>
           <div className={styled.firstline}>Galera</div>
           <div className={styled.typicalline}>Каталог</div>
@@ -126,7 +126,7 @@ export default function TeachInfoPage(): JSX.Element {
           <div className={styled.typicalline}>Контакты</div>
           <div className={styled.typicalline}>Вакансии</div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

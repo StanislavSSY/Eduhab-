@@ -12,9 +12,11 @@ export default function CardCourse() {
           </span>
           <div className={styled.text}>
             <Link to={"/"}>
-              Основы SMM ВКонтакте без "воды" с нуля до специалиста
+              <h3>Основы SMM ВКонтакте без "воды" с нуля до специалиста</h3>
             </Link>
-            <span>Владислава Шлепцова</span>
+            <Link to={"/"}>
+              <span>Владислава Шлепцова</span>
+            </Link>
           </div>
           <img src="https://cdn.stepik.net/media/cache/images/courses/115018/cover_2pHpRcf/11ab681f09f1df98cc47e9c5ad25d47c.png" />
         </div>
@@ -27,7 +29,7 @@ export default function CardCourse() {
 
         <div className={styled.price}>
           <span className={styled["last-price"]}>1 299</span>
-          <span className={styled["actual-price"]}>899</span>
+          <span className={styled["actual-price"]}>899 ₽</span>
         </div>
       </div>
     </Link>

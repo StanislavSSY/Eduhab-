@@ -113,3 +113,11 @@
   text-decoration: none;
   color: black;
 }
+
+.logout {
+  cursor: pointer;
+  color: #bbb;
+}
+.logout:hover {
+  color: #fff;
+}

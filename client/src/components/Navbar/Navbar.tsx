@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from './Navbar.module.css'
-import { Link, useNavigate } from 'react-router-dom';
+import React from "react";
+import styled from "./Navbar.module.css";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 
 export default function Navbar(): JSX.Element {
   const navigate = useNavigate();
@@ -8,21 +8,26 @@ export default function Navbar(): JSX.Element {
   return (
     <div className={styled.containernavbar}>
       <div className={styled.leftcont}>
+        {" "}
+        <Link to={"/"} className={styled.title}>
+          <h3>
+            <span>G</span> Galera
+          </h3>
+        </Link>
         <div className={styled.titlecont}>
-          <button className={styled.title}>Galera</button>
-        </div>
-        <div className={styled.coursecont}>
-          <button className={styled.course}>Курсы</button>
-        </div>
-        <div className={styled.couchcont}>
-          <button className={styled.couching}>Преподавание</button>
+          <NavLink to={"/a"} className={styled.title}>
+            Каталог
+          </NavLink>
+          <NavLink to={"/3"} className={styled.title}>
+            Преподавание
+          </NavLink>
         </div>
       </div>
       <div className={styled.rightcont}>
-        <div className={styled.authcont}>
-          <Link className={styled.auth} to={'/auth'}>Авторизироваться</Link>
-        </div>
+        <NavLink className={styled.auth} to={"/auth"}>
+          Авторизироваться
+        </NavLink>
       </div>
     </div>
-  )
+  );
 }

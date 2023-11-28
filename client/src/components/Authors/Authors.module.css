@@ -1,0 +1,16 @@
+.authorscontainer {
+  margin: 75px 0 75px 0;
+}
+
+
+.title {
+  font-size: 36px;
+  margin-bottom: 25px;
+}
+
+.btnrefpeopleprofile {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}

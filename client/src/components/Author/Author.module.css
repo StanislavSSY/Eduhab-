@@ -1,0 +1,49 @@
+.containerauthor {
+  width: 325px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
+  margin: 10px 15px 10px 15px;
+  transition: 1s;
+}
+
+.containerauthor:hover {
+  transition: 1s;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 255, 0.2);
+  /* background-color: blue; */
+}
+
+.imgcontainer {
+  margin-right: 35px;
+}
+
+.rightcontent {
+  display: flex;
+  flex-direction: column;
+}
+
+.nametitle {
+  font-size: 14px;
+}
+
+.downcontent {
+  margin-top: 35px;
+  display: flex;
+}
+
+.imgcontainer, .imgauthor {
+  width: 60px;
+  height: 60px;
+}
+
+.coursecontainer {
+  margin-right: 10px;
+}
+
+.coursecontainer, .subscontainer {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6)
+}

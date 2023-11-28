@@ -23,17 +23,22 @@ function SignUpForm() {
   const handleOnSubmit = async (evt) => {
     evt.preventDefault();
 
+    // const { name, email, password } = state;
+    // alert(
+    //   `You are sign up with name: ${name} email: ${email} and password: ${password}`
+    // );
+
     const response = await fetch(`${import.meta.env.VITE_URL}/users/reg`, {
-      credentials: 'include',
-      method: 'POST',
+      credentials: "include",
+      method: "POST",
       headers: {
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
       body: JSON.stringify(state),
     });
 
     if (response.status === 200) {
-      navigate('/');
+      navigate("/");
     }
   };
 
@@ -42,35 +47,35 @@ function SignUpForm() {
       className={`${styled["form-container"]} ${styled["sign-up-container"]}`}
     >
       <form onSubmit={handleOnSubmit}>
-        <h1>Create Account</h1>
-        <span>or use your email for registration</span>
+        <h1>Создать аккаунт</h1>
+        <span>используйте актуальную электронную почту для регистрации</span>
         <input
           type="text"
           name="firstName"
           value={state.firstName}
           onChange={handleChange}
-          placeholder="First Name"
+          placeholder="Имя"
         />
         <input
           type="text"
           name="lastName"
           value={state.lastName}
           onChange={handleChange}
-          placeholder="Last Name"
+          placeholder="Фамилия"
         />
         <input
           type="email"
           name="email"
           value={state.email}
           onChange={handleChange}
-          placeholder="Email"
+          placeholder="Почта"
         />
         <input
           type="password"
           name="password"
           value={state.password}
           onChange={handleChange}
-          placeholder="Password"
+          placeholder="Пароль"
         />
         <button>Зарегистрироваться</button>
       </form>

@@ -35,6 +35,7 @@
 }
 
 .AppAuth button {
+  cursor: pointer;
   border-radius: 20px;
   border: 1px solid #ff4b2b;
   background-color: #ff4b2b;
@@ -58,6 +59,10 @@
 .AppAuth button.ghost {
   background-color: transparent;
   border-color: #ffffff;
+}
+
+.AppAuth button.ghost:hover {
+  transform: scale(0.95);
 }
 
 .AppAuth form {

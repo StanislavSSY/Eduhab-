@@ -1,3 +1,7 @@
+.maincontainer {
+  max-width: 1024px;
+}
+
 .mainbody {
   margin-top: 250px;
 }

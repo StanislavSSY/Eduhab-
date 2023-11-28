@@ -1,0 +1,18 @@
+.containercarousel {
+  display: flex;
+}
+
+.carouselcontent {
+  width: 1420px;
+  height: 110px;
+  display: flex;
+  overflow: hidden;
+}
+
+.carobtn {
+  cursor: pointer;
+  font-size: 35px;
+  border: none;
+  outline: none;
+  background: none;
+}

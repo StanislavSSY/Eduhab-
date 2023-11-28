@@ -1,108 +1,85 @@
 .course-cards {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: baseline;
-    padding: 1rem;
-    width: 700px;
-    background-color: #f8e6e6;
-   
-    border-radius: 12px;
-   
-    
-  }
-  
-  .main-link {
-    text-decoration: none;
-    border-radius: 1rem;
-    box-shadow: 0 0 2px 0 #e71c1c;
-    
-   
-    
-  }
-  .main-link,
-  a {
-    color: #222;
-   
-  }
-  
-  .main-link:hover {
-    box-shadow: 0 0 3px 0 rgb(136, 136, 250);
-    
-  }
-  
-  .text a {
-    text-decoration: none;
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    
-  }
-  
-  .text span {
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
-  
-    
-  
-  }
-  
-  .text a:hover {
-    text-decoration: underline;
-   
-    
-   
-  }
-  
-  .top-block {
-    display: flex;
-    margin-bottom: 1rem;
-  }
-  
-  .like {
-    position: absolute;
-    top: 0.4rem;
-    right: 0.4rem;
-    padding: 0.2rem 0.3rem;
-    border: 1px solid #eee;
-    border-radius: 1rem;
-    background: #f6f6f6;
-    
-  }
-  
-  .like:hover {
-    background: #e9f9e9;
-    border: 1px solid #56ae56;
-  }
-  
-  .like i {
-    color: #999;
-  }
-  
-  .text {
-    display: flex;
-    flex-direction: column;
-   
-  }
-  .course-cards img {
-    /* position: absolute; */
-    top: 0;
-    right: 1;
-    width: 82px;
-    margin-left: 3rem;
-    
-  }
-  
- 
-  
- 
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  padding: 1rem;
+  width: 700px;
+  background-color: #f8e6e6;
 
-  .widgets i {
-   
-    color: #700707;
-    margin-bottom: 1rem;
-    margin-left: 2rem;
+  border-radius: 12px;
+}
 
+.main-link {
+  text-decoration: none;
+  border-radius: 1rem;
+  box-shadow: 0 0 2px 0 #e71c1c;
+}
+.main-link,
+a {
+  color: #222;
+}
 
-    padding: 5px;
-  }
+.main-link:hover {
+  box-shadow: 0 0 3px 0 rgb(136, 136, 250);
+}
+
+.text a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.text span {
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.text a:hover {
+  text-decoration: underline;
+}
+
+.top-block {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.like {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  padding: 0.2rem 0.3rem;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  background: #f6f6f6;
+}
+
+.like:hover {
+  background: #e9f9e9;
+  border: 1px solid #56ae56;
+}
+
+.like i {
+  color: #999;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+}
+.course-cards img {
+  /* position: absolute; */
+  top: 0;
+  right: 1;
+  width: 82px;
+  margin-left: 3rem;
+}
+
+.widgets i {
+  color: #700707;
+  margin-bottom: 1rem;
+  margin-left: 2rem;
+
+  padding: 5px;
+}

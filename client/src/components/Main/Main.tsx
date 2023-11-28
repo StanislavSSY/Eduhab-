@@ -1,15 +1,12 @@
 import React from "react";
-
-import CardCourse from "../CardCourse/CardCourse";
-export default function Main() {
-  return <CardCourse />;
-
 import CardCourseAuthor from "../CardCourseAuthor/CardCourseAuthor";
+import CardCourse from "../CardCourse/CardCourse";
 
 export default function Main() {
   return (
     <div>
-      <CardCourseAuthor/>
+      <CardCourseAuthor />
+      <CardCourse />
       Mainaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     </div>
   );

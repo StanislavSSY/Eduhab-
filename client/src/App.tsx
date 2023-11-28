@@ -5,11 +5,16 @@ import Main from "./components/Main/Main";
 
 
 import Navbar from "./components/Navbar/Navbar";
+
+import OftenSearched from "./components/OftenSearched/OftenSearched";
+import FindCourse from "./components/FindCourse/FindCourse";
+
 import TeachInfoPage from "./Pages/TeachInfoPage/TeachInfoPage";
 import MyLearn from "./pages/MyLearn/MyLearn";
 import MyLearnIndex from "./pages/MyLearn/MyLearnIndex.tsx/MyLearnIndex";
 import MyLearnCourses from "./pages/MyLearn/MyLearnCourses.tsx/MyLearnCourses";
 import Layout from "./components/Layout";
+
 
 function App(): JSX.Element {
   return (

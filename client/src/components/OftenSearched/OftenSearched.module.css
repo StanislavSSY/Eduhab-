@@ -1,0 +1,47 @@
+/* OftenSearched.module.css */
+
+.catalog-block {
+    margin: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 15px;
+  }
+  
+  .catalog-block__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  .course-list-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    
+  }
+  
+  .course-list-card {
+    flex: 1 1 400; /* Чтобы карточки были примерно одинаковой ширины, но могли уменьшаться на мобильных устройствах */
+    border: 1px  #12bcd3;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: #dff5f7;
+  }
+  
+  .course-list-card__link-wrapper {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .course-list-card__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .course-list-card__courses {
+    color: #888;
+    margin-bottom: 5px;
+  }
+  

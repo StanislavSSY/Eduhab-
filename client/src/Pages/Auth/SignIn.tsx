@@ -16,8 +16,8 @@ function SignInForm() {
   const handleOnSubmit = (evt) => {
     evt.preventDefault();
 
-    const { email, password } = state;
-    alert(`You are login with email: ${email} and password: ${password}`);
+    // const { email, password } = state;
+    // alert(`You are login with email: ${email} and password: ${password}`);
 
     for (const key in state) {
       setState({
@@ -32,8 +32,8 @@ function SignInForm() {
       className={`${styled["form-container"]} ${styled["sign-in-container"]}`}
     >
       <form onSubmit={handleOnSubmit}>
-        <h1>Sign in</h1>
-        <span>or use your account</span>
+        <h1>Вход</h1>
+        <span>Введите свои данные</span>
         <input
           type="email"
           placeholder="Email"
@@ -48,7 +48,7 @@ function SignInForm() {
           value={state.password}
           onChange={handleChange}
         />
-        <a href="#">Forgot your password?</a>
+        {/* <a href="#">Забыли пароль?</a> */}
         <button>Войти</button>
       </form>
     </div>

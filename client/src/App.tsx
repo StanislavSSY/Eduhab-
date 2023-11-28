@@ -2,15 +2,17 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Auth from "./pages/Auth/Auth";
 import Main from "./components/Main/Main";
-import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import Layout from "./components/Layout";
 
 function App(): JSX.Element {
   return (
     <>
-      <Navbar />
-      <Auth />
       <Routes>
-        <Route index element={<Main />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Main />} />
+          <Route path="auth" element={<Auth />} />
+        </Route>
       </Routes>
     </>
   );

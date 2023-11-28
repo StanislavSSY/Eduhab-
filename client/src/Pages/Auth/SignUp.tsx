@@ -18,10 +18,10 @@ function SignUpForm() {
   const handleOnSubmit = (evt) => {
     evt.preventDefault();
 
-    const { name, email, password } = state;
-    alert(
-      `You are sign up with name: ${name} email: ${email} and password: ${password}`
-    );
+    // const { name, email, password } = state;
+    // alert(
+    //   `You are sign up with name: ${name} email: ${email} and password: ${password}`
+    // );
 
     for (const key in state) {
       setState({
@@ -36,8 +36,8 @@ function SignUpForm() {
       className={`${styled["form-container"]} ${styled["sign-up-container"]}`}
     >
       <form onSubmit={handleOnSubmit}>
-        <h1>Create Account</h1>
-        <span>or use your email for registration</span>
+        <h1>Создать аккаунт</h1>
+        <span>используйте актуальную электронную почту для регистрации</span>
         <input
           type="text"
           name="name"

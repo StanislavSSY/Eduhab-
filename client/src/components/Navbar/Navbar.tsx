@@ -3,8 +3,6 @@ import styled from "./Navbar.module.css";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 
 export default function Navbar(): JSX.Element {
-  const navigate = useNavigate();
-
   return (
     <div className={styled.containernavbar}>
       <div className={styled.leftcont}>
@@ -15,10 +13,10 @@ export default function Navbar(): JSX.Element {
           </h3>
         </Link>
         <div className={styled.titlecont}>
-          <NavLink to={"/a"} className={styled.title}>
+          <NavLink to={"/"} className={styled.title}>
             Каталог
           </NavLink>
-          <NavLink to={"/3"} className={styled.title}>
+          <NavLink to={"/"} className={styled.title}>
             Преподавание
           </NavLink>
         </div>

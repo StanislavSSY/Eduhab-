@@ -5,8 +5,8 @@ import styles from './OftenSearched.module.css';
 export default function OftenSearched(): JSX.Element {
   return (
     <>
+      <div className={styles['catalog-block__title']}>Часто ищут</div>
       <div className={styles['catalog-block']}>
-        <h1 className={styles['catalog-block__title']}>Часто ищут</h1>
         <div className={styles['catalog-block__content']}>
           <div id="ember702" className="catalog-block-simple-course-lists ember-view">
             <div className={styles['course-list-cards']} data-list-type="grid">

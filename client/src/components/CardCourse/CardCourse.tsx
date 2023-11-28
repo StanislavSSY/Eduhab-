@@ -2,7 +2,7 @@ import React from "react";
 import styled from "./CardCourse.module.css";
 import { Link } from "react-router-dom";
 
-export default function CardCourse() {
+export default function CardCourse(): JSX.Element {
   return (
     <Link className={styled["main-link"]} to={"/"}>
       <div className={styled["course-cards"]}>

@@ -1,19 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import styled from "./Auth.module.css";
 import "./Auth.module.css";
 import SignInForm from "./SignIn";
 import SignUpForm from "./SignUp";
+import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../store/hooks";
 
 export default function Auth() {
   const [type, setType] = useState("signIn");
+  const navigate = useNavigate();
+  const user = useAppSelector((store) => store.userSlice.user);
   const handleOnClick = (text) => {
     if (text !== type) {
       setType(text);
       return;
     }
   };
-  // const containerClass =
-  //   "container " + (type === "signUp" ? "right-panel-active" : "");
+
+  useEffect(() => {
+    if (user.isLoggedIn) {
+      navigate('/');
+    }
+  },[user.isLoggedIn]);
+
+
   return (
     <div className={styled.AppAuth}>
       <div

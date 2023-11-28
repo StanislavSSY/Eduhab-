@@ -46,7 +46,7 @@ function SignInForm(): JSX.Element {
         <span>Введите свои данные</span>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Почта"
           name="email"
           value={state.email}
           onChange={handleChange}
@@ -54,7 +54,7 @@ function SignInForm(): JSX.Element {
         <input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Пароль"
           value={state.password}
           onChange={handleChange}
         />

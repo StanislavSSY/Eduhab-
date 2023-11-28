@@ -54,28 +54,28 @@ function SignUpForm() {
           name="firstName"
           value={state.firstName}
           onChange={handleChange}
-          placeholder="First Name"
+          placeholder="Имя"
         />
         <input
           type="text"
           name="lastName"
           value={state.lastName}
           onChange={handleChange}
-          placeholder="Last Name"
+          placeholder="Фамилия"
         />
         <input
           type="email"
           name="email"
           value={state.email}
           onChange={handleChange}
-          placeholder="Email"
+          placeholder="Почта"
         />
         <input
           type="password"
           name="password"
           value={state.password}
           onChange={handleChange}
-          placeholder="Password"
+          placeholder="Пароль"
         />
         <button>Зарегистрироваться</button>
       </form>

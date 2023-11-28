@@ -20,17 +20,20 @@ function SignInForm(): JSX.Element {
   const handleOnSubmit = async (evt) => {
     evt.preventDefault();
 
+    // const { email, password } = state;
+    // alert(`You are login with email: ${email} and password: ${password}`);
+
     const response = await fetch(`${import.meta.env.VITE_URL}/users/login`, {
-      credentials: 'include',
-      method: 'POST',
+      credentials: "include",
+      method: "POST",
       headers: {
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
       body: JSON.stringify(state),
     });
 
     if (response.status === 200) {
-      navigate('/');
+      navigate("/");
     }
   };
 
@@ -39,11 +42,11 @@ function SignInForm(): JSX.Element {
       className={`${styled["form-container"]} ${styled["sign-in-container"]}`}
     >
       <form onSubmit={handleOnSubmit}>
-        <h1>Sign in</h1>
-        <span>or use your account</span>
+        <h1>Вход</h1>
+        <span>Введите свои данные</span>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Почта"
           name="email"
           value={state.email}
           onChange={handleChange}
@@ -51,11 +54,11 @@ function SignInForm(): JSX.Element {
         <input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Пароль"
           value={state.password}
           onChange={handleChange}
         />
-        <a href="#">Forgot your password?</a>
+        {/* <a href="#">Забыли пароль?</a> */}
         <button>Войти</button>
       </form>
     </div>

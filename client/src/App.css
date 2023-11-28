@@ -1,5 +1,31 @@
+@font-face {
+  font-family: Roboto;
+  src: url(../public/fonts/Roboto-Regular.ttf);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body {
+  font-family: Roboto;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.active {
+  color: white !important;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
 }

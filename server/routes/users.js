@@ -1,9 +1,9 @@
-const bcrypt = require("bcrypt");
-const router = require("express").Router();
+const bcrypt = require('bcrypt');
+const router = require('express').Router();
 
-const { User } = require("../db/models");
+const { User } = require('../db/models');
 
-router.post("/login", async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -13,9 +13,9 @@ router.post("/login", async (req, res) => {
 
       if (checkPass) {
         req.session.email = user.email;
-        res.sendStatus(200);
+        res.json(email);
       }
-      res.json({ message: "Неверный пароль" });
+      res.json({ message: 'Неверный пароль' });
     } else {
       res.sendStatus(400);
     }
@@ -24,13 +24,13 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/reg", async (req, res) => {
+router.post('/reg', async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
 
     const checkUser = await User.findOne({ where: { email } });
     if (checkUser) {
-      res.json({ message: "Такой пользователь уже существует" });
+      res.json({ message: 'Такой пользователь уже существует' });
     } else {
       const hash = await bcrypt.hash(password, 10);
       await User.create({
@@ -42,20 +42,20 @@ router.post("/reg", async (req, res) => {
       });
       req.session.email = email;
 
-      res.sendStatus(200);
+      res.json(email);
     }
   } catch (err) {
     res.sendStatus(400);
   }
 });
 
-router.get("/logout", (req, res) => {
+router.get('/logout', (req, res) => {
   try {
     req.session.destroy((err) => {
       if (err) {
         res.sendStatus(400);
       }
-      res.clearCookie("ownfinal");
+      res.clearCookie('ownfinal');
       res.sendStatus(200);
     });
   } catch (err) {
@@ -63,7 +63,7 @@ router.get("/logout", (req, res) => {
   }
 });
 
-router.get("/sessions", async (req, res) => {
+router.get('/sessions', async (req, res) => {
   try {
     const { email } = req.session;
     if (email) {

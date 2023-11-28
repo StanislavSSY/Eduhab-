@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "./Auth.module.css";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../store/hooks";
+import { addUser } from "../../store/slice/userSlice";
 
 function SignInForm(): JSX.Element {
   const [state, setState] = React.useState({
@@ -8,6 +10,7 @@ function SignInForm(): JSX.Element {
     password: "",
   });
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleChange = (evt) => {
     const value = evt.target.value;
@@ -33,7 +36,9 @@ function SignInForm(): JSX.Element {
     });
 
     if (response.status === 200) {
+      const result = await response.json();
       navigate("/");
+      dispatch(addUser(result));
     }
   };
 

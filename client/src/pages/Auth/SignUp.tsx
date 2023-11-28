@@ -2,6 +2,8 @@ import React from "react";
 import "./Auth.module.css";
 import styled from "./Auth.module.css";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../store/hooks";
+import { addUser } from "../../store/slice/userSlice";
 function SignUpForm() {
   const [state, setState] = React.useState({
     firstName: "",
@@ -11,6 +13,7 @@ function SignUpForm() {
   });
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleChange = (evt) => {
     const value = evt.target.value;
@@ -22,12 +25,6 @@ function SignUpForm() {
 
   const handleOnSubmit = async (evt) => {
     evt.preventDefault();
-
-    // const { name, email, password } = state;
-    // alert(
-    //   `You are sign up with name: ${name} email: ${email} and password: ${password}`
-    // );
-
     const response = await fetch(`${import.meta.env.VITE_URL}/users/reg`, {
       credentials: "include",
       method: "POST",
@@ -38,7 +35,9 @@ function SignUpForm() {
     });
 
     if (response.status === 200) {
+      const result = await response.json();
       navigate("/");
+      dispatch(addUser(result));
     }
   };
 

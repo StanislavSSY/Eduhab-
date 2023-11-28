@@ -1,0 +1,470 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  padding: 15px;
+}
+
+
+.headercontent {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+.title {
+  font-size: 25px;
+}
+
+
+
+.centercont {
+  display: flex;
+}
+
+.atag {
+  font-size: 17px;
+  margin-right: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.rightcont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px rgba(0, 128, 0, 0.5);
+  border-radius: 10px;
+  height: 40px;
+  width: 150px;
+}
+
+.rightcont:hover {
+  background-color: green;
+}
+
+.reftocreatecourse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 150px;
+  font-size: 17px;
+  text-decoration: none;
+  color: black;
+}
+
+.reftocreatecourse:hover {
+  color: white;
+}
+
+
+
+/* ТЕЛО СТРАНИЦЫ */
+
+.bodycontent {
+  margin-top: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.aboutservice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.servicetitle {
+  text-align: center;
+  width: 560px;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.serviceaftertitle {
+  text-align: center;
+  width: 550px;
+  /* word-wrap: break-word; */
+  font-size: 25px;
+  margin-bottom: 25px;
+}
+
+.fakebtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  border: solid 1px rgba(0, 128, 0, 0.5);
+  border-radius: 10px;
+  height: 40px;
+  width: 150px;
+  transition: 1s;
+  margin-bottom: 25px;
+}
+
+.fakebtn:hover {
+  background-color: white;
+  transition: 1s;
+}
+
+.reftocoursecreatetwo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 150px;
+  font-size: 17px;
+  text-decoration: none;
+  color: white;
+  transition: 1s;
+}
+
+.reftocoursecreatetwo:hover {
+  color: black;
+  transition: 1s;
+}
+
+.aboutGalera {
+  margin-top: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.galeratitle {
+  font-size: 44px;
+  margin-bottom: 25px;
+}
+
+.titleresponse {
+  text-align: center;
+  font-size: 22px;
+  width: 600px;
+  margin-bottom: 150px;
+}
+
+.contpremleft, .contpremcenter, .contpremright {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.premlefttitle, .premcentertitle, .premrighttitle {
+  text-align: center;
+  width: 185px;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.premleftrespo, .premcenterrespo, .premrightrespo {
+  text-align: center;
+  font-size: 20px;
+  width: 330px;
+}
+
+
+.preminfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.borderdown {
+  margin-top: 100px;
+  width: 100%;
+  border-bottom: solid 1px grey;
+}
+
+.abouttypeofcourse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 150px;
+}
+
+.typeoftitle {
+  font-size: 44px;
+}
+
+
+.typecontainer {
+  margin-top: 75px;
+  display: flex;
+}
+
+.typetitle {
+  text-align: center;
+  width: 350px;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.typecontent {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+  width: 600px;
+  font-size: 20px;
+}
+
+
+/* прайс */
+
+.prices {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+}
+
+.containerprices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pricetitle {
+  font-size: 44px;
+  margin-bottom: 100px;
+}
+
+.pricepaid {
+  margin-right: 25px;
+  background-color: #66cc66;
+  width: 550px;
+  height: 625px;
+  border-radius: 15px;
+}
+
+.pricepaidheader {
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  /* align-items: center; */
+}
+
+.pricepaidtitle {
+  font-size: 48px;
+  font-weight: 600;
+  color: white;
+}
+
+.functional {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}
+
+.borderbody {
+  width: 100%;
+  border-bottom: solid 2px white;
+}
+
+.pricepaidbody {
+  display: flex;
+  flex-direction: column;
+}
+
+.commission {
+  margin-left: 25px;
+  margin-top: 45px;
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+  width: 235px;
+}
+
+.anytext {
+  padding: 25px;
+  font-size: 20px;
+  color: white;
+  width: 300px;
+}
+
+.pricefakebtncontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 25px;
+  margin-top: 75px;
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+.pricefakebtncontainer:hover {
+  transition: 1s;
+  background: none;
+  border: solid 1px white;
+}
+
+.reftomoreinfopaidcourse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+  transition: 1s;
+}
+
+.reftomoreinfopaidcourse:hover {
+  color: white;
+  transition: 1s;
+}
+
+.pricefree {
+  width: 550px;
+  height: 500px;
+  border: solid 1px green;
+  border-radius: 15px;
+}
+
+
+.pricefreetitle {
+  font-size: 48px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.functionalfree {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.borderbodyfree {
+  border-bottom: solid 1px rgba(0, 128, 0, 0.5);
+}
+
+
+.commissionfree {
+  margin-left: 30px;
+  margin-top: 60px;
+  font-size: 30px;
+  font-weight: 600;
+  color: black;
+  width: 235px;
+}
+
+.anytextfree {
+  margin-left: 30px;
+  margin-top: 25px;
+  font-size: 20px;
+  color: black;
+  width: 300px;
+}
+
+.pricefakebtncontainerfree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 25px;
+  margin-top: 50px;
+  width: 250px;
+  height: 50px;
+  background-color: white;
+  border: solid 1px green;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+.pricefakebtncontainerfree:hover {
+  background-color: green;
+}
+
+.reftomoreinfopaidcoursefree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  width: 250px;
+  height: 50px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.reftomoreinfopaidcoursefree:hover {
+  color: white;
+}
+
+
+
+/* help */
+
+.help {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+}
+
+.helptitle {
+  font-size: 44px;
+}
+
+.containerhelping {
+  margin-top: 100px;
+  height: 250px;
+  width: 400px;
+  padding: 25px;
+  background-color: #fffad6;
+  border-radius: 10px;
+}
+
+.containerheader {
+  font-weight: 600;
+  font-size: 22px;
+  color: black;
+}
+
+.containerbody {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.containerfakebtnhelp {
+  margin-top: 15px;
+}
+
+.reftohelp {
+  color: black;
+}
+
+/* footer */
+
+.footercontent {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 200px;
+}
+
+.leftcontainerfoot {
+
+}
+
+.firstline {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.typicalline {
+  font-size: 15px;
+  margin-bottom: 5px;
+}

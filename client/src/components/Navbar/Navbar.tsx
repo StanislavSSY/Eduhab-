@@ -10,22 +10,20 @@ export default function Navbar(): JSX.Element {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-
   useEffect(() => {
     setIsUser(true);
-  },[user.isLoggedIn]);
+  }, [user.isLoggedIn]);
 
   async function logOut(): Promise<void> {
     const response = await fetch(`${import.meta.env.VITE_URL}/users/logout`, {
-      credentials: 'include',
+      credentials: "include",
     });
 
     if (response.status === 200) {
-      navigate('/');
-      dispatch(delUser(''));
+      navigate("/");
+      dispatch(delUser(""));
     }
-  } 
-
+  }
 
   return (
     <div className={styled.containernavbar}>
@@ -48,11 +46,13 @@ export default function Navbar(): JSX.Element {
       <div className={styled.rightcont}>
         {isUser ? (
           user.isLoggedIn ? (
-            <button onClick={logOut}>logout</button>
+            <div className={styled.logout} onClick={logOut}>
+              <i className="fa fa-sign-out" aria-hidden="true"></i>
+            </div>
           ) : (
-          <NavLink className={styled.auth} to={"/auth"}>
-            Авторизироваться
-          </NavLink>
+            <NavLink className={styled.auth} to={"/auth"}>
+              Авторизироваться
+            </NavLink>
           )
         ) : (
           <></>

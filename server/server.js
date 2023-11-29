@@ -48,3 +48,6 @@ app.get('/', (req, res) => {
 app.use('/users', require('./routes/users'));
 app.use('/comments', require('./routes/Comments'));
 app.use('/reviews', require('./routes/Reviews'));
+app.use('/study', require('./routes/Study'));
+app.use('/modules', require('./routes/Modules'));
+app.use('/lessons', require('./routes/Lessons'));

@@ -51,3 +51,7 @@ app.use('/reviews', require('./routes/Reviews'));
 app.use('/study', require('./routes/Study'));
 app.use('/modules', require('./routes/Modules'));
 app.use('/lessons', require('./routes/Lessons'));
+
+app.use('/courses', require('./routes/courses'));
+app.use('/steps', require('./routes/steps'));
+app.use('/entries', require('./routes/entries'));

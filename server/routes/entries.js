@@ -1,10 +1,6 @@
 const router = require('express').Router();
 
-const Entrie = require('../db/models/entrie')();
-const Course = require('../db/models/course')();
-const Module = require('../db/models/module')();
-const Lesson = require('../db/models/lesson')();
-const Step = require('../db/models/step')();
+const { Entrie, Course, Module, Lesson, Step } = require('../db/models');
 
 router.post('/', async (req, res) => {
   const { userid, courseid } = req.body;

@@ -1,0 +1,35 @@
+/* MenuMyTeaching.module.css */
+
+.menu-container {
+  background-color: #333;
+  padding: 10px;
+  margin-bottom: 30px; /* Добавлено свойство margin-bottom для создания пробела */
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-link {
+  text-decoration: none;
+}
+
+.menu-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.menu-button:hover {
+  background-color: #45a049;
+}

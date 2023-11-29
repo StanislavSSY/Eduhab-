@@ -9,6 +9,11 @@ import Navbar from './components/Navbar/Navbar';
 import OftenSearched from './components/OftenSearched/OftenSearched';
 import FindCourse from './components/FindCourse/FindCourse';
 
+
+import MainTeachingPage from './components/MyTeachingComponents/MainTeachingPage/MainTeachingPage'
+
+
+
 import TeachInfoPage from './Pages/TeachInfoPage/TeachInfoPage';
 import MyLearn from './pages/MyLearn/MyLearn';
 import MyLearnIndex from './pages/MyLearn/MyLearnIndex.tsx/MyLearnIndex';
@@ -16,6 +21,7 @@ import MyLearnCourses from './pages/MyLearn/MyLearnCourses.tsx/MyLearnCourses';
 import Layout from './components/Layout';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import { addUser } from './store/slice/userSlice';
+
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -44,6 +50,7 @@ function App(): JSX.Element {
           <Route index element={<Main />} />
           <Route path="/teach/info" element={<TeachInfoPage />} />
           <Route path="auth" element={<Auth />} />
+          <Route path="teaching" element={<MainTeachingPage/>} /> 
           <Route path="learn" element={<MyLearn />}>
             <Route path="" element={<MyLearnIndex />} />
             <Route path="courses" element={<MyLearnCourses />} />

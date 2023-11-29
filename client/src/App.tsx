@@ -18,6 +18,9 @@ import Layout from "./components/Layout";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { addUser } from "./store/slice/userSlice";
 
+import MainTeachingPage from './components/MyTeachingComponents/MainTeachingPage/MainTeachingPage'
+
+
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -43,6 +46,7 @@ function App(): JSX.Element {
           <Route index element={<Main />} />
           <Route path="/teach/info" element={<TeachInfoPage />} />
           <Route path="auth" element={<Auth />} />
+          <Route path="teaching" element={<MainTeachingPage/>} /> 
           <Route path="learn" element={<MyLearn />}>
             <Route path="" element={<MyLearnIndex />} />
             <Route path="courses" element={<MyLearnCourses />} />

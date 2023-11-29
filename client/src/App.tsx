@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Auth from "./pages/Auth/Auth";
 import Main from "./components/Main/Main";
-
+import Promo from "./Pages/Promo/Promo";
 
 import Navbar from "./components/Navbar/Navbar";
 
@@ -18,23 +18,25 @@ import Layout from "./components/Layout";
 import { useAppDispatch, useAppSelector } from "./store/hooks";
 import { addUser } from "./store/slice/userSlice";
 
-
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useAppSelector((store) => store.userSlice.user);
 
   useEffect(() => {
-    void(async() => {
-      const response = await fetch(`${import.meta.env.VITE_URL}/users/sessions`, {
-        credentials: 'include',
-      });
+    void (async () => {
+      const response = await fetch(
+        `${import.meta.env.VITE_URL}/users/sessions`,
+        {
+          credentials: "include",
+        }
+      );
 
       if (response.status === 200) {
         const result = await response.json();
         dispatch(addUser(result.email));
       }
     })();
-  },[]);
+  }, []);
 
   return (
     <>
@@ -43,6 +45,7 @@ function App(): JSX.Element {
           <Route index element={<Main />} />
           <Route path="/teach/info" element={<TeachInfoPage />} />
           <Route path="auth" element={<Auth />} />
+          <Route path="promo" element={<Promo />} />
           <Route path="learn" element={<MyLearn />}>
             <Route path="" element={<MyLearnIndex />} />
             <Route path="courses" element={<MyLearnCourses />} />

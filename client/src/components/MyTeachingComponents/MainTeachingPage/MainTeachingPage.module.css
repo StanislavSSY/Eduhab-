@@ -1,0 +1,39 @@
+/* MainTeachingPage.module.css */
+
+.teacher-cabinet {
+    position: fixed;
+    top: 20;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #f8f5f5;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .main-teaching-page {
+    
+    
+    padding: 35px;
+    position: relative;
+  }
+  
+  .menu-wrapper {
+    
+   
+    display: flex;
+    flex-direction: column;
+    margin-left: 300px;
+    gap: 1.5rem;
+  }
+  
+  .content-wrapper {
+    margin-top: calc(20px + 60px); /* 20px - отступ внутри .main-teaching-page, 60px - высота вашего верхнего навбара */
+    margin-left: 220px;
+  }
+  
+  .card-course-author {
+    margin-bottom: 20px;
+  }
+  

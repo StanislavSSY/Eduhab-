@@ -1,8 +1,8 @@
 import React from "react";
-import MenuMyLearn from "../../components/MyLearnComponents/MenuMyLearn/MenuMyLearn";
-import CardProgress from "../../components/MyLearnComponents/CardProgress/CardProgress";
-import UserStatMyLearn from "../../components/MyLearnComponents/UserStatMyLearn/UserStatMyLearn";
-import CardMinMyLearn from "../../components/MyLearnComponents/CardMinMyLearn/CardMinMyLearn";
+import MenuMyLearn from "../../components/MyLearnComponents/MenuMyLearn";
+import CardProgress from "../../components/MyLearnComponents/CardProgress";
+import UserStatMyLearn from "../../components/MyLearnComponents/UserStatMyLearn";
+import CardMinMyLearn from "../../components/MyLearnComponents/CardMinMyLearn";
 import { Outlet } from "react-router-dom";
 
 export default function MyLearn() {
@@ -16,9 +16,9 @@ export default function MyLearn() {
       }}
     >
       <MenuMyLearn />
-      <main>
+      <div>
         <Outlet />
-      </main>
+      </div>
     </div>
   );
 }

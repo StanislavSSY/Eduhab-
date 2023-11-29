@@ -1,7 +1,7 @@
 import React from "react";
-import CardProgress from "../../../components/MyLearnComponents/CardProgress/CardProgress";
-import UserStatMyLearn from "../../../components/MyLearnComponents/UserStatMyLearn/UserStatMyLearn";
-import CardMinMyLearn from "../../../components/MyLearnComponents/CardMinMyLearn/CardMinMyLearn";
+import CardProgress from "../../../components/MyLearnComponents/CardProgress";
+import UserStatMyLearn from "../../../components/MyLearnComponents/UserStatMyLearn";
+import CardMinMyLearn from "../../../components/MyLearnComponents/CardMinMyLearn";
 
 export default function MyLearnCourses() {
   const zagluhskaObj = {

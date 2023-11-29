@@ -1,3 +1,10 @@
+
+import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Auth from "./pages/Auth/Auth";
+import Main from "./components/Main/Main";
+import Promo from "./Pages/Promo/Promo";
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
@@ -22,7 +29,6 @@ import Layout from './components/Layout';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import { addUser } from './store/slice/userSlice';
 
-
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useAppSelector((store) => store.userSlice.user);
@@ -32,7 +38,7 @@ function App(): JSX.Element {
       const response = await fetch(
         `${import.meta.env.VITE_URL}/users/sessions`,
         {
-          credentials: 'include',
+          credentials: "include",
         }
       );
 
@@ -50,6 +56,7 @@ function App(): JSX.Element {
           <Route index element={<Main />} />
           <Route path="/teach/info" element={<TeachInfoPage />} />
           <Route path="auth" element={<Auth />} />
+          <Route path="promo" element={<Promo />} />
           <Route path="teaching" element={<MainTeachingPage/>} /> 
           <Route path="learn" element={<MyLearn />}>
             <Route path="" element={<MyLearnIndex />} />

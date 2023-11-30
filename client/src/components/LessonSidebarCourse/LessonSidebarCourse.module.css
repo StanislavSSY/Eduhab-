@@ -1,39 +1,29 @@
-
 /* CourseMenu.css */
 
 .menucourse {
-    display: flex;
-    
-  }
-  
-  .menu {
-    width: 300px;
-    background-color: #867d7da9; /* Цвет фона меню */
-    padding: 20px;
-    overflow-y: auto;
- 
- 
-    
-  
-    
-  }
-  
-  .menu h2 {
-    margin-bottom: 10px;
-    border: 1 ;
-    color: white
-   
-  }
-  
-  .content {
-    flex: 1;
-    padding: 20px;
-    width: 700px;
-    overflow-y: auto;
-  }
-  
-  .content h2 {
-    margin-bottom: 10px;
-    
-  }
-  
+  display: flex;
+}
+
+.menu {
+  width: 300px;
+  background-color: #867d7da9; /* Цвет фона меню */
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.menu h2 {
+  margin-bottom: 10px;
+  border: 1;
+  color: white;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  width: 700px;
+  overflow-y: auto;
+}
+
+.content h2 {
+  margin-bottom: 10px;
+}

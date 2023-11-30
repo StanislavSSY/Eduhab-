@@ -1,8 +1,18 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
-const { Lesson } = require('../db/models');
+const { Lesson } = require("../db/models");
 
-router.post('/', async (req, res) => {
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const data = (await Lesson.findByPk(id)).get({ plain: true });
+    res.json(data);
+  } catch (error) {
+    res.sendStatus(400);
+  }
+});
+
+router.post("/", async (req, res) => {
   const { user } = req.session;
 
   if (user) {

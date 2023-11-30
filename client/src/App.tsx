@@ -73,6 +73,10 @@ function App(): JSX.Element {
             path="teach/courses/lesson/:id/step/:stepNum"
             element={<LessonSidebarCourse />}
           />
+          <Route
+            path="teach/courses/lesson/:id"
+            element={<LessonSidebarCourse />}
+          />
           <Route path="course/:id" element={<Course />}>
             <Route path="info" element={<Info />} />
             <Route path="plan" />

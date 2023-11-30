@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, Route } from "react-router-dom"; // Импорт компонента Link
+import React, { useState, useEffect } from "react";
+import { Link, Route, useNavigate, useParams } from "react-router-dom"; // Импорт компонента Link
 import styles from "./LessonSidebarCourse.module.css";
 import LessonContent from "../LessonContent/LessonContent";
 // /lesson/:lessonid/step/1
@@ -9,6 +9,29 @@ import LessonContent from "../LessonContent/LessonContent";
 const LessonSidebarCourse = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState(null);
   const [selectedStep, setSelectedStep] = useState(null);
+  // const [menuItems, setMenuItems] = useState(null);
+  const navigate = useNavigate();
+  const paramsId = useParams();
+  useEffect(() => {
+    (async () => {
+      const responseId = await fetch(
+        `${import.meta.env.VITE_URL}/lessons/${paramsId.id}`,
+        {
+          credentials: "include",
+        }
+      );
+      const idCourse = await responseId.json();
+      const response = await fetch(
+        `${import.meta.env.VITE_URL}/study/${idCourse.id}`,
+        {
+          credentials: "include",
+        }
+      );
+      const data = await response.json();
+      // setMenuItems(data.Modules);
+      console.log("⚠️  【data】➜ ", data.Modules);
+    })();
+  }, []);
 
   const menuItems = [
     {
@@ -21,11 +44,13 @@ const LessonSidebarCourse = () => {
           steps: [
             {
               id: 1,
+              lessonid: 1,
               type: "TEXT",
               data: "какая-то дата",
             },
             {
               id: 2,
+              lessonid: 1,
               type: "TEXT",
               data: "какая-то дата2",
             },
@@ -37,11 +62,13 @@ const LessonSidebarCourse = () => {
           steps: [
             {
               id: 1,
+              lessonid: 2,
               type: "TEXT",
               data: "какая-то дата3",
             },
             {
               id: 2,
+              lessonid: 2,
               type: "TEXT",
               data: "какая-то дата4",
             },
@@ -53,11 +80,13 @@ const LessonSidebarCourse = () => {
           steps: [
             {
               id: 1,
+              lessonid: 3,
               type: "TEXT",
               data: "какая-то дата5",
             },
             {
               id: 2,
+              lessonid: 3,
               type: "TEXT",
               data: "какая-то дат6",
             },
@@ -75,11 +104,13 @@ const LessonSidebarCourse = () => {
           steps: [
             {
               id: 1,
+              lessonid: 4,
               type: "TEXT",
               data: "какая-то дата6",
             },
             {
               id: 2,
+              lessonid: 4,
               type: "TEXT",
               data: "какая-то дат7",
             },
@@ -91,11 +122,13 @@ const LessonSidebarCourse = () => {
           steps: [
             {
               id: 1,
+              lessonid: 5,
               type: "TEXT",
               data: "какая-то дата8",
             },
             {
               id: 2,
+              lessonid: 5,
               type: "TEXT",
               data: "какая-то дат9",
             },
@@ -107,11 +140,19 @@ const LessonSidebarCourse = () => {
           steps: [
             {
               id: 1,
+              lessonid: 6,
               type: "TEXT",
               data: "какая-то дата10",
             },
             {
               id: 2,
+              lessonid: 6,
+              type: "TEXT",
+              data: "какая-то дат10",
+            },
+            {
+              id: 3,
+              lessonid: 6,
               type: "TEXT",
               data: "какая-то дат10",
             },
@@ -124,11 +165,18 @@ const LessonSidebarCourse = () => {
   const handleMenuItemClick = (id) => {
     setSelectedMenuItem(id);
     // Сбросить выбранный шаг при изменении урока
-    setSelectedStep(null);
+    // setSelectedStep(null);
+    navigate(`/teach/courses/lesson/${id}`);
   };
 
   const handleStepClick = (stepId) => {
+    console.log("⚠️  【777】➜ ", stepId);
     setSelectedStep(stepId);
+    navigate(
+      `/teach/courses/lesson/${selectedMenuItem}${
+        selectedStep ? `/step/${stepId}` : ""
+      }`
+    );
   };
 
   return (
@@ -147,11 +195,13 @@ const LessonSidebarCourse = () => {
                     onClick={() => handleMenuItemClick(lesson.id)}
                     className={selectedMenuItem === lesson.id ? "active" : ""}
                   >
-                    <Link
-                      to={`/teach/courses/lesson/${lesson.id}/step/${lesson.steps[0].id}`}
-                    >
-                      {lesson.title}
-                    </Link>
+                    {/* <Link
+                      to={`/teach/courses/lesson/${lesson.id}${
+                        selectedStep === null ? "" : "/step/" + selectedStep
+                      }`}
+                    > */}
+                    {lesson.title}
+                    {/* </Link> */}
                   </li>
                 ))}
               </ul>
@@ -180,9 +230,15 @@ const LessonSidebarCourse = () => {
                     .find((lesson) => lesson.id === selectedMenuItem)
                     .steps.map((step) => (
                       <li key={step.id}>
+                        {/* <Link
+                          to={`/teach/courses/lesson/${step.lessonid}${
+                            selectedStep === null ? "" : "/step/" + selectedStep
+                          }`}
+                        > */}
                         <button onClick={() => handleStepClick(step.id)}>
                           Шаг {step.id}
                         </button>
+                        {/* </Link> */}
                       </li>
                     ))}
                 </ul>
@@ -204,9 +260,15 @@ const LessonSidebarCourse = () => {
                     .find((lesson) => lesson.id === selectedMenuItem)
                     .steps.map((step) => (
                       <li key={step.id}>
+                        {/* <Link
+                          to={`/teach/courses/lesson/${step.lessonid}${
+                            selectedStep === null ? "" : "/step/" + selectedStep
+                          }`}
+                        > */}
                         <button onClick={() => handleStepClick(step.id)}>
                           Шаг {step.id}
                         </button>
+                        {/* </Link> */}
                       </li>
                     ))}
                 </ul>

@@ -13,7 +13,10 @@ router.post('/login', async (req, res) => {
 
       if (checkPass) {
         req.session.email = user.email;
-        res.json(email);
+        req.session.userid = user.id;
+        req.session.lastName = user.lastName;
+        req.session.firstName = user.firstName;
+        res.json({ id: user.id, email, firstName: user.firstName, lastName: user.lastName });
       }
       res.json({ message: 'Неверный пароль' });
     } else {
@@ -33,7 +36,7 @@ router.post('/reg', async (req, res) => {
       res.json({ message: 'Такой пользователь уже существует' });
     } else {
       const hash = await bcrypt.hash(password, 10);
-      await User.create({
+      const data = await User.create({
         firstName,
         lastName,
         email,
@@ -41,8 +44,11 @@ router.post('/reg', async (req, res) => {
         isAdmin: false,
       });
       req.session.email = email;
+      req.session.userid = data.id;
+      req.session.lastName = data.lastName;
+      req.session.firstName = data.firstName;
 
-      res.json(email);
+      res.json({ id: data.id, email, firstName, lastName });
     }
   } catch (err) {
     res.sendStatus(400);
@@ -65,9 +71,10 @@ router.get('/logout', (req, res) => {
 
 router.get('/sessions', async (req, res) => {
   try {
-    const { email } = req.session;
+    const { userid, email, firstName, lastName } = req.session;
+    const id = structuredClone(userid);
     if (email) {
-      res.json({ email });
+      res.json({ id, email, firstName, lastName });
     } else {
       res.sendStatus(400);
     }

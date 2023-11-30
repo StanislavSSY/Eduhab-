@@ -1,0 +1,25 @@
+.containeryourcourse {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.leftcont {
+}
+
+.leftcont {
+  margin: 100px 100px 0 0;
+}
+
+.rightcont {
+  width: 100vh;
+}
+
+.title {
+  margin: 24px 0 20px 0;
+  font-size: 24px;
+}
+
+.filtercourse {
+  display: flex;
+  margin: 0 0 24px 0;
+}

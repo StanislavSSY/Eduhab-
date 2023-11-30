@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
           progress.push({
             id: step.id,
             type: step.type,
-            statusOrAnswer: false,
+            status: false,
           });
         });
       });

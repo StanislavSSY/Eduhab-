@@ -18,11 +18,11 @@ module.exports = {
         type: Sequelize.STRING,
       },
       old_price: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
       },
       new_price: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
       },
       image_url: {
@@ -44,7 +44,7 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       intro_video: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING,
       },
       createdAt: {

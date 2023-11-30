@@ -23,7 +23,7 @@ import NewCourse from "./components/MyTeachingComponents/NewCourse/NewCourse";
 import Course from "./components/Course/Course";
 import Info from "./components/Course/Info/Info";
 import Publication from "./components/Course/Info/Publication/Publication";
-import CourseMenu from './components/LessonSidebarCourse/LessonSidebarCourse'
+import LessonSidebarCourse from "./components/LessonSidebarCourse/LessonSidebarCourse";
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -69,7 +69,10 @@ function App(): JSX.Element {
           <Route path="promo" element={<Promo />} />
           <Route path="teach/courses" element={<MainTeachingPage />} />
           <Route path="teach/courses/new" element={<NewCourse />} />
-          <Route path="teach/courses/lesson" element={<CourseMenu />} /> 
+          <Route
+            path="teach/courses/lesson"
+            element={<LessonSidebarCourse />}
+          />
           <Route path="course/:id" element={<Course />}>
             <Route path="info" element={<Info />} />
             <Route path="plan" />

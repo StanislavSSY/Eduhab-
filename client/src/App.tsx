@@ -70,7 +70,7 @@ function App(): JSX.Element {
           <Route path="teach/courses" element={<MainTeachingPage />} />
           <Route path="teach/courses/new" element={<NewCourse />} />
           <Route
-            path="teach/courses/lesson"
+            path="teach/courses/lesson/:id/step/:stepNum"
             element={<LessonSidebarCourse />}
           />
           <Route path="course/:id" element={<Course />}>

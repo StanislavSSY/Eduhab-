@@ -1,52 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import styles from './MainTeachingPage.module.css';
 import { Link } from 'react-router-dom';
 import MenuMyTeaching from '../MenuMyTeaching/MenuMyTeaching';
 import CardCourseAuthor from '../CardCourseAuthor/CardCourseAuthor';
+import { CoursesTypes } from '../../../types';
 
 
-export default function MainTeachingPage() {
-  const zagluhskaCardAuthor = {
-    title: "Основы SMM ВКонтакте без \"воды\" с нуля до специалиста",
-    imgUrl: "https://cdn.stepik.net/media/cache/images/courses/115018/cover_2pHpRcf/11ab681f09f1df98cc47e9c5ad25d47c.png",
-    star: 5,
-    users: 200,
-    time: 5,
-  };
-  const zagluhskaCardAuthorObjs = [
-    { ...zagluhskaCardAuthor, id: 1 },
-    { ...zagluhskaCardAuthor, id: 2 },
-    { ...zagluhskaCardAuthor, id: 3 },
-    { ...zagluhskaCardAuthor, id: 4 },
-  ];
-  console.log(zagluhskaCardAuthorObjs);
+export default function MainTeachingPage(): JSX.Element {
+  const [courses, setCourses] = useState<CoursesTypes>([]);
+  useEffect(() => {
+    void(async() => {
+      const response = await fetch(`${import.meta.env.VITE_URL}/courses/user`, {
+        credentials: 'include',
+      });
+
+      if (response.status === 200) {
+        const result = await response.json();
+        setCourses(result);
+      }
+    })();
+  }, [])
     return (
-
-    
-    <>
-   
-      <div className={styles['teacher-cabinet']}>
-        <MenuMyTeaching />
-      </div>
-
-      <div className={styles['main-teaching-page']}>
-       
-        <div className={styles['menu-wrapper']}>
-         
-        {/* {zagluhskaObjs.map((el) => (
-          <CardMinMyLearn zagluhskaObj={el} key={el.id} />
-        ))} */}
-        {zagluhskaCardAuthorObjs.map((el) => (
-          <CardCourseAuthor  zagluhskaCardAuthor={el} key={el.id} />
-        ))}
-          {/* <CardCourseAuthor />
-          <CardCourseAuthor />
-          <CardCourseAuthor /> */}
+      <div className={styles.containeryourcourse}>
+        <div className={styles.leftcont}>
+          <MenuMyTeaching />
         </div>
-        <div className={styles['content-wrapper']}>
-          {/* Вставьте здесь другие компоненты, которые должны отображаться в центре */}
+        <div className={styles.rightcont}>
+          <div className={styles.title}>Курсы</div>
+          <div className={styles.filtercourse}>
+            <div className={styles.filter}>Тут будет селект фильтр</div>
+            <div>Тут будет поиск</div>
+          </div>
+          <div className={styles.coursecontainer}>
+            {courses.map((el) => (
+              <CardCourseAuthor  el={el} key={el.id} />
+            ))}
+          </div>
         </div>
       </div>
-    </>
   );
 }

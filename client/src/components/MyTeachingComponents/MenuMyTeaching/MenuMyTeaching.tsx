@@ -8,7 +8,7 @@ export default function MenuMyTeaching() {
       <nav className={styles['menu-container']}>
         <ul className={styles['menu-list']}>
           <li>
-            <Link to="" className={styles['menu-link']}>
+            <Link to="/teach/courses" className={styles['menu-link']}>
               <button type="button" className={styles['menu-button']}>Мои курсы</button>
             </Link>
           </li>
@@ -18,7 +18,7 @@ export default function MenuMyTeaching() {
             </button>
           </li>
           <li>
-            <Link to="notifications" className={styles['menu-link']}>
+            <Link to="/teach/courses/new" className={styles['menu-link']}>
               <button type="button" className={styles['menu-button']}>Создать курс</button>
             </Link>
           </li>

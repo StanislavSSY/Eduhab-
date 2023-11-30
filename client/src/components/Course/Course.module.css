@@ -1,0 +1,91 @@
+.leftcont {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 305px;
+  margin: 25px 0 0 0;
+}
+
+.imgcont {
+  margin: 25px 0 0 0;
+}
+
+.coursetitle {
+  margin: 25px 0 0 0;
+  font-size: 20px;
+}
+
+.btnpubliccont {
+  margin: 25px 0 0 0;
+}
+
+.btnlist {
+  display: flex;
+  justify-content: flex-start;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.listcont {
+  opacity: 0.7;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.listcont:hover {
+  opacity: 1;
+}
+
+.rightcont {
+  width: 100vh;
+}
+
+.mainli, .podli {
+  position: relative;
+  list-style-type: none;
+}
+
+.podli {
+  margin-bottom: 7px;
+}
+
+.reflink {
+  opacity: 0.8;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.reflink:hover {
+  opacity: 1;
+}
+
+.mainli {
+  margin: 10px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.podul {
+  display: flex;
+  flex-direction: column;
+}
+
+.vision {
+  position: absolute;
+  opacity: 0;
+  top: 10px;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.vision.active {
+  margin-top: 5px;
+  position: static;
+  transform: translateY(0);
+  transition: 0.3s;
+  opacity: 1;
+  visibility: visible;
+}

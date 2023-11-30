@@ -1,0 +1,63 @@
+.newcoursepagecontainer {
+  display: flex;
+}
+
+.leftcont {
+  margin: 100px 100px 0 0;
+}
+
+.rightcont {
+  width: 100vh;
+}
+
+.title {
+  margin: 24px 0 20px 0;
+  font-size: 24px;
+}
+
+.cluetitle {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.cluenumbers {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+
+.maininpcreator {
+  padding: 5px;
+  width: 550px;
+  height: 34px;
+  font-size: 15px;
+}
+
+
+.containerbtn {
+  cursor: pointer;
+  width: 180px;
+  height: 35px;
+  margin-top: 55px;
+  background-color: rgba(157,36,63, 0.8);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerbtn:hover {
+  background-color: rgba(157,36,63, 1);
+}
+
+.btncreatecourse {
+  cursor: pointer;
+  width: 180px;
+  height: 35px;
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  color: white;
+}
+

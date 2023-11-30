@@ -18,6 +18,22 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/user', async (req, res) => {
+  const { userid } = req.session;
+  console.log(req.session);
+  if (userid) {
+    console.log('zashli');
+    try {
+      const data = await Course.findAll({ where: { userid } });
+      const newdata = data.map((el) => el.get({ plain: true }));
+      console.log(newdata);
+      res.json(newdata);
+    } catch (error) {
+      res.sendStatus(400);
+    }
+  }
+});
+
 router.post('/', async (req, res) => {
   const { userid, title } = req.body;
   try {

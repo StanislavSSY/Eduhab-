@@ -1,10 +1,10 @@
 import Promo from "./Pages/Promo/Promo";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Auth from "./Pages/Auth/Auth";
 import Main from "./components/Main/Main";
-
+import Preloader from "./components/Preloader/Preloader";
 import Navbar from "./components/Navbar/Navbar";
 
 import OftenSearched from "./components/OftenSearched/OftenSearched";
@@ -27,6 +27,7 @@ import Publication from "./components/Course/Info/Publication/Publication";
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useAppSelector((store) => store.userSlice.user);
+  const [isAuth, setIsAuth] = useState(false);
 
   useEffect(() => {
     void (async () => {
@@ -40,9 +41,22 @@ function App(): JSX.Element {
       if (response.status === 200) {
         const result = await response.json();
         dispatch(addUser(result));
+        // setTimeout(() => {
+        //   setIsAuth(true);
+        // }, 3000);
+        setIsAuth(true);
+      } else {
+        // setTimeout(() => {
+        //   setIsAuth(true);
+        // }, 3000);
+        setIsAuth(true);
       }
     })();
   }, []);
+
+  if (!isAuth) {
+    return <Preloader />;
+  }
 
   return (
     <>
@@ -55,7 +69,7 @@ function App(): JSX.Element {
           <Route path="teach/courses" element={<MainTeachingPage />} />
           <Route path="teach/courses/new" element={<NewCourse />} />
           <Route path="course/:id" element={<Course />}>
-            <Route path="info" element={<Info />}/>
+            <Route path="info" element={<Info />} />
             <Route path="plan" />
             <Route path="publication" element={<Publication />} />
           </Route>

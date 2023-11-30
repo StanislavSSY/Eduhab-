@@ -174,6 +174,18 @@ const LessonSidebarCourse = () => {
             </h2>
             {selectedStep !== null ? (
               <div>
+                <ul className={styles.stepButtons}>
+                  {menuItems
+                    .flatMap((module) => module.lesson)
+                    .find((lesson) => lesson.id === selectedMenuItem)
+                    .steps.map((step) => (
+                      <li key={step.id}>
+                        <button onClick={() => handleStepClick(step.id)}>
+                          Шаг {step.id}
+                        </button>
+                      </li>
+                    ))}
+                </ul>
                 <h3>Шаг {selectedStep}</h3>
                 <p>
                   {
@@ -186,7 +198,6 @@ const LessonSidebarCourse = () => {
               </div>
             ) : (
               <div>
-                <h3>Выберите шаг для просмотра содержания.</h3>
                 <ul className={styles.stepButtons}>
                   {menuItems
                     .flatMap((module) => module.lesson)

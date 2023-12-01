@@ -2,7 +2,7 @@ import Promo from './Pages/Promo/Promo';
 import { useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
-import Auth from './Pages/Auth/Auth';
+import Auth from './pages/Auth/Auth';
 import Main from './components/Main/Main';
 import Preloader from './components/Preloader/Preloader';
 import Navbar from './components/Navbar/Navbar';
@@ -63,7 +63,7 @@ function App(): JSX.Element {
 
   return (
     <>
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
           <Route path="/teach/info" element={<TeachInfoPage />} />
@@ -86,9 +86,12 @@ function App(): JSX.Element {
             <Route path="favorites" />
             <Route path="notifications" />
           </Route>
+          <Route path="edit-lesson">
+            <Route path=":lessonid/step/:stepNum" element={<EditLesson />} />
+            <Route path=":lessonid/" element={<EditLesson />} />
+          </Route>
         </Route>
-      </Routes> */}
-      <EditLesson />
+      </Routes>
     </>
   );
 }

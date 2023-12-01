@@ -1,33 +1,44 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { initSteps, addStep, updateStep, deleteStep } from '../thunkActions';
 
 const initialState = {
-  steps: [
-    {
-      id: '2',
-      type: 'TEXT',
-    },
-    {
-      id: '1',
-      type: 'TEXT',
-    },
-  ]
-    .sort((a, b) => Number(a.id) - Number(b.id))
-    .map((el, i) => {
-      return { ...el, stepNum: String(i + 1) };
-    }),
+  steps: [],
 };
 
 export const stepsSlice = createSlice({
   name: 'todos',
   initialState,
-  reducers: {
-    initSteps: (state, action) => {
-      state.steps = initialState.steps;
-    },
-    delSteps: (state, action) => {
-      state.steps = [];
-    },
+  reducers: {},
+  extraReducers(builder) {
+    builder.addCase(initSteps.fulfilled, (state, action) => {
+      state.steps = action.payload;
+    });
+    builder.addCase(addStep.fulfilled, (state, action) => {
+      const steps = [...state.steps, action.payload]
+        .sort((a, b) => Number(a.id) - Number(b.id))
+        .map((el, i) => {
+          return { ...el, stepNum: String(i + 1) };
+        });
+      state.steps = steps;
+    });
+    builder.addCase(updateStep.fulfilled, (state, action) => {
+      const steps = [...state.steps, action.payload]
+        .sort((a, b) => Number(a.id) - Number(b.id))
+        .map((el, i) => {
+          return { ...el, stepNum: String(i + 1) };
+        });
+      state.steps = steps;
+    });
+    builder.addCase(deleteStep.fulfilled, (state, action) => {
+      if (action.payload !== false) {
+        const steps = state.steps
+          .filter((el) => el.id !== action.payload)
+          .sort((a, b) => Number(a.id) - Number(b.id))
+          .map((el, i) => {
+            return { ...el, stepNum: String(i + 1) };
+          });
+        state.steps = steps;
+      }
+    });
   },
 });
-
-export const { initSteps, delSteps } = stepsSlice.actions;

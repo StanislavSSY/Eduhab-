@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, Route, useNavigate, useParams } from "react-router-dom"; // Импорт компонента Link
 import styles from "./LessonSidebarCourse.module.css";
 import LessonContent from "../LessonContent/LessonContent";
+import ReactMarkdown from "react-markdown";
 // /lesson/:lessonid/step/1
 
 // ... (ваш импорт и стиль)
@@ -9,9 +10,10 @@ import LessonContent from "../LessonContent/LessonContent";
 const LessonSidebarCourse = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState(null);
   const [selectedStep, setSelectedStep] = useState(null);
-  // const [menuItems, setMenuItems] = useState(null);
+  const [menuItems, setMenuItems] = useState([]);
   const navigate = useNavigate();
   const paramsId = useParams();
+
   useEffect(() => {
     (async () => {
       const responseId = await fetch(
@@ -28,139 +30,14 @@ const LessonSidebarCourse = () => {
         }
       );
       const data = await response.json();
-      // setMenuItems(data.Modules);
-      console.log("⚠️  【data】➜ ", data.Modules);
+      if (data && data.Modules) {
+        setMenuItems(data.Modules);
+        console.log("⚠️  &#8203;``【oaicite:0】``&#8203;➜ ", data.Modules);
+      } else {
+        console.error("Data or Modules property is missing.");
+      }
     })();
   }, []);
-
-  const menuItems = [
-    {
-      moduleid: 1,
-      moduleTitle: "Урок 1",
-      lesson: [
-        {
-          id: 1,
-          title: "Введение в программирование",
-          steps: [
-            {
-              id: 1,
-              lessonid: 1,
-              type: "TEXT",
-              data: "какая-то дата",
-            },
-            {
-              id: 2,
-              lessonid: 1,
-              type: "TEXT",
-              data: "какая-то дата2",
-            },
-          ],
-        },
-        {
-          id: 2,
-          title: "Основы JavaScript",
-          steps: [
-            {
-              id: 1,
-              lessonid: 2,
-              type: "TEXT",
-              data: "какая-то дата3",
-            },
-            {
-              id: 2,
-              lessonid: 2,
-              type: "TEXT",
-              data: "какая-то дата4",
-            },
-          ],
-        },
-        {
-          id: 3,
-          title: "Работа с React",
-          steps: [
-            {
-              id: 1,
-              lessonid: 3,
-              type: "TEXT",
-              data: "какая-то дата5",
-            },
-            {
-              id: 2,
-              lessonid: 3,
-              type: "TEXT",
-              data: "какая-то дат6",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      moduleid: 2,
-      moduleTitle: "Урок 2",
-      lesson: [
-        {
-          id: 4,
-          title: "Введение в программирование",
-          steps: [
-            {
-              id: 1,
-              lessonid: 4,
-              type: "TEXT",
-              data: "какая-то дата6",
-            },
-            {
-              id: 2,
-              lessonid: 4,
-              type: "TEXT",
-              data: "какая-то дат7",
-            },
-          ],
-        },
-        {
-          id: 5,
-          title: "Основы JavaScript",
-          steps: [
-            {
-              id: 1,
-              lessonid: 5,
-              type: "TEXT",
-              data: "какая-то дата8",
-            },
-            {
-              id: 2,
-              lessonid: 5,
-              type: "TEXT",
-              data: "какая-то дат9",
-            },
-          ],
-        },
-        {
-          id: 6,
-          title: "Работа с React",
-          steps: [
-            {
-              id: 1,
-              lessonid: 6,
-              type: "TEXT",
-              data: "какая-то дата10",
-            },
-            {
-              id: 2,
-              lessonid: 6,
-              type: "TEXT",
-              data: "какая-то дат10",
-            },
-            {
-              id: 3,
-              lessonid: 6,
-              type: "TEXT",
-              data: "какая-то дат10",
-            },
-          ],
-        },
-      ],
-    },
-  ];
 
   const handleMenuItemClick = (id) => {
     setSelectedMenuItem(id);
@@ -185,11 +62,11 @@ const LessonSidebarCourse = () => {
         <h2>Меню курса</h2>
         <div>Название курса</div>
         <ul>
-          {menuItems.map((menuItem) => (
-            <li key={menuItem.moduleid}>
-              {menuItem.moduleTitle}
+          {menuItems?.map((menuItem) => (
+            <li key={menuItem.Lessons.moduleid}>
+              {/* {menuItem.moduleTitle} */}
               <ul>
-                {menuItem.lesson.map((lesson) => (
+                {menuItem.Lessons.map((lesson) => (
                   <li
                     key={lesson.id}
                     onClick={() => handleMenuItemClick(lesson.id)}
@@ -218,7 +95,7 @@ const LessonSidebarCourse = () => {
             <h2>
               {
                 menuItems
-                  .flatMap((module) => module.lesson)
+                  .flatMap((module) => module.Lessons)
                   .find((lesson) => lesson.id === selectedMenuItem).title
               }
             </h2>
@@ -226,9 +103,9 @@ const LessonSidebarCourse = () => {
               <div>
                 <ul className={styles.stepButtons}>
                   {menuItems
-                    .flatMap((module) => module.lesson)
+                    .flatMap((module) => module.Lessons)
                     .find((lesson) => lesson.id === selectedMenuItem)
-                    .steps.map((step) => (
+                    .Steps.map((step) => (
                       <li key={step.id}>
                         {/* <Link
                           to={`/teach/courses/lesson/${step.lessonid}${
@@ -243,22 +120,33 @@ const LessonSidebarCourse = () => {
                     ))}
                 </ul>
                 <h3>Шаг {selectedStep}</h3>
-                <p>
+
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: `${
+                      menuItems
+                        .flatMap((module) => module.Lessons)
+                        .find((lesson) => lesson.id === selectedMenuItem)
+                        .Steps.find((step) => step.id === selectedStep).data
+                    }`,
+                  }}
+                />
+                {/* <p>
                   {
                     menuItems
-                      .flatMap((module) => module.lesson)
+                      .flatMap((module) => module.Lessons)
                       .find((lesson) => lesson.id === selectedMenuItem)
-                      .steps.find((step) => step.id === selectedStep).data
+                      .Steps.find((step) => step.id === selectedStep).data
                   }
-                </p>
+                </p> */}
               </div>
             ) : (
               <div>
                 <ul className={styles.stepButtons}>
                   {menuItems
-                    .flatMap((module) => module.lesson)
+                    .flatMap((module) => module.Lessons)
                     .find((lesson) => lesson.id === selectedMenuItem)
-                    .steps.map((step) => (
+                    .Steps.map((step) => (
                       <li key={step.id}>
                         {/* <Link
                           to={`/teach/courses/lesson/${step.lessonid}${

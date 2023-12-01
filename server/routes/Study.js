@@ -15,6 +15,9 @@ router.get("/:id", async (req, res) => {
         model: Module,
         include: {
           model: Lesson,
+          include: {
+            model: Step,
+          },
         },
       },
       plain: true,

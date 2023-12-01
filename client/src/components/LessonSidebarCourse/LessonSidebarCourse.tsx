@@ -43,7 +43,8 @@ const LessonSidebarCourse = () => {
     setSelectedMenuItem(id);
     // Сбросить выбранный шаг при изменении урока
     // setSelectedStep(null);
-    navigate(`/teach/courses/lesson/${id}`);
+    // navigate(`/teach/courses/lesson/${id}`);
+    navigate(`/teach/courses/lesson/${id}/step/${1}`);
   };
 
   const handleStepClick = (stepId) => {
@@ -51,10 +52,12 @@ const LessonSidebarCourse = () => {
     setSelectedStep(stepId);
     navigate(
       `/teach/courses/lesson/${selectedMenuItem}${
-        selectedStep ? `/step/${stepId}` : ""
+        stepId ? `/step/${stepId}` : ""
       }`
     );
   };
+
+  console.log("⚠️  【$$$】➜ ", menuItems);
 
   return (
     <div className={styles.menucourse}>
@@ -66,7 +69,7 @@ const LessonSidebarCourse = () => {
             <li key={menuItem.Lessons.moduleid}>
               {/* {menuItem.moduleTitle} */}
               <ul>
-                {menuItem.Lessons.map((lesson) => (
+                {menuItem?.Lessons?.map((lesson) => (
                   <li
                     key={lesson.id}
                     onClick={() => handleMenuItemClick(lesson.id)}
@@ -105,15 +108,15 @@ const LessonSidebarCourse = () => {
                   {menuItems
                     .flatMap((module) => module.Lessons)
                     .find((lesson) => lesson.id === selectedMenuItem)
-                    .Steps.map((step) => (
+                    .Steps.map((step, index) => (
                       <li key={step.id}>
                         {/* <Link
                           to={`/teach/courses/lesson/${step.lessonid}${
                             selectedStep === null ? "" : "/step/" + selectedStep
                           }`}
                         > */}
-                        <button onClick={() => handleStepClick(step.id)}>
-                          Шаг {step.id}
+                        <button onClick={() => handleStepClick(index + 1)}>
+                          Шаг {index + 1}
                         </button>
                         {/* </Link> */}
                       </li>
@@ -126,8 +129,8 @@ const LessonSidebarCourse = () => {
                     __html: `${
                       menuItems
                         .flatMap((module) => module.Lessons)
-                        .find((lesson) => lesson.id === selectedMenuItem)
-                        .Steps.find((step) => step.id === selectedStep).data
+                        .find((lesson) => lesson.id == selectedMenuItem)
+                        .Steps.find((step) => step.id == selectedStep)?.data
                     }`,
                   }}
                 />
@@ -146,15 +149,15 @@ const LessonSidebarCourse = () => {
                   {menuItems
                     .flatMap((module) => module.Lessons)
                     .find((lesson) => lesson.id === selectedMenuItem)
-                    .Steps.map((step) => (
+                    .Steps.map((step, index) => (
                       <li key={step.id}>
                         {/* <Link
                           to={`/teach/courses/lesson/${step.lessonid}${
                             selectedStep === null ? "" : "/step/" + selectedStep
                           }`}
                         > */}
-                        <button onClick={() => handleStepClick(step.id)}>
-                          Шаг {step.id}
+                        <button onClick={() => handleStepClick(index + 1)}>
+                          Шаг {index + 1}
                         </button>
                         {/* </Link> */}
                       </li>

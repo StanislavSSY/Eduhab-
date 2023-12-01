@@ -51,9 +51,7 @@ const LessonSidebarCourse = () => {
     console.log("⚠️  【777】➜ ", stepId);
     setSelectedStep(stepId);
     navigate(
-      `/teach/courses/lesson/${selectedMenuItem}${
-        stepId ? `/step/${stepId}` : ""
-      }`
+      `/teach/courses/lesson/${paramsId.id}${stepId ? `/step/${stepId}` : ""}`
     );
   };
 

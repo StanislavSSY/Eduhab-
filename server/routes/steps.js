@@ -25,10 +25,10 @@ router.get('/:id', async (req, res) => {
     const step = await Step.findByPk(id);
     if (!step) res.sendStatus(400);
     const stepData = step.get({ plain: true });
-    if (stepData.type.startsWith('TEST')) {
+    /* if (stepData.type.startsWith('TEST')) {
       stepData.data = JSON.parse(stepData.data);
       delete stepData.data.answer;
-    }
+    } */
     res.json(stepData);
   } catch (error) {
     console.log(error);
@@ -38,11 +38,12 @@ router.get('/:id', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   const { id } = req.params;
-  const { data } = req.body;
+  const { data, type } = req.body;
+  console.log(data);
   try {
     const step = await Step.findByPk(id);
     if (!step) res.sendStatus(400);
-    const updatedStep = await step.update({ data });
+    const updatedStep = await step.update({ data, type });
     res.json(updatedStep.get({ plain: true }));
   } catch (error) {
     console.log(error);

@@ -1,0 +1,60 @@
+.lessonexample {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 650px;
+  height: 100px;
+}
+
+.inputlessontitle {
+  margin: 0 35px 0 0;
+  width: 300px;
+  height: 35px;
+  padding: 10px;
+}
+
+.btncreatelessoncont {
+  width: 150px;
+  height: 40px;
+  border: solid 1px rgba(157,36,63, 0.8);
+  border-radius: 5px;
+} 
+
+.btncreatelessoncont:hover {
+  border: solid 1px rgba(157,36,63, 1);
+  transition: 0.3s;
+}
+
+.btncreatelessoncont.disable {
+  border: solid 1px rgba(157,36,63, 0.3);
+}
+
+.btncreatelesson {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  width: 150px;
+  height: 40px;
+  font-size: 16px;
+  color: rgba(157,36,63, 0.8);
+  transition: 0.3s;
+}
+
+.btncreatelesson.disable {
+  color: rgba(157,36,63, 0.3);
+  cursor: no-drop;
+}
+
+.btncreatelesson:hover {
+  color: rgba(157,36,63, 1);
+  transition: 0.3s;
+}
+
+.btncreatelesson.disable:hover {
+  color: rgba(157,36,63, 0.3);
+}

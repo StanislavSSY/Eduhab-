@@ -3,11 +3,11 @@ const router = require('express').Router();
 const { Module, Course, Lesson, Step } = require('../db/models');
 
 router.get('/:id', async (req, res) => {
-  const { user } = req.session;
+  const { email } = req.session;
   const { id } = req.params;
-  if (user) {
+  if (email) {
     try {
-      const data = await Course.findAll({
+      const data = await Course.findOne({
         where: {
           id,
         },
@@ -17,8 +17,12 @@ router.get('/:id', async (req, res) => {
             model: Lesson,
           },
         },
+        order: [
+          [Module, 'createdAt', 'ASC'],
+          [Module, Lesson, 'createdAt', 'ASC'],
+        ],
       });
-      const newdata = data.map((el) => el.get({ plain: true }));
+      const newdata = data.get({ plain: true });
       res.json(newdata);
     } catch (error) {
       res.sendStatus(400);

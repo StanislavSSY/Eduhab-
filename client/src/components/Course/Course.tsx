@@ -1,34 +1,60 @@
 import React, { useState, useEffect} from 'react'
 import styled from './Course.module.css'
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom'
+import { Link, Outlet, Route, Routes, useNavigate, useParams } from 'react-router-dom'
 import { CourseInt, CourseType } from '../../types';
 import clsx from 'clsx';
+import { useDispatch } from 'react-redux';
+import { addCourse } from '../../store/slice/courseSlice';
+import { useAppSelector } from '../../store/hooks';
+import Info from './Info/Info';
+import InfoEdit from './InfoEdit/InfoEdit';
+import Publication from './Publication/Publication';
+import { addfullCourse } from '../../store/slice/fullCourseSlice';
 
 export default function Course(): JSX.Element {
   const { id } = useParams();
   const [data, setData] = useState<CourseInt>({});
   const [isOpen, setIsOpen] = useState(false);
   const [settingsIsOpen, setSettingsIsOpen] = useState(false);
-  console.log(id);
+  const course = useAppSelector((store) => store.courseSlice.course);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     void(async() => {
-      const response = await fetch(`${import.meta.env.VITE_URL}/courses/${id}`, {
-        credentials: 'include',
-      });
-
-      if (response.status === 200) {
-        const result = await response.json();
-        console.log(result);
-        setData(result);
+      if (course.title === '') {
+        const response = await fetch(`${import.meta.env.VITE_URL}/courses/${id}`, {
+          credentials: 'include',
+        });
+  
+        if (response.status === 200) {
+          const result = await response.json();
+          console.log(result);
+          setData(result);
+          dispatch(addCourse(result));
+          const resp = await fetch(`${import.meta.env.VITE_URL}/study/${id}`, {
+            credentials: 'include',
+            method: 'GET',
+          });
+          if (resp.status === 200) {
+            const res = await resp.json();
+            dispatch(addfullCourse(res));
+          }
+        }
       }
     })();
   }, []);
 
   useEffect(() => {
-    navigate('info');
-  },[data])
+    if (course.title !== '') {
+      setData(course)
+      console.log(course);
+    }
+  }, [course])
+
+  // useEffect(() => {
+  //   navigate('info');
+  // },[data])
 
   return (
     <div className={styled.coursecontainer}>
@@ -38,7 +64,7 @@ export default function Course(): JSX.Element {
         </div>
         <div className={styled.coursetitle}>{data.title}</div>
         <div className={styled.btnpubliccont}>
-          <button>Опубликовать</button>
+          <button className={styled.btnpubliccourse}>Опубликовать</button>
         </div>
         <ul className={styled.mainul}>
           <li className={styled.mainli}>

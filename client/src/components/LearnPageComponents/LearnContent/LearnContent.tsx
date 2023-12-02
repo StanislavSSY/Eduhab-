@@ -2,8 +2,8 @@ import React, { memo, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 
 import { Link, useParams } from "react-router-dom";
-import LearnTextComponent from "../../LearnTextComponent/LearnTextComponent";
 import { initSteps } from "../../../store/thunkActions";
+import LearnTextComponent from "../LearnTextComponent/LearnTextComponent";
 
 function LearnContent() {
   const dispatch = useAppDispatch();

@@ -17,10 +17,12 @@ export default function LearnSideBarMenu() {
       if (response.status === 200) {
         const data = await response.json();
         setMenuItems(data.Modules);
+        console.log("⚠️  【】➜ ", data.Modules);
       }
     })();
   }, []);
   console.log("⚠️  【】➜ ", menuItems);
+
   return (
     <div className={styled.menu}>
       <h2>Меню курса</h2>

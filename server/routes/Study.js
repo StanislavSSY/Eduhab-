@@ -2,32 +2,34 @@ const router = require("express").Router();
 
 const { Module, Course, Lesson, Step } = require("../db/models");
 
-router.get('/:id', async (req, res) => {
-  const { email } = req.session;
+router.get("/:id", async (req, res) => {
+  // const { email } = req.session;
   const { id } = req.params;
-  if (email) {
-    try {
-      const data = await Course.findOne({
-        where: {
-          id,
-        },
+  // if (email) {
+  try {
+    const data = await Course.findOne({
+      where: {
+        id,
+      },
+      include: {
+        model: Module,
         include: {
           model: Lesson,
-          include: {
-            model: Step,
-          },
         },
-        order: [
-          [Module, 'createdAt', 'ASC'],
-          [Module, Lesson, 'createdAt', 'ASC'],
-        ],
-      });
-      const newdata = data.get({ plain: true });
-      res.json(newdata);
-    } catch (error) {
-      res.sendStatus(400);
-    }
+      },
+      order: [
+        [Module, "createdAt", "ASC"],
+        [Module, Lesson, "createdAt", "ASC"],
+      ],
+    });
+
+    const newdata = data.get({ plain: true });
+    console.log("⚠️  【】➜ ", data);
+    res.json(newdata);
+  } catch (error) {
+    res.sendStatus(400);
   }
+  // }
   // }
 });
 

@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import styled from './NewCourse.module.css'
 import MenuMyTeaching from '../MenuMyTeaching/MenuMyTeaching'
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { addCoursein } from '../../../store/slice/coursesSLice';
+import { addCourse } from '../../../store/slice/courseSlice';
 
 export default function NewCourse(): JSX.Element {
   const [state, setState] = useState({ title: '' });
   const user = useAppSelector((store) => store.userSlice.user);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   function changeHandle(e): void {
     setState((prev) => ({...prev, [e.target.name]: e.target.value }));
@@ -33,6 +36,10 @@ export default function NewCourse(): JSX.Element {
     if (response.status === 200) {
       const result = await response.json();
       console.log(result)
+      dispatch(addCourse(result));
+      dispatch(addCoursein(result));
+      navigate(`/course/${result.id}/info`);
+
     } else {
       console.log('ошибка');
     }

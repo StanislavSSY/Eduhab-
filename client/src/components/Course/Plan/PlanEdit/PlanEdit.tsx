@@ -9,6 +9,7 @@ import { useAppSelector } from '../../../../store/hooks';
 import LessonExample from './LessonExample/LessonExample';
 import LessonInpExTwo from './LessonInpExTwo/LessonInpExTwo';
 import ModuleEx from './ModuleEx/ModuleEx';
+import clsx from 'clsx';
 
 
 export default function Edit(): JSX.Element {
@@ -16,6 +17,7 @@ export default function Edit(): JSX.Element {
   const [data, setData] = useState<BigCourseType>({});
   const [ishave, setisHave] = useState(false);
   const [funcarr, setFuncArr] = useState({ Model: {}, Lesson: {}});
+  const [vision, setVision] = useState(false);
   const dispatch = useDispatch();
   const course = useAppSelector((store) => store.fullCourseSlice.course);
 
@@ -49,6 +51,13 @@ export default function Edit(): JSX.Element {
       setisHave(false);
     }
   }, [course.Modules]);
+
+  function delay(): void {
+    setVision(true);
+    setTimeout(() => {
+      setVision(false);
+    }, 3000);
+  }
 
 
   async function addfirstModule(): Promise<void> {
@@ -86,7 +95,7 @@ export default function Edit(): JSX.Element {
     for (const key in funcarr.Model) {
       funcarr.Model[key]()
     }
-    
+    delay();
   }
 
 
@@ -132,6 +141,9 @@ export default function Edit(): JSX.Element {
               <div className={styled.btnrefbackcont}>
                 <Link className={styled.btnrefback} to={`/course/${id}/plan`}>вернуться</Link>
               </div>
+            </div>
+            <div className={clsx(`${styled.modal} ${vision ? styled.vision : ''}`)}>
+              Изменения успешно сохранены
             </div>
           </form>
         </div>

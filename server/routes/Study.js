@@ -31,20 +31,19 @@ router.get('/:id', async (req, res) => {
 });
 
 router.get('/lesson/:id', async (req, res) => {
-  const { user } = req.session;
+  /* const { user } = req.session; */
   const { id } = req.params;
-  if (user) {
-    try {
-      const data = await Step.findAll({
-        where: { lessonid: id },
-        order: [['id', 'ASC']],
-        attributes: { exclude: ['lessonid', 'data', 'createdAt', 'updatedAt'] },
-      });
-      const newdata = data.map((el) => el.get({ plain: true }));
-      res.json(newdata);
-    } catch (error) {
-      res.sendStatus(400);
-    }
+
+  try {
+    const data = await Step.findAll({
+      where: { lessonid: id },
+      order: [['id', 'ASC']],
+      attributes: { exclude: ['lessonid', 'data', 'createdAt', 'updatedAt'] },
+    });
+    const newdata = data.map((el) => el.get({ plain: true }));
+    res.json(newdata);
+  } catch (error) {
+    res.sendStatus(400);
   }
 });
 

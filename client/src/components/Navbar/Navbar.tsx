@@ -3,6 +3,7 @@ import styled from "./Navbar.module.css";
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { delUser } from "../../store/slice/userSlice";
+import ButtomProfile from "../ButtonProfile/ButtonProfile";
 
 export default function Navbar(): JSX.Element {
   const [isUser, setIsUser] = useState<boolean>();
@@ -46,9 +47,12 @@ export default function Navbar(): JSX.Element {
       <div className={styled.rightcont}>
         {isUser ? (
           user.isLoggedIn ? (
-            <div className={styled.logout} onClick={logOut}>
-              <i className="fa fa-sign-out" aria-hidden="true"></i>
-            </div>
+            <>
+              {/* <div className={styled.logout} onClick={logOut}>
+                <i className="fa fa-sign-out" aria-hidden="true"></i>
+              </div> */}
+              <ButtomProfile logOut={logOut} />
+            </>
           ) : (
             <NavLink className={styled.auth} to={"/auth"}>
               Авторизироваться

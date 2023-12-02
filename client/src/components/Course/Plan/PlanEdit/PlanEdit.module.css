@@ -295,3 +295,21 @@
   color: rgba(34,34,34, 1);
   transition: 0.3s;
 }
+
+.modal {
+  padding: 10px;
+  border: solid 1px rgba(34,34,34, 1);
+  border-radius: 5px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  color: rgba(34,34,34, 1);
+  transition: 1s;
+  opacity: 0;
+}
+
+.modal.vision {
+  opacity: 1;
+  transition: 1s;
+  transform: translateY(-25px);
+}

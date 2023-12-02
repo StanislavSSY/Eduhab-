@@ -21,7 +21,7 @@ export default function Lesson({ lesson, m, l}): JSX.Element {
       </div>
       <div className={styled.rightcont}>
         <div className={styled.btnlessoneditcont}>
-          <Link to={`/course/${id}/edit-lesson/${lesson.id}/step/1`} className={styled.linkreflessonedit}>
+          <Link to={`/edit-lesson/${lesson.id}`} className={styled.linkreflessonedit}>
             <BsFillPencilFill/>
           </Link>
         </div>

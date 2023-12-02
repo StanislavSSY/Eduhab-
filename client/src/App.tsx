@@ -1,31 +1,33 @@
-import Promo from './Pages/Promo/Promo';
-import { useEffect, useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import './App.css';
-import Auth from './pages/Auth/Auth';
-import Main from './components/Main/Main';
-import Preloader from './components/Preloader/Preloader';
-import Navbar from './components/Navbar/Navbar';
+import Promo from "./Pages/Promo/Promo";
+import { useEffect, useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import "./App.css";
+import Auth from "./pages/Auth/Auth";
+import Main from "./components/Main/Main";
+import Preloader from "./components/Preloader/Preloader";
+import Navbar from "./components/Navbar/Navbar";
 
-import OftenSearched from './components/OftenSearched/OftenSearched';
-import FindCourse from './components/FindCourse/FindCourse';
+import OftenSearched from "./components/OftenSearched/OftenSearched";
+import FindCourse from "./components/FindCourse/FindCourse";
 
-import MainTeachingPage from './components/MyTeachingComponents/MainTeachingPage/MainTeachingPage';
+import MainTeachingPage from "./components/MyTeachingComponents/MainTeachingPage/MainTeachingPage";
 
-import TeachInfoPage from './Pages/TeachInfoPage/TeachInfoPage';
-import MyLearn from './pages/MyLearn/MyLearn';
-import MyLearnIndex from './pages/MyLearn/MyLearnIndex.tsx/MyLearnIndex';
-import MyLearnCourses from './pages/MyLearn/MyLearnCourses.tsx/MyLearnCourses';
-import Layout from './components/Layout';
-import { useAppDispatch, useAppSelector } from './store/hooks';
-import { addUser } from './store/slice/userSlice';
-import NewCourse from './components/MyTeachingComponents/NewCourse/NewCourse';
-import Course from './components/Course/Course';
-import Info from './components/Course/Info/Info';
-import Publication from './components/Course/Info/Publication/Publication';
-import EditText from './components/EditLessonComponents/EditText';
-import EditLesson from './components/EditLessonComponents/EditLesson';
-import LessonSidebarCourse from './components/LessonSidebarCourse/LessonSidebarCourse';
+import TeachInfoPage from "./Pages/TeachInfoPage/TeachInfoPage";
+import MyLearn from "./pages/MyLearn/MyLearn";
+import MyLearnIndex from "./pages/MyLearn/MyLearnIndex.tsx/MyLearnIndex";
+import MyLearnCourses from "./pages/MyLearn/MyLearnCourses.tsx/MyLearnCourses";
+import Layout from "./components/Layout";
+import { useAppDispatch, useAppSelector } from "./store/hooks";
+import { addUser } from "./store/slice/userSlice";
+import NewCourse from "./components/MyTeachingComponents/NewCourse/NewCourse";
+import Course from "./components/Course/Course";
+import Info from "./components/Course/Info/Info";
+import Publication from "./components/Course/Info/Publication/Publication";
+import EditText from "./components/EditLessonComponents/EditText";
+import EditLesson from "./components/EditLessonComponents/EditLesson";
+import LessonSidebarCourse from "./components/LessonSidebarCourse/LessonSidebarCourse";
+import LearnSideBarMenu from "./components/LearnPageComponents/LearnSideBarMenu/LearnSideBarMenu";
+import LearnCourse from "./Pages/LearnCourse/LearnCourse";
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -37,7 +39,7 @@ function App(): JSX.Element {
       const response = await fetch(
         `${import.meta.env.VITE_URL}/users/sessions`,
         {
-          credentials: 'include',
+          credentials: "include",
         }
       );
 
@@ -72,8 +74,8 @@ function App(): JSX.Element {
           <Route path="teach/courses" element={<MainTeachingPage />} />
           <Route path="teach/courses/new" element={<NewCourse />} />
           <Route
-            path="teach/courses/lesson/:id/step/:stepNum"
-            element={<LessonSidebarCourse />}
+            path="teach/courses/:courseid/lesson/:lessonid/step/:stepNum"
+            element={<LearnCourse />}
           />
           {/* <Route
             path="teach/courses/lesson/:id"

@@ -23,12 +23,11 @@ const LessonSidebarCourse = () => {
         }
       );
       const idCourse = await responseId.json();
-      const response = await fetch(
-        `${import.meta.env.VITE_URL}/study/${idCourse.id}`,
-        {
-          credentials: "include",
-        }
-      );
+      console.log("⚠️  【data】➜ ", idCourse);
+      //! Полный пиздец
+      const response = await fetch(`${import.meta.env.VITE_URL}/study/${1}`, {
+        credentials: "include",
+      });
       const data = await response.json();
       if (data && data.Modules) {
         setMenuItems(data.Modules);
@@ -37,25 +36,23 @@ const LessonSidebarCourse = () => {
         console.error("Data or Modules property is missing.");
       }
     })();
-  }, []);
+  }, [paramsId.id]);
 
   const handleMenuItemClick = (id) => {
     setSelectedMenuItem(id);
+
     // Сбросить выбранный шаг при изменении урока
     // setSelectedStep(null);
     // navigate(`/teach/courses/lesson/${id}`);
     navigate(`/teach/courses/lesson/${id}/step/${1}`);
   };
-
+  console.log("⚠️  【selectedMenuItem】➜ ", menuItems);
   const handleStepClick = (stepId) => {
-    console.log("⚠️  【777】➜ ", stepId);
     setSelectedStep(stepId);
     navigate(
       `/teach/courses/lesson/${paramsId.id}${stepId ? `/step/${stepId}` : ""}`
     );
   };
-
-  console.log("⚠️  【$$$】➜ ", menuItems);
 
   return (
     <div className={styles.menucourse}>
@@ -100,6 +97,7 @@ const LessonSidebarCourse = () => {
                   .find((lesson) => lesson.id === selectedMenuItem).title
               }
             </h2>
+
             {selectedStep !== null ? (
               <div>
                 <ul className={styles.stepButtons}>
@@ -127,8 +125,8 @@ const LessonSidebarCourse = () => {
                     __html: `${
                       menuItems
                         .flatMap((module) => module.Lessons)
-                        .find((lesson) => lesson.id == selectedMenuItem)
-                        .Steps.find((step) => step.id == selectedStep)?.data
+                        .find((lesson) => lesson.id === selectedMenuItem)
+                        .Steps.find((step) => step.id === selectedStep)?.data
                     }`,
                   }}
                 />

@@ -1,0 +1,137 @@
+.bodycontentcontainer {
+  display: flex;
+}
+
+.infocontainer {
+  margin: 25px 0 0 0;
+}
+
+.headertitle {
+  font-size: 25px;
+  margin: 0 0 25px 0;
+}
+
+.promocont {
+  display: flex;
+  margin: 0 0 25px 0;
+}
+
+.btnpromocont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  width: 140px;
+  height: 40px;
+  margin: 0 0 0 200px;
+  transition: 0.3s;
+}
+
+.btnpromocont:hover {
+  border: solid 1px rgba(0, 0, 0, 1);
+  transition: 0.3s;
+}
+
+.btnrefcheckpromo {
+  font-weight: bold;
+  cursor: pointer;
+  width: 140px;
+  height: 40px;
+  border: none;
+  color: rgba(0, 0, 0, 1);
+  outline: none;
+  background: none;
+}
+
+.aboutcourse {
+  padding: 25px;
+  width: 600px;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+.headeraboutcourse {
+  font-size: 25px;
+  margin: 0 0 20px 0;
+}
+
+
+.contentaboutcourse {
+  word-break: break-all;
+}
+
+.teachercont {
+  width: 600px;
+  padding: 25px;
+  margin: 25px 0 25px 0;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+.teacherheader {
+  margin: 0 0 25px 0;
+}
+
+.teachcontent {
+  display: flex;
+}
+
+.imgteacher {
+  margin: 0 10px 0 0;
+}
+
+.teachfirstname {
+  margin: 0 5px 0 0;
+}
+
+
+/* rightcont */
+
+.rightcont {
+  margin: 0 0 0 25px;
+}
+
+.btnconteditinfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px rgba(157,36,63, 0.8);
+  border-radius: 5px;
+  width: 300px;
+  height: 40px;
+  margin: 0 0 25px 0;
+  transition: 0.3s;
+}
+
+.btnconteditinfo:hover {
+  border: solid 1px rgba(157,36,63, 1);
+  transition: border 0.3s;
+}
+
+.btneditinfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  width: 300px;
+  height: 40px;
+  color: rgba(157,36,63, 0.8);
+  font-size: 15px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btneditinfo:hover {
+  color: rgba(157,36,63, 1);
+  transition: 0.3s;
+}
+
+.shortdescripcontainer {
+  padding: 25px;
+  width: 300px;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+.headershortdescrip {
+  margin: 0 0 25px 0;
+}

@@ -12,6 +12,7 @@ import FindCourse from "./components/FindCourse/FindCourse";
 
 import MainTeachingPage from "./components/MyTeachingComponents/MainTeachingPage/MainTeachingPage";
 
+
 import TeachInfoPage from "./Pages/TeachInfoPage/TeachInfoPage";
 import MyLearn from "./pages/MyLearn/MyLearn";
 import MyLearnIndex from "./pages/MyLearn/MyLearnIndex.tsx/MyLearnIndex";
@@ -28,6 +29,22 @@ import EditLesson from "./components/EditLessonComponents/EditLesson";
 import LessonSidebarCourse from "./components/LessonSidebarCourse/LessonSidebarCourse";
 import LearnSideBarMenu from "./components/LearnPageComponents/LearnSideBarMenu/LearnSideBarMenu";
 import LearnCourse from "./Pages/LearnCourse/LearnCourse";
+
+import TeachInfoPage from "./Pages/TeachInfoPage/TeachInfoPage";
+import MyLearn from "./pages/MyLearn/MyLearn";
+import Layout from "./components/Layout";
+import InfoEdit from "./components/Course/InfoEdit/InfoEdit";
+import Plan from "./components/Course/Plan/Plan";
+import PlanEdit from "./components/Course/Plan/PlanEdit/PlanEdit";
+import MyLearnIndex from './pages/MyLearn/MyLearnIndex.tsx/MyLearnIndex';
+import MyLearnCourses from './pages/MyLearn/MyLearnCourses.tsx/MyLearnCourses';
+import { useAppDispatch, useAppSelector } from './store/hooks';
+import { addUser } from './store/slice/userSlice';
+import NewCourse from './components/MyTeachingComponents/NewCourse/NewCourse';
+import Course from './components/Course/Course';
+import Info from './components/Course/Info/Info';
+import EditLesson from './components/EditLessonComponents/EditLesson';
+import LessonSidebarCourse from './components/LessonSidebarCourse/LessonSidebarCourse';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -83,8 +100,9 @@ function App(): JSX.Element {
           /> */}
           <Route path="course/:id" element={<Course />}>
             <Route path="info" element={<Info />} />
-            <Route path="plan" />
-            <Route path="publication" element={<Publication />} />
+            <Route path="edit" element={<InfoEdit />} />
+            <Route path="plan" element={<Plan />} />
+            <Route path="plan/edit" element={<PlanEdit />} />
           </Route>
           <Route path="learn" element={<MyLearn />}>
             <Route path="" element={<MyLearnIndex />} />

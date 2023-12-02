@@ -1,0 +1,315 @@
+.headertitle {
+  font-size: 25px;
+  margin: 25px 0 25px 0;
+}
+
+.respcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.aftertitle {
+  text-align: center;
+}
+
+.respcontainer:first-child {
+  margin: 0 0 10px 0;
+}
+
+.btnaddmodulecont {
+  margin: 50px 0 0 0;
+  width: 200px;
+  height: 42px;
+  border: solid 1px rgba(157,36,63, 0.8);
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btnaddmodulecont {
+  border: solid 1px rgba(157,36,63, 1);
+  transition: 0.3s;
+}
+
+.btnaddmodule {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 200px;
+  height: 42px;
+  border: none;
+  outline: none;
+  background: none;
+  color: rgba(157,36,63, 0.8);
+  transition: 0.3s;
+  font-size: 22px;
+}
+
+.btnaddmodule:hover {
+  color: rgba(157,36,63, 1);
+  transition: 0.3s;
+}
+
+
+.titlenewmodule {
+  font-size: 16px;
+}
+
+.btneditconstructorcont {
+  border: solid 1px rgba(157,36,63, 0.8);
+  border-radius: 5px;
+  width: 300px;
+  height: 50px;
+}
+
+.btneditconstructor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 300px;
+  height: 50px;
+  border: none;
+  outline: none;
+  background: none;
+  color: rgba(157,36,63, 0.8);
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.btneditconstructor:hover {
+  color: rgba(157,36,63, 1);
+  transition: 0.3s;
+}
+
+.titleeditconstructor {
+  margin-left: 5px;
+}
+
+
+/* форма */
+
+.constructorcontent {
+  margin: 35px 0 0 0;
+  width: 750px;
+}
+
+.containerconstructormap {
+  width: 750px;
+  margin: 35px 0 50px 0;
+}
+
+.modulexample {
+  display: flex;
+  border-right: solid 1px rgba(0, 0, 0, 0.3);
+  border-left: solid 5px rgba(0, 0, 0, 0.3);
+  border-top: solid 1px  rgba(0, 0, 0, 0.3);
+  border-bottom: solid 1px  rgba(0, 0, 0, 0.3);
+  height: 125px;
+}
+
+.lessonscontainers {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.lessonsforbord {
+  width: 650px;
+  border-right: solid 1px  rgba(0, 0, 0, 0.3);
+  border-left: solid 1px  rgba(0, 0, 0, 0.3);
+  border-bottom: solid 1px  rgba(0, 0, 0, 0.3);
+}
+
+.indexmodule {
+  margin: 40px 0 15px 35px;
+  font-size: 20px;
+}
+
+.inputtitle {
+  margin: 30px 0 15px 30px;
+  font-size: 20px;
+  padding: 15px;
+  width: 400px;
+  height: 45px;
+}
+
+.lessonexample {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 650px;
+  height: 100px;
+}
+
+.inputlessontitle {
+  margin: 0 35px 0 0;
+  width: 300px;
+  height: 35px;
+  padding: 10px;
+}
+
+
+.btndellesson {
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  color: rgba(0, 0, 0, 0.3);
+  width: 25px;
+  height: 25px;
+  font-size: 25px;
+  transition: 0.3s;
+}
+
+.btndellesson:hover {
+  color: rgba(0, 0, 0, 1);
+  transition: 0.3s;
+}
+
+
+.btncreatelessoncont {
+  width: 150px;
+  height: 40px;
+  border: solid 1px rgba(157,36,63, 0.8);
+  border-radius: 5px;
+} 
+
+.btncreatelessoncont:hover {
+  border: solid 1px rgba(157,36,63, 1);
+  transition: 0.3s;
+}
+
+.btncreatelessoncont.disable {
+  border: solid 1px rgba(157,36,63, 0.3);
+}
+
+.btncreatelesson {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  width: 150px;
+  height: 40px;
+  font-size: 16px;
+  color: rgba(157,36,63, 0.8);
+  transition: 0.3s;
+}
+
+.btncreatelesson.disable {
+  color: rgba(157,36,63, 0.3);
+  cursor: no-drop;
+}
+
+.btncreatelesson:hover {
+  color: rgba(157,36,63, 1);
+  transition: 0.3s;
+}
+
+.btncreatelesson.disable:hover {
+  color: rgba(157,36,63, 0.3);
+}
+
+.containerbottomaddbtn {
+  margin: 35px 0 35px 0
+}
+
+.containerbottombtns {
+  display: flex;
+  margin-left: 150px
+}
+
+.btnsavedinfocont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 35px;
+  border: solid 1px rgba(157,36,63, 0.8);
+  border-radius: 5px;
+  transition: 0.3s;
+  margin: 0 15px 0 0;
+}
+
+.btnsavedinfocont:hover {
+  border: solid 1px rgba(157,36,63, 1);
+  transition: 0.3s;
+}
+
+.btnsaveinfo {
+  cursor: pointer;
+  width: 200px;
+  height: 35px;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(157,36,63, 0.8);
+  transition: 0.3s;
+}
+
+.btnsaveinfo:hover {
+  color: rgba(157,36,63, 1);
+  transition: 0.3s;
+}
+
+.btnrefbackcont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 35px;
+  border: solid 1px rgba(34,34,34, 0.8);
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btnrefbackcont:hover {
+  border: solid 1px rgba(34,34,34, 1);
+  transition: 0.3s;
+}
+
+.btnrefback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  width: 200px;
+  height: 35px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgba(34,34,34, 0.8);
+  transition: 0.3s;
+}
+
+.btnrefback:hover {
+  color: rgba(34,34,34, 1);
+  transition: 0.3s;
+}
+
+.modal {
+  padding: 10px;
+  border: solid 1px rgba(34,34,34, 1);
+  border-radius: 5px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  color: rgba(34,34,34, 1);
+  transition: 1s;
+  opacity: 0;
+}
+
+.modal.vision {
+  opacity: 1;
+  transition: 1s;
+  transform: translateY(-25px);
+}

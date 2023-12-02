@@ -12,17 +12,14 @@
 }
 
 .main-link {
+  width: 400px;
   text-decoration: none;
-  border-radius: 1rem;
-  box-shadow: 0 0 2px 0 #e71c1c;
+  border-radius: 10px;
+  margin: 25px 0 25px 0;
 }
 .main-link,
 a {
   color: #222;
-}
-
-.main-link:hover {
-  box-shadow: 0 0 3px 0 rgb(136, 136, 250);
 }
 
 .text a {
@@ -83,4 +80,9 @@ a {
   margin-left: 2rem;
 
   padding: 5px;
+}
+
+.btndelcourse {
+  width: 200px;
+  height: 25px;
 }

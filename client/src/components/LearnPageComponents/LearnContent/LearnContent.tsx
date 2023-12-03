@@ -1,5 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import styled from "./LearnContent.module.css";
 
 import { Link, useParams } from "react-router-dom";
 import { initSteps } from "../../../store/thunkActions";
@@ -28,22 +29,25 @@ function LearnContent() {
   }, [lessonid]);
 
   return (
-    <>
-      {steps.map((el) => (
-        <Link
-          key={el.stepNum}
-          to={`/teach/courses/${courseid}/lesson/${lessonid}/step/${el.stepNum}`}
-        >
-          <button
-            type="button"
-            style={el.stepNum == stepNum ? { backgroundColor: "green" } : {}}
+    <div className={styled["content-main"]}>
+      <div className={styled.steps}>
+        {steps.map((el) => (
+          <Link
+            key={el.stepNum}
+            to={`/teach/courses/${courseid}/lesson/${lessonid}/step/${el.stepNum}`}
           >
-            <span>Some image</span>
-          </button>
-        </Link>
-      ))}
-      <div>{actualComponent}</div>
-    </>
+            <span
+              className={
+                el.stepNum == stepNum
+                  ? styled["step-box-active"]
+                  : styled["step-box"]
+              }
+            ></span>
+          </Link>
+        ))}
+      </div>
+      <div className={styled["actual-component"]}>{actualComponent}</div>{" "}
+    </div>
   );
 }
 

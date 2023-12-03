@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from "react";
-
+import styled from "./LearnTextComponent.module.css";
 export default function LearnTextComponent({ id }) {
   const [step, setStep] = useState({});
   useEffect(() => {

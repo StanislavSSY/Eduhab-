@@ -4,7 +4,7 @@ import styled from "./LearnSideBarMenu.module.css";
 
 export default function LearnSideBarMenu() {
   const [menuItems, setMenuItems] = useState([]);
-  const { courseid } = useParams();
+  const { courseid, lessonid } = useParams();
 
   useEffect(() => {
     (async () => {
@@ -21,24 +21,22 @@ export default function LearnSideBarMenu() {
       }
     })();
   }, []);
-  console.log("⚠️  【】➜ ", menuItems);
 
   return (
     <div className={styled.menu}>
-      <h2>Меню курса</h2>
-      <div>Название курса</div>
+      <h3>Меню курса</h3>
+      {/* <div>Название курса</div> */}
       <ul>
         {menuItems?.map((menuItem) => (
           <li key={menuItem.id}>
-            {menuItem.title}
+            <h3>{menuItem.title}</h3>
             <ul>
               {menuItem?.Lessons?.map((lesson) => (
-                <li
-                  key={lesson.id}
-                  //   onClick={() => handleMenuItemClick(lesson.id)}
-                  //   className={selectedMenuItem === lesson.id ? "active" : ""}
-                >
+                <li key={lesson.id}>
                   <Link
+                    className={
+                      lesson.id == lessonid ? styled["link-active"] : ""
+                    }
                     to={`/teach/courses/${courseid}/lesson/${
                       lesson.id
                     }/step/${1}`}

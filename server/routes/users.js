@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const router = require('express').Router();
+const upload = require('../middlewares/upload');
 
 const { User } = require('../db/models');
 
@@ -17,6 +18,7 @@ router.post('/login', async (req, res) => {
         req.session.user = newcookie;
         console.log(newcookie);
         res.json(newcookie);
+        });
       }
       res.json({ message: 'Неверный пароль' });
     } else {
@@ -79,6 +81,20 @@ router.get('/sessions', async (req, res) => {
     }
   } catch (error) {
     res.sendStatus(400);
+  }
+});
+
+router.patch('/img', upload.single('image'), async (req, res) => {
+  try {
+    const user = await User.findByPk(1);
+    const image = req.file.path;
+    await user.update({ img_url: image });
+    /* req.session.user.picture = image;
+    res.json(req.session.user); */
+    res.send(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
   }
 });
 

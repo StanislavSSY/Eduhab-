@@ -63,6 +63,7 @@ router.patch("/:courseid/:stepid", async (req, res) => {
 
   entrieProgress.progress = JSON.stringify(parse);
   await entrieProgress.save();
+  res.json(entrieProgress);
 });
 
 

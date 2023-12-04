@@ -1,7 +1,11 @@
 import React, { memo, useEffect, useState } from "react";
 import styled from "./LearnTextComponent.module.css";
+import { useParams } from "react-router-dom";
 export default function LearnTextComponent({ id, title }) {
   const [step, setStep] = useState({});
+  const [buttonClicked, setButtonClicked] = useState(false);
+  const { stepNum, courseid } = useParams();
+
   useEffect(() => {
     (async () => {
       const response = await fetch(`${import.meta.env.VITE_URL}/steps/${id}`, {
@@ -12,6 +16,20 @@ export default function LearnTextComponent({ id, title }) {
       setStep(data);
     })();
   }, [id]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(
+        `${import.meta.env.VITE_URL}/entries/${courseid}/${stepNum}`,
+        {
+          method: "PATCH",
+        }
+      );
+
+      const data = await response.json();
+      console.log("⚠️  【data】➜ ", data);
+    })();
+  }, [buttonClicked]);
 
   return (
     <>
@@ -24,7 +42,10 @@ export default function LearnTextComponent({ id, title }) {
       </div>
       <div className={styled["footer-fragment"]}>
         <div className={styled["footer-content"]}>
-          <div className={styled["button-next"]}>
+          <div
+            onClick={() => setButtonClicked((prev) => !prev)}
+            className={styled["button-next"]}
+          >
             Следующий шаг <i class="fa fa-angle-right" aria-hidden="true"></i>
           </div>
         </div>

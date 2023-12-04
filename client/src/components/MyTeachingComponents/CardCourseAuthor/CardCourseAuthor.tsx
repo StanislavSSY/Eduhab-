@@ -30,7 +30,7 @@ export default function CardCourseAuthor({ el }: CoursesType): JSX.Element {
           <div className={styled.text}>
             <Link to={`/course/${el.id}/info`}>{el.title}</Link>
           </div>
-          <img src= {el.image_url}/>
+          <img className={styled.imgcourse} src= {`/img/${el.image_url}`}/>
         </div>
         <div className={styled.widgets}>
           <i className="fa fa-star" aria-hidden="true"></i> {el.rate}

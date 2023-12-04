@@ -17,7 +17,6 @@ export default function ModuleEx({ el, i, setFuncArr }): JSX.Element {
 
   function modulschangeHandler(e): void {
     setInpModels({ id: el.id, title: e.target.value });
-    console.log(inpmodels);
   }
 
   async function changeData(): Promise<void> {

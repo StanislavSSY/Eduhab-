@@ -60,7 +60,7 @@ export default function Course(): JSX.Element {
     <div className={styled.coursecontainer}>
       <div className={styled.leftcont}>
         <div className={styled.imgcont}>
-          <img src={'/src/assets/react.svg'} alt="" />
+          <img className={styled.imgcourse} src={`/img/${course.image_url}`} alt="" />
         </div>
         <div className={styled.coursetitle}>{data.title}</div>
         <div className={styled.btnpubliccont}>

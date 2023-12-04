@@ -38,8 +38,62 @@ router.post('/', async (req, res) => {
   }
 });
 
+// test router :
+
+router.post('/:id', async (req, res) => {
+  const { user } = req.session;
+  const { id } = req.params;
+  if (user) {
+    try {
+      const checkdouble = await Entrie.findOne({
+        where: { userid: user.id, courseid: id },
+      });
+      if (checkdouble) {
+        res.sendStatus(400);
+      } else {
+        const progress = [];
+        const data = await Entrie.create({
+          userid: user.id,
+          courseid: id,
+          progress,
+        });
+        const coursedata = await Course.findOne({ where: { id } });
+        const newcoursedata = coursedata.get({ plain: true });
+        const newquantity = newcoursedata.quantity_people + 1;
+        coursedata.update({ quantity_people: newquantity });
+        res.json(data);
+      }
+    } catch (error) {
+      res.sendStatus(500);
+    }
+  }
+});
+
+router.get('/check/:id', async (req, res) => {
+  const { user } = req.session;
+  const { id } = req.params;
+
+  if (user) {
+    try {
+      const data = await Entrie.findOne({
+        where: { userid: user.id, courseid: id },
+      });
+      if (data) {
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(400);
+      }
+    } catch (error) {
+      res.sendStatus(500);
+    }
+  }
+});
+
+// --------------------------
+
 router.get('/info', async (req, res) => {
   const { id } = req.session.user;
+
   try {
     const entries = await Entrie.findAll({
       where: { userid: id },

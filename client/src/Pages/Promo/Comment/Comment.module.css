@@ -1,0 +1,42 @@
+.headertitle {
+  display: flex;
+}
+
+.headertitle {
+  margin: 0 0 10px 0;
+}
+
+.usernametitle {
+  margin: 0 10px 0 0;
+}
+
+.createddate {
+  opacity: 0.7;
+}
+
+
+.commentrate {
+  display: flex;
+}
+
+
+.btncheckmorecont {
+
+}
+
+.btncheckmorecont {
+  margin: 10px 0 0 0;
+}
+
+.btncheckmore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
+  text-align: center;
+  color: rgba(0,0,255, 0.7);
+  text-decoration: underline;
+}

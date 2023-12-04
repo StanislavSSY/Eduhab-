@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
     });
     if (!course) res.sendStatus(400);
     const progress = [];
-    course.get({ plain: true }).Modules.forEach((modul) => {
+    /* course.get({ plain: true }).Modules.forEach((modul) => {
       modul.Lessons.forEach((lesson) => {
         lesson.steps.forEach((step) => {
           progress.push({
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
           });
         });
       });
-    });
+    }); */
     const entrie = await Entrie.create({
       userid,
       courseid,
@@ -45,12 +45,18 @@ router.post('/:id', async (req, res) => {
   const { id } = req.params;
   if (user) {
     try {
-      const checkdouble = await Entrie.findOne({ where: { userid: user.id, courseid: id } });
+      const checkdouble = await Entrie.findOne({
+        where: { userid: user.id, courseid: id },
+      });
       if (checkdouble) {
         res.sendStatus(400);
       } else {
         const progress = [];
-        const data = await Entrie.create({ userid: user.id, courseid: id, progress });
+        const data = await Entrie.create({
+          userid: user.id,
+          courseid: id,
+          progress,
+        });
         const coursedata = await Course.findOne({ where: { id } });
         const newcoursedata = coursedata.get({ plain: true });
         const newquantity = newcoursedata.quantity_people + 1;
@@ -69,7 +75,9 @@ router.get('/check/:id', async (req, res) => {
 
   if (user) {
     try {
-      const data = await Entrie.findOne({ where: { userid: user.id, courseid: id } });
+      const data = await Entrie.findOne({
+        where: { userid: user.id, courseid: id },
+      });
       if (data) {
         res.sendStatus(200);
       } else {
@@ -83,26 +91,41 @@ router.get('/check/:id', async (req, res) => {
 
 // --------------------------
 
-router.get('/:userid', async (req, res) => {
-  const { userid } = req.params;
+router.get('/info', async (req, res) => {
+  const { id } = req.session.user;
+
   try {
     const entries = await Entrie.findAll({
-      where: { userid },
+      where: { userid: id },
       include: {
         model: Course,
         attributes: { exclude: ['createdAt', 'updatedAt', 'long_description'] },
       },
     });
-    if (entries.length === 0) res.json([]);
-    const entriesData = entries.get({ plain: true });
-    const courses = entriesData.map((el) => {
-      const courseInfo = {
-        ...el.Course,
-        progress: el.progress,
-        updatedAt: el.updatedAt,
-      };
-      return courseInfo;
+    if (entries.length === 0) return res.json([]);
+
+    const { count } = await Entrie.findAndCountAll({
+      where: { userid: id },
+      include: {
+        model: Course,
+        include: {
+          model: Module,
+          include: { model: Lesson, include: { model: Step } },
+        },
+      },
     });
+    const entriesData = entries.map((el) => el.get({ plain: true }));
+    const courses = entriesData
+      .map((el) => {
+        const courseInfo = {
+          ...el.Course,
+          progress: el.progress,
+          updatedAt: el.updatedAt,
+          stepsNum: count,
+        };
+        return courseInfo;
+      })
+      .sort((a, b) => b.updatedAt - a.updatedAt);
     res.json(courses);
   } catch (error) {
     console.log(error);

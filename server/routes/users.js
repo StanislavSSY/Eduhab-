@@ -16,6 +16,7 @@ router.post('/login', async (req, res) => {
         const newcookie = structuredClone(user.get({ plain: true }));
         delete newcookie.password;
         req.session.user = newcookie;
+
         res.json(newcookie);
       }
       res.json({ message: 'Неверный пароль' });
@@ -80,14 +81,29 @@ router.get('/sessions', async (req, res) => {
   }
 });
 
-router.patch('/img', upload.single('image'), async (req, res) => {
+router.patch('/', async (req, res) => {
+  const { user } = req.session;
+  const { firstName, lastName } = req.body;
   try {
-    const user = await User.findByPk(1);
-    const image = req.file.path;
-    await user.update({ img_url: image });
-    /* req.session.user.picture = image;
-    res.json(req.session.user); */
-    res.send(200);
+    const userData = await User.findByPk(user.id);
+    await userData.update({ firstName, lastName });
+    req.session.user.firstName = firstName;
+    req.session.user.lastName = lastName;
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+router.patch('/img', upload.single('image'), async (req, res) => {
+  const { user } = req.session;
+  try {
+    const userData = await User.findByPk(user.id);
+    const image = req.file.path.slice(21);
+    await userData.update({ img_url: image });
+    req.session.user.img_url = image;
+    res.sendStatus(200);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

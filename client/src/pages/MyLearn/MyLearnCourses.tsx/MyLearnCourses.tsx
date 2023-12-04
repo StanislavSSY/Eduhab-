@@ -1,28 +1,41 @@
-import React from "react";
-import CardProgress from "../../../components/MyLearnComponents/CardProgress";
-import UserStatMyLearn from "../../../components/MyLearnComponents/UserStatMyLearn";
-import CardMinMyLearn from "../../../components/MyLearnComponents/CardMinMyLearn";
+import React, { useEffect, useState } from 'react';
+import CardMinMyLearn from '../../../components/MyLearnComponents/CardMinMyLearn';
+import axios from 'axios';
+import { useAppSelector } from '../../../store/hooks';
 
 export default function MyLearnCourses() {
-  const zagluhskaObj = {
-    title: "HTML",
-    imgUrl: "/vite.svg",
-    completed: "14",
-    stepsNum: "101",
-    courseUrl: "nashurl",
-  };
-  const zagluhskaObjs = [
-    { ...zagluhskaObj, id: 4 },
-    { ...zagluhskaObj, id: 5 },
-    { ...zagluhskaObj, id: 6 },
-  ];
-  console.log(zagluhskaObjs);
+  const [courses, setCourses] = useState([]);
+
+  const { user } = useAppSelector((store) => store.userSlice);
+
+  useEffect(() => {
+    void (async () => {
+      const response = await axios.get(
+        `${import.meta.env.VITE_URL}/entries/info`,
+        { withCredentials: true }
+      );
+
+      if (response.status === 200) {
+        const coursesRaw = response.data;
+        console.log(coursesRaw);
+
+        const coursesData = coursesRaw.map((el) => ({
+          id: el.id,
+          title: el.title,
+          image_url: el.image_url,
+          completed: el.progress.length,
+          stepsNum: el.stepsNum,
+        }));
+        setCourses(coursesData);
+      }
+    })();
+  }, []);
   return (
     <>
       <h1>Курсы</h1>
       <div>
-        {zagluhskaObjs.map((el) => (
-          <CardMinMyLearn zagluhskaObj={el} key={el.id} />
+        {courses.map((el) => (
+          <CardMinMyLearn course={el} key={el.id} />
         ))}
       </div>
     </>

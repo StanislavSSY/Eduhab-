@@ -22,7 +22,6 @@ router.post("/", async (req, res) => {
     //   });
     // });
 
-
     /* course.get({ plain: true }).Modules.forEach((modul) => {
       modul.Lessons.forEach((lesson) => {
         lesson.steps.forEach((step) => {
@@ -66,10 +65,9 @@ router.patch("/:courseid/:stepid", async (req, res) => {
   res.json(entrieProgress);
 });
 
-
 // test router :
 
-router.post('/:id', async (req, res) => {
+router.post("/:id", async (req, res) => {
   const { user } = req.session;
   const { id } = req.params;
   if (user) {
@@ -98,7 +96,7 @@ router.post('/:id', async (req, res) => {
   }
 });
 
-router.get('/check/:id', async (req, res) => {
+router.get("/check/:id", async (req, res) => {
   const { user } = req.session;
   const { id } = req.params;
 
@@ -120,9 +118,8 @@ router.get('/check/:id', async (req, res) => {
 
 // --------------------------
 
-router.get('/info', async (req, res) => {
+router.get("/info", async (req, res) => {
   const { id } = req.session.user;
-
 
   try {
     const entries = await Entrie.findAll({

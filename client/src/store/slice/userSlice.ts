@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ITypeState, UserType } from "../../types";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ITypeState, UserType } from '../../types';
 
 const initialState: ITypeState = {
   user: {
@@ -10,7 +10,7 @@ const initialState: ITypeState = {
 };
 
 export const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {
     addUser: (state, action: PayloadAction<UserType>) => {
@@ -21,7 +21,10 @@ export const userSlice = createSlice({
       state.user = initialState.user;
       state.isLoggedIn = false;
     },
+    updateImg: (state, action: PayloadAction<string>) => {
+      state.user.img_url = action.payload;
+    },
   },
 });
 
-export const { addUser, delUser } = userSlice.actions;
+export const { addUser, delUser, updateImg } = userSlice.actions;

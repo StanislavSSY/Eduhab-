@@ -26,6 +26,9 @@ import EditLesson from './components/EditLessonComponents/EditLesson';
 import './App.css';
 
 import LearnCourse from './Pages/LearnCourse/LearnCourse';
+import ProfileSettings from './pages/Profile/ProfileSettings/ProfileSettings';
+import ProfileInfo from './pages/Profile/ProfileInfo/ProfileInfo';
+import Profile from './pages/Profile/Profile';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -94,6 +97,10 @@ function App(): JSX.Element {
           <Route path="edit-lesson">
             <Route path=":lessonid/step/:stepNum" element={<EditLesson />} />
             <Route path=":lessonid/" element={<EditLesson />} />
+          </Route>
+          <Route path="user" element={<Profile />}>
+            <Route path="profile" element={<ProfileInfo />} />
+            <Route path="settings" element={<ProfileSettings />} />
           </Route>
         </Route>
       </Routes>

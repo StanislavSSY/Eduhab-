@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
     });
     if (!course) res.sendStatus(400);
     const progress = [];
-    course.get({ plain: true }).Modules.forEach((modul) => {
+    /* course.get({ plain: true }).Modules.forEach((modul) => {
       modul.Lessons.forEach((lesson) => {
         lesson.steps.forEach((step) => {
           progress.push({
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
           });
         });
       });
-    });
+    }); */
     const entrie = await Entrie.create({
       userid,
       courseid,
@@ -38,26 +38,40 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/:userid', async (req, res) => {
-  const { userid } = req.params;
+router.get('/info', async (req, res) => {
+  const { id } = req.session.user;
   try {
     const entries = await Entrie.findAll({
-      where: { userid },
+      where: { userid: id },
       include: {
         model: Course,
         attributes: { exclude: ['createdAt', 'updatedAt', 'long_description'] },
       },
     });
-    if (entries.length === 0) res.json([]);
-    const entriesData = entries.get({ plain: true });
-    const courses = entriesData.map((el) => {
-      const courseInfo = {
-        ...el.Course,
-        progress: el.progress,
-        updatedAt: el.updatedAt,
-      };
-      return courseInfo;
+    if (entries.length === 0) return res.json([]);
+
+    const { count } = await Entrie.findAndCountAll({
+      where: { userid: id },
+      include: {
+        model: Course,
+        include: {
+          model: Module,
+          include: { model: Lesson, include: { model: Step } },
+        },
+      },
     });
+    const entriesData = entries.map((el) => el.get({ plain: true }));
+    const courses = entriesData
+      .map((el) => {
+        const courseInfo = {
+          ...el.Course,
+          progress: el.progress,
+          updatedAt: el.updatedAt,
+          stepsNum: count,
+        };
+        return courseInfo;
+      })
+      .sort((a, b) => b.updatedAt - a.updatedAt);
     res.json(courses);
   } catch (error) {
     console.log(error);

@@ -18,7 +18,6 @@ router.post('/login', async (req, res) => {
         req.session.user = newcookie;
         console.log(newcookie);
         res.json(newcookie);
-        });
       }
       res.json({ message: 'Неверный пароль' });
     } else {

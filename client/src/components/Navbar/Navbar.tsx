@@ -7,13 +7,13 @@ import ButtomProfile from "../ButtonProfile/ButtonProfile";
 
 export default function Navbar(): JSX.Element {
   const [isUser, setIsUser] = useState<boolean>();
-  const user = useAppSelector((store) => store.userSlice.user);
+  const {user, isLoggedIn} = useAppSelector((store) => store.userSlice);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     setIsUser(true);
-  }, [user.isLoggedIn]);
+  }, [isLoggedIn]);
 
   async function logOut(): Promise<void> {
     const response = await fetch(`${import.meta.env.VITE_URL}/users/logout`, {
@@ -46,7 +46,7 @@ export default function Navbar(): JSX.Element {
       </div>
       <div className={styled.rightcont}>
         {isUser ? (
-          user.isLoggedIn ? (
+          isLoggedIn ? (
             <>
               {/* <div className={styled.logout} onClick={logOut}>
                 <i className="fa fa-sign-out" aria-hidden="true"></i>

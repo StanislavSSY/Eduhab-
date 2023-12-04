@@ -19,12 +19,10 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/user', async (req, res) => {
-  const { userid } = req.session;
-  console.log(req.session);
-  if (userid) {
-    console.log('zashli');
+  const { user } = req.session;
+  if (user) {
     try {
-      const data = await Course.findAll({ where: { userid } });
+      const data = await Course.findAll({ where: { id: user.id } });
       const newdata = data.map((el) => el.get({ plain: true }));
       res.json(newdata);
     } catch (error) {

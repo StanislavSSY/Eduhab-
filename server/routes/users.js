@@ -12,11 +12,11 @@ router.post('/login', async (req, res) => {
       const checkPass = await bcrypt.compare(password, user.password);
 
       if (checkPass) {
-        req.session.email = user.email;
-        req.session.userid = user.id;
-        req.session.lastName = user.lastName;
-        req.session.firstName = user.firstName;
-        res.json({ id: user.id, email, firstName: user.firstName, lastName: user.lastName });
+        const newcookie = structuredClone(user.get({ plain: true }));
+        delete newcookie.password;
+        req.session.user = newcookie;
+        console.log(newcookie);
+        res.json(newcookie);
       }
       res.json({ message: 'Неверный пароль' });
     } else {
@@ -70,11 +70,10 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/sessions', async (req, res) => {
+  const { user } = req.session;
   try {
-    const { userid, email, firstName, lastName } = req.session;
-    const id = structuredClone(userid);
-    if (email) {
-      res.json({ id, email, firstName, lastName });
+    if (user) {
+      res.json(user);
     } else {
       res.sendStatus(400);
     }

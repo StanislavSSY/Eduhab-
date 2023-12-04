@@ -24,7 +24,6 @@ router.get("/:id", async (req, res) => {
     });
 
     const newdata = data.get({ plain: true });
-    console.log("⚠️  【】➜ ", data);
     res.json(newdata);
   } catch (error) {
     res.sendStatus(400);

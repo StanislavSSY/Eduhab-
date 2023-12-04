@@ -20,6 +20,7 @@ router.post("/", async (req, res) => {
     //     });
     //   });
     // });
+
     const entrie = await Entrie.create({
       userid,
       courseid,
@@ -34,13 +35,25 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.patch("/", async (req, res) => {
-  const { userid } = req.session;
-  const entrieProgress = await Entrie.findOne({});
+router.patch("/:courseid/:stepid", async (req, res) => {
+  // const { userid } = req.session;
+  const { courseid, stepid } = req.params;
+  const userid = 1;
+  const entrieProgress = await Entrie.findOne({
+    where: { userid, courseid },
+  });
+
+  const parse = JSON.parse(entrieProgress.progress);
+
+  parse.push(Number(stepid));
+
+  entrieProgress.progress = JSON.stringify(parse);
+  await entrieProgress.save();
 });
 
 router.get("/:userid", async (req, res) => {
   const { userid } = req.params;
+
   try {
     const entries = await Entrie.findAll({
       where: { userid },

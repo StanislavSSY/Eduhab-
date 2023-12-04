@@ -1,6 +1,5 @@
 .content-main {
   margin-left: 240px;
-  margin-top: 50px;
   width: 100%;
   z-index: 2;
 }
@@ -39,4 +38,8 @@
 }
 
 .actual-component {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-top: 50px;
 }

@@ -6,7 +6,7 @@
   font-size: 1rem;
   background: #222;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   border-bottom: 1px solid #5e5e5e;
 }

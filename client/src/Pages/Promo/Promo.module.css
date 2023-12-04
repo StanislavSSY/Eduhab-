@@ -166,6 +166,82 @@ section article:nth-child(2) p {
   background: #54ad54;
 }
 
+.btnbuycourse {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.freebtncont {
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #54ad54;
+  width: 300px;
+  height: 55px;
+  border-radius: 5px;
+}
+
+.freebtncont:hover {
+  background-color: #288b28;
+}
+
+.btnfreeEntrie {
+  width: 300px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.2rem;
+  height: 55px;
+  color: #fff;
+}
+
+.btnfreeEntrie:hover {
+}
+
+.btncontinuecont {
+  border: solid 1px #54ad54;
+  border-radius: 5px;
+  background-color: #fff;
+  width: 300px;
+  height: 55px;
+  transition: 0.3s;
+}
+
+.btncontinuecont:hover {
+  border: solid 1px #288b28;
+  transition: 0.3s;
+}
+
+.btncontinue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  width: 300px;
+  height: 55px;
+  color: #54ad54 !important;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btncontinue:hover {
+  color: #288b28;
+  transition: 0.3s;
+}
+
+.btnfreeEntrie.disa {
+  cursor: not-allowed;
+}
+
 .buy:hover {
   color: #fff;
   background: #288b28;
@@ -175,4 +251,55 @@ section article:nth-child(2) p {
 .favorite:hover {
   color: #288b28;
   border: 1px solid #288b28;
+}
+
+
+.footerpromopage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 35px 0 0 0;
+}
+
+.reviewscont {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 650px;
+}
+
+.reviewstitle {
+  font-size: 28px;
+  margin: 0 0 25px 0;
+}
+
+.percommentcont {
+  margin: 25px 0 25px 0;
+}
+
+
+
+/* modal save window */
+
+.modal {
+  padding: 10px;
+  border: solid 1px rgba(34,34,34, 1);
+  border-radius: 5px;
+  position: fixed;
+  right: 20px;
+  color: rgba(34,34,34, 1);
+  transition: 1s;
+  opacity: 0;
+}
+
+.modal.vision {
+  opacity: 1;
+  transition: 1s;
+  transform: translateY(-25px);
+}
+
+.modal.vision {
+  opacity: 1;
+  transition: 1s;
+  transform: translateY(-25px);
 }

@@ -8,7 +8,6 @@ export default function ButtonProfile({ logOut }) {
   const { firstName, lastName } = useAppSelector(
     (store) => store.userSlice.user
   )
-  console.log("⚠️  firstName,lastName【】➜ ", firstName, lastName);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

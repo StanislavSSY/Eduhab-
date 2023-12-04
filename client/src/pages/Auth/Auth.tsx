@@ -9,7 +9,7 @@ import { useAppSelector } from "../../store/hooks";
 export default function Auth() {
   const [type, setType] = useState("signIn");
   const navigate = useNavigate();
-  const user = useAppSelector((store) => store.userSlice.user);
+  const { user, isLoggedIn} = useAppSelector((store) => store.userSlice);
   const handleOnClick = (text) => {
     if (text !== type) {
       setType(text);
@@ -18,10 +18,10 @@ export default function Auth() {
   };
 
   useEffect(() => {
-    if (user.isLoggedIn) {
+    if (isLoggedIn) {
       navigate('/');
     }
-  },[user.isLoggedIn]);
+  },[isLoggedIn]);
 
 
   return (

@@ -36,7 +36,8 @@ export default function Info(): JSX.Element {
             <div className={styled.promocont}>
               <div className={styled.promotitle}>У этого курса есть промо страница</div>
               <div className={styled.btnpromocont}>
-                <button className={styled.btnrefcheckpromo}>Посмотреть</button>
+                <Link className={styled.btnrefcheckpromo} to={`/course/${id}/promo`}>Посмотреть</Link>
+                {/* <button className={styled.btnrefcheckpromo}>Посмотреть</button> */}
               </div>
             </div>
             <div className={styled.aboutcourse}>

@@ -26,6 +26,7 @@ import EditLesson from './components/EditLessonComponents/EditLesson';
 import './App.css';
 
 import LearnCourse from './Pages/LearnCourse/LearnCourse';
+import CatalogSearch from './Pages/CatalogSearch/CatalogSearch';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -66,9 +67,10 @@ function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
+          <Route path='catalog/search' element={<CatalogSearch />} />
           <Route path="/teach/info" element={<TeachInfoPage />} />
           <Route path="auth" element={<Auth />} />
-          <Route path="promo" element={<Promo />} />
+          <Route path="course/:id/promo" element={<Promo />} />
           <Route path="teach/courses" element={<MainTeachingPage />} />
           <Route path="teach/courses/new" element={<NewCourse />} />
           <Route

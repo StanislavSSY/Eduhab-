@@ -16,7 +16,6 @@ router.post('/login', async (req, res) => {
         const newcookie = structuredClone(user.get({ plain: true }));
         delete newcookie.password;
         req.session.user = newcookie;
-        console.log(newcookie);
         res.json(newcookie);
       }
       res.json({ message: 'Неверный пароль' });
@@ -44,12 +43,10 @@ router.post('/reg', async (req, res) => {
         password: hash,
         isAdmin: false,
       });
-      req.session.email = email;
-      req.session.userid = data.id;
-      req.session.lastName = data.lastName;
-      req.session.firstName = data.firstName;
-
-      res.json({ id: data.id, email, firstName, lastName });
+      const newcookie = structuredClone(data.get({ plain: true }));
+      delete newcookie.password;
+      req.session.user = newcookie;
+      res.json(newcookie);
     }
   } catch (err) {
     res.sendStatus(400);

@@ -3,9 +3,9 @@ const router = require('express').Router();
 const { Module, Course, Lesson } = require('../db/models');
 
 router.post('/', async (req, res) => {
-  const { email } = req.session;
+  const { user } = req.session;
 
-  if (email) {
+  if (user) {
     try {
       const { courseid, title } = req.body;
       const data = await Module.create({ courseid, title });
@@ -17,8 +17,8 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/:id', async (req, res) => {
-  const { email } = req.session;
-  if (email) {
+  const { user } = req.session;
+  if (user) {
     try {
       const { courseid, title } = req.body;
       const data = await Module.create({ courseid, title });
@@ -43,9 +43,9 @@ router.post('/:id', async (req, res) => {
 })
 
 router.put('/', async (req, res) => {
-  const { email } = req.session;
+  const { user } = req.session;
 
-  if (email) {
+  if (user) {
     try {
       const { id, title } = req.body;
       const data = await Module.findOne({ where: { id } });
@@ -60,9 +60,9 @@ router.put('/', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  const { email } = req.session;
+  const { user } = req.session;
   const { id } = req.params;
-  if (email) {
+  if (user) {
     try {
       const data = await Module.findOne({ where: { id } });
       data.destroy();

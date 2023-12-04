@@ -1,0 +1,45 @@
+.content-main {
+  margin-left: 240px;
+  width: 100%;
+  z-index: 2;
+}
+
+.step-box-active {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #66cc66;
+  border: 2px solid #fff;
+}
+
+.step-box {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  background: #5e5e5e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+}
+
+.step-box::before {
+  content: "?";
+  position: absolute;
+}
+
+.steps {
+  display: flex;
+}
+
+.actual-component {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-top: 50px;
+}

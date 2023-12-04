@@ -1,11 +1,12 @@
 import React, { memo, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import styled from "./LearnContent.module.css";
 
 import { Link, useParams } from "react-router-dom";
 import { initSteps } from "../../../store/thunkActions";
 import LearnTextComponent from "../LearnTextComponent/LearnTextComponent";
 
-function LearnContent() {
+function LearnContent({ title }) {
   const dispatch = useAppDispatch();
   const { steps } = useAppSelector((store) => store.stepsSlice);
   const [actualComponent, setActualComponent] = useState(<></>);
@@ -18,32 +19,21 @@ function LearnContent() {
     );
     if (stepFinded) {
       if (stepFinded?.type === "TEXT") {
-        setActualComponent(<LearnTextComponent id={stepFinded.id} />);
+        setActualComponent(
+          <LearnTextComponent title={title} id={stepFinded.id} />
+        );
       }
     }
-  }, [stepNum, steps]);
+  }, [stepNum, steps, title]);
 
   useEffect(() => {
     dispatch(initSteps(lessonid));
   }, [lessonid]);
 
   return (
-    <>
-      {steps.map((el) => (
-        <Link
-          key={el.stepNum}
-          to={`/teach/courses/${courseid}/lesson/${lessonid}/step/${el.stepNum}`}
-        >
-          <button
-            type="button"
-            style={el.stepNum == stepNum ? { backgroundColor: "green" } : {}}
-          >
-            <span>Some image</span>
-          </button>
-        </Link>
-      ))}
-      <div>{actualComponent}</div>
-    </>
+    <div className={styled["content-main"]}>
+      <div className={styled["actual-component"]}>{actualComponent}</div>{" "}
+    </div>
   );
 }
 

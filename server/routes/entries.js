@@ -1,8 +1,8 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
-const { Entrie, Course, Module, Lesson, Step } = require('../db/models');
+const { Entrie, Course, Module, Lesson, Step } = require("../db/models");
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   const { userid, courseid } = req.body;
   try {
     const course = await Course.findByPk(courseid, {
@@ -13,6 +13,16 @@ router.post('/', async (req, res) => {
     });
     if (!course) res.sendStatus(400);
     const progress = [];
+
+    // course.get({ plain: true }).Modules.forEach((modul) => {
+    //   modul.Lessons.forEach((lesson) => {
+    //     lesson.steps.forEach((step) => {
+    //       progress[step.id] = false;
+    //     });
+    //   });
+    // });
+
+
     /* course.get({ plain: true }).Modules.forEach((modul) => {
       modul.Lessons.forEach((lesson) => {
         lesson.steps.forEach((step) => {
@@ -24,6 +34,7 @@ router.post('/', async (req, res) => {
         });
       });
     }); */
+
     const entrie = await Entrie.create({
       userid,
       courseid,
@@ -37,6 +48,23 @@ router.post('/', async (req, res) => {
     res.sendStatus(500);
   }
 });
+
+router.patch("/:courseid/:stepid", async (req, res) => {
+  // const { userid } = req.session;
+  const { courseid, stepid } = req.params;
+  const userid = 1;
+  const entrieProgress = await Entrie.findOne({
+    where: { userid, courseid },
+  });
+
+  const parse = JSON.parse(entrieProgress.progress);
+
+  parse.push(Number(stepid));
+
+  entrieProgress.progress = JSON.stringify(parse);
+  await entrieProgress.save();
+});
+
 
 // test router :
 
@@ -94,12 +122,13 @@ router.get('/check/:id', async (req, res) => {
 router.get('/info', async (req, res) => {
   const { id } = req.session.user;
 
+
   try {
     const entries = await Entrie.findAll({
       where: { userid: id },
       include: {
         model: Course,
-        attributes: { exclude: ['createdAt', 'updatedAt', 'long_description'] },
+        attributes: { exclude: ["createdAt", "updatedAt", "long_description"] },
       },
     });
     if (entries.length === 0) return res.json([]);
@@ -133,7 +162,7 @@ router.get('/info', async (req, res) => {
   }
 });
 
-router.delete('/', async (req, res) => {
+router.delete("/", async (req, res) => {
   const { userid, courseid } = req.body;
   try {
     const entrie = await Entrie.findAll({

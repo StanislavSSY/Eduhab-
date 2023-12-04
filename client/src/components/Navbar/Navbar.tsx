@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import styled from "./Navbar.module.css";
-import { Link, useNavigate, NavLink } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { delUser } from "../../store/slice/userSlice";
-import ButtomProfile from "../ButtonProfile/ButtonProfile";
+import React, { useState, useEffect } from 'react';
+import styled from './Navbar.module.css';
+import { Link, useNavigate, NavLink } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { delUser } from '../../store/slice/userSlice';
+import ButtomProfile from '../ButtonProfile/ButtonProfile';
 
 export default function Navbar(): JSX.Element {
   const [isUser, setIsUser] = useState<boolean>();
-  const {user, isLoggedIn} = useAppSelector((store) => store.userSlice);
+  const { user, isLoggedIn } = useAppSelector((store) => store.userSlice);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -17,29 +17,35 @@ export default function Navbar(): JSX.Element {
 
   async function logOut(): Promise<void> {
     const response = await fetch(`${import.meta.env.VITE_URL}/users/logout`, {
-      credentials: "include",
+      credentials: 'include',
     });
 
     if (response.status === 200) {
-      navigate("/");
-      dispatch(delUser(""));
+      navigate('/');
+      dispatch(delUser(''));
     }
   }
 
   return (
     <div className={styled.containernavbar}>
       <div className={styled.leftcont}>
-        {" "}
-        <Link to={"/"} className={styled.title}>
+        {' '}
+        <Link to={'/'} className={styled.title}>
           <h3>
             <span>G</span> Galera
           </h3>
         </Link>
         <div className={styled.titlecont}>
-          <NavLink to={"/"} className={styled.title}>
+          <NavLink to={'/'} className={styled.title}>
             Каталог
           </NavLink>
-          <NavLink to={"teach/courses"} className={styled.title}>
+          <NavLink to={'teach/courses'} className={styled.title}>
+            Преподавание
+          </NavLink>
+          <NavLink to={'learn'} className={styled.title}>
+            Моё обучение
+          </NavLink>
+          <NavLink to={'teach/courses'} className={styled.title}>
             Преподавание
           </NavLink>
         </div>
@@ -54,7 +60,7 @@ export default function Navbar(): JSX.Element {
               <ButtomProfile logOut={logOut} />
             </>
           ) : (
-            <NavLink className={styled.auth} to={"/auth"}>
+            <NavLink className={styled.auth} to={'/auth'}>
               Авторизироваться
             </NavLink>
           )

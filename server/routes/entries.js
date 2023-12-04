@@ -1,8 +1,8 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
-const { Entrie, Course, Module, Lesson, Step } = require('../db/models');
+const { Entrie, Course, Module, Lesson, Step } = require("../db/models");
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   const { userid, courseid } = req.body;
   try {
     const course = await Course.findByPk(courseid, {
@@ -13,17 +13,13 @@ router.post('/', async (req, res) => {
     });
     if (!course) res.sendStatus(400);
     const progress = [];
-    course.get({ plain: true }).Modules.forEach((modul) => {
-      modul.Lessons.forEach((lesson) => {
-        lesson.steps.forEach((step) => {
-          progress.push({
-            id: step.id,
-            type: step.type,
-            status: false,
-          });
-        });
-      });
-    });
+    // course.get({ plain: true }).Modules.forEach((modul) => {
+    //   modul.Lessons.forEach((lesson) => {
+    //     lesson.steps.forEach((step) => {
+    //       progress[step.id] = false;
+    //     });
+    //   });
+    // });
     const entrie = await Entrie.create({
       userid,
       courseid,
@@ -38,14 +34,19 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/:userid', async (req, res) => {
+router.patch("/", async (req, res) => {
+  const { userid } = req.session;
+  const entrieProgress = await Entrie.findOne({});
+});
+
+router.get("/:userid", async (req, res) => {
   const { userid } = req.params;
   try {
     const entries = await Entrie.findAll({
       where: { userid },
       include: {
         model: Course,
-        attributes: { exclude: ['createdAt', 'updatedAt', 'long_description'] },
+        attributes: { exclude: ["createdAt", "updatedAt", "long_description"] },
       },
     });
     if (entries.length === 0) res.json([]);
@@ -65,7 +66,7 @@ router.get('/:userid', async (req, res) => {
   }
 });
 
-router.delete('/', async (req, res) => {
+router.delete("/", async (req, res) => {
   const { userid, courseid } = req.body;
   try {
     const entrie = await Entrie.findAll({

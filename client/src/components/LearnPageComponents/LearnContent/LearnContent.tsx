@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { initSteps } from "../../../store/thunkActions";
 import LearnTextComponent from "../LearnTextComponent/LearnTextComponent";
 
-function LearnContent() {
+function LearnContent({ title }) {
   const dispatch = useAppDispatch();
   const { steps } = useAppSelector((store) => store.stepsSlice);
   const [actualComponent, setActualComponent] = useState(<></>);
@@ -19,10 +19,12 @@ function LearnContent() {
     );
     if (stepFinded) {
       if (stepFinded?.type === "TEXT") {
-        setActualComponent(<LearnTextComponent id={stepFinded.id} />);
+        setActualComponent(
+          <LearnTextComponent title={title} id={stepFinded.id} />
+        );
       }
     }
-  }, [stepNum, steps]);
+  }, [stepNum, steps, title]);
 
   useEffect(() => {
     dispatch(initSteps(lessonid));
@@ -30,22 +32,6 @@ function LearnContent() {
 
   return (
     <div className={styled["content-main"]}>
-      <div className={styled.steps}>
-        {steps.map((el) => (
-          <Link
-            key={el.stepNum}
-            to={`/teach/courses/${courseid}/lesson/${lessonid}/step/${el.stepNum}`}
-          >
-            <span
-              className={
-                el.stepNum == stepNum
-                  ? styled["step-box-active"]
-                  : styled["step-box"]
-              }
-            ></span>
-          </Link>
-        ))}
-      </div>
       <div className={styled["actual-component"]}>{actualComponent}</div>{" "}
     </div>
   );

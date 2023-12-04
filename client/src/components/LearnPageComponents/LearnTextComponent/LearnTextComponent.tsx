@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import styled from "./LearnTextComponent.module.css";
-export default function LearnTextComponent({ id }) {
+export default function LearnTextComponent({ id, title }) {
   const [step, setStep] = useState({});
   useEffect(() => {
     (async () => {
@@ -12,5 +12,18 @@ export default function LearnTextComponent({ id }) {
       setStep(data);
     })();
   }, [id]);
-  return <div>{step.data}</div>;
+
+  useEffect(() => {
+    console.log("⚠️  【setTitle】➜ ", title);
+  }, [title]);
+
+  return (
+    <div>
+      <div className={styled["title-content"]}>{title}</div>
+      <div
+        className={styled["body-content"]}
+        dangerouslySetInnerHTML={{ __html: step.data }}
+      ></div>
+    </div>
+  );
 }

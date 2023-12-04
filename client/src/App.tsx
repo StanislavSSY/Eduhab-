@@ -62,6 +62,10 @@ function App(): JSX.Element {
   return (
     <>
       <Routes>
+        <Route
+          path="teach/courses/:courseid/lesson/:lessonid/step/:stepNum"
+          element={<LearnCourse />}
+        />
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
           <Route path="/teach/info" element={<TeachInfoPage />} />
@@ -69,10 +73,7 @@ function App(): JSX.Element {
           <Route path="promo" element={<Promo />} />
           <Route path="teach/courses" element={<MainTeachingPage />} />
           <Route path="teach/courses/new" element={<NewCourse />} />
-          <Route
-            path="teach/courses/:courseid/lesson/:lessonid/step/:stepNum"
-            element={<LearnCourse />}
-          />
+
           {/* <Route
             path="teach/courses/lesson/:id"
             element={<LessonSidebarCourse />}

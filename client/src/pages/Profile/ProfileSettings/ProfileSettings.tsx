@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function ProfileSettings() {
   return (
@@ -17,6 +17,12 @@ export default function ProfileSettings() {
           <label htmlFor="lastName">
             Ваше имя и фамилия будут использоваться в сертификате
           </label>
+        </div>
+      </div>
+      <div>
+        <div>Аватарка</div>
+        <div>
+          <img src="" alt="" />
         </div>
       </div>
     </div>

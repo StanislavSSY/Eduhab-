@@ -13,6 +13,7 @@ router.post("/", async (req, res) => {
     });
     if (!course) res.sendStatus(400);
     const progress = [];
+
     // course.get({ plain: true }).Modules.forEach((modul) => {
     //   modul.Lessons.forEach((lesson) => {
     //     lesson.steps.forEach((step) => {
@@ -20,6 +21,19 @@ router.post("/", async (req, res) => {
     //     });
     //   });
     // });
+
+
+    /* course.get({ plain: true }).Modules.forEach((modul) => {
+      modul.Lessons.forEach((lesson) => {
+        lesson.steps.forEach((step) => {
+          progress.push({
+            id: step.id,
+            type: step.type,
+            status: false,
+          });
+        });
+      });
+    }); */
 
     const entrie = await Entrie.create({
       userid,
@@ -51,27 +65,96 @@ router.patch("/:courseid/:stepid", async (req, res) => {
   await entrieProgress.save();
 });
 
-router.get("/:userid", async (req, res) => {
-  const { userid } = req.params;
+
+// test router :
+
+router.post('/:id', async (req, res) => {
+  const { user } = req.session;
+  const { id } = req.params;
+  if (user) {
+    try {
+      const checkdouble = await Entrie.findOne({
+        where: { userid: user.id, courseid: id },
+      });
+      if (checkdouble) {
+        res.sendStatus(400);
+      } else {
+        const progress = [];
+        const data = await Entrie.create({
+          userid: user.id,
+          courseid: id,
+          progress,
+        });
+        const coursedata = await Course.findOne({ where: { id } });
+        const newcoursedata = coursedata.get({ plain: true });
+        const newquantity = newcoursedata.quantity_people + 1;
+        coursedata.update({ quantity_people: newquantity });
+        res.json(data);
+      }
+    } catch (error) {
+      res.sendStatus(500);
+    }
+  }
+});
+
+router.get('/check/:id', async (req, res) => {
+  const { user } = req.session;
+  const { id } = req.params;
+
+  if (user) {
+    try {
+      const data = await Entrie.findOne({
+        where: { userid: user.id, courseid: id },
+      });
+      if (data) {
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(400);
+      }
+    } catch (error) {
+      res.sendStatus(500);
+    }
+  }
+});
+
+// --------------------------
+
+router.get('/info', async (req, res) => {
+  const { id } = req.session.user;
+
 
   try {
     const entries = await Entrie.findAll({
-      where: { userid },
+      where: { userid: id },
       include: {
         model: Course,
         attributes: { exclude: ["createdAt", "updatedAt", "long_description"] },
       },
     });
-    if (entries.length === 0) res.json([]);
-    const entriesData = entries.get({ plain: true });
-    const courses = entriesData.map((el) => {
-      const courseInfo = {
-        ...el.Course,
-        progress: el.progress,
-        updatedAt: el.updatedAt,
-      };
-      return courseInfo;
+    if (entries.length === 0) return res.json([]);
+
+    const { count } = await Entrie.findAndCountAll({
+      where: { userid: id },
+      include: {
+        model: Course,
+        include: {
+          model: Module,
+          include: { model: Lesson, include: { model: Step } },
+        },
+      },
     });
+    const entriesData = entries.map((el) => el.get({ plain: true }));
+    const courses = entriesData
+      .map((el) => {
+        const courseInfo = {
+          ...el.Course,
+          progress: el.progress,
+          updatedAt: el.updatedAt,
+          stepsNum: count,
+        };
+        return courseInfo;
+      })
+      .sort((a, b) => b.updatedAt - a.updatedAt);
     res.json(courses);
   } catch (error) {
     console.log(error);

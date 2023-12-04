@@ -1,29 +1,37 @@
-import Promo from "./Pages/Promo/Promo";
-import { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import "./App.css";
-import Auth from "./pages/Auth/Auth";
-import Main from "./components/Main/Main";
-import Preloader from "./components/Preloader/Preloader";
+import Promo from './Pages/Promo/Promo';
+import { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import './App.css';
+import Auth from './pages/Auth/Auth';
+import Main from './components/Main/Main';
+import Preloader from './components/Preloader/Preloader';
 
-import MainTeachingPage from "./components/MyTeachingComponents/MainTeachingPage/MainTeachingPage";
+import MainTeachingPage from './components/MyTeachingComponents/MainTeachingPage/MainTeachingPage';
 
-import LearnCourse from "./Pages/LearnCourse/LearnCourse";
+import TeachInfoPage from './Pages/TeachInfoPage/TeachInfoPage';
+import MyLearn from './pages/MyLearn/MyLearn';
+import Layout from './components/Layout';
+import InfoEdit from './components/Course/InfoEdit/InfoEdit';
+import Plan from './components/Course/Plan/Plan';
+import PlanEdit from './components/Course/Plan/PlanEdit/PlanEdit';
+import MyLearnIndex from './pages/MyLearn/MyLearnIndex.tsx/MyLearnIndex';
+import MyLearnCourses from './pages/MyLearn/MyLearnCourses.tsx/MyLearnCourses';
+import { useAppDispatch, useAppSelector } from './store/hooks';
+import { addUser } from './store/slice/userSlice';
+import NewCourse from './components/MyTeachingComponents/NewCourse/NewCourse';
+import Course from './components/Course/Course';
+import Info from './components/Course/Info/Info';
+import EditLesson from './components/EditLessonComponents/EditLesson';
 
-import TeachInfoPage from "./Pages/TeachInfoPage/TeachInfoPage";
-import MyLearn from "./pages/MyLearn/MyLearn";
-import Layout from "./components/Layout";
-import InfoEdit from "./components/Course/InfoEdit/InfoEdit";
-import Plan from "./components/Course/Plan/Plan";
-import PlanEdit from "./components/Course/Plan/PlanEdit/PlanEdit";
-import MyLearnIndex from "./pages/MyLearn/MyLearnIndex.tsx/MyLearnIndex";
-import MyLearnCourses from "./pages/MyLearn/MyLearnCourses.tsx/MyLearnCourses";
-import { useAppDispatch, useAppSelector } from "./store/hooks";
-import { addUser } from "./store/slice/userSlice";
-import NewCourse from "./components/MyTeachingComponents/NewCourse/NewCourse";
-import Course from "./components/Course/Course";
-import Info from "./components/Course/Info/Info";
-import EditLesson from "./components/EditLessonComponents/EditLesson";
+import './App.css';
+
+import LearnCourse from './Pages/LearnCourse/LearnCourse';
+
+import ProfileSettings from './pages/Profile/ProfileSettings/ProfileSettings';
+import ProfileInfo from './pages/Profile/ProfileInfo/ProfileInfo';
+import Profile from './pages/Profile/Profile';
+
+import CatalogSearch from './Pages/CatalogSearch/CatalogSearch';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -35,7 +43,7 @@ function App(): JSX.Element {
       const response = await fetch(
         `${import.meta.env.VITE_URL}/users/sessions`,
         {
-          credentials: "include",
+          credentials: 'include',
         }
       );
 
@@ -68,9 +76,11 @@ function App(): JSX.Element {
         />
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
+          <Route path="catalog/search" element={<CatalogSearch />} />
+
           <Route path="/teach/info" element={<TeachInfoPage />} />
           <Route path="auth" element={<Auth />} />
-          <Route path="promo" element={<Promo />} />
+          <Route path="course/:id/promo" element={<Promo />} />
           <Route path="teach/courses" element={<MainTeachingPage />} />
           <Route path="teach/courses/new" element={<NewCourse />} />
 
@@ -93,6 +103,10 @@ function App(): JSX.Element {
           <Route path="edit-lesson">
             <Route path=":lessonid/step/:stepNum" element={<EditLesson />} />
             <Route path=":lessonid/" element={<EditLesson />} />
+          </Route>
+          <Route path="user" element={<Profile />}>
+            <Route path="profile" element={<ProfileInfo />} />
+            <Route path="settings" element={<ProfileSettings />} />
           </Route>
         </Route>
       </Routes>

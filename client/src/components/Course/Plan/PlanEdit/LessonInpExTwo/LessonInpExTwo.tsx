@@ -28,7 +28,6 @@ export default function LessonInpExTwo({ el }): JSX.Element {
 
   function lessonsChangeHandler(e): void {
     setInpLessons({moduleid: Number(e.target.name), title: e.target.value})
-    console.log(inplessons);
   }
 
   async function createLesson(): Promise<void> {
@@ -40,7 +39,6 @@ export default function LessonInpExTwo({ el }): JSX.Element {
       },
       body: JSON.stringify(inplessons),
     });
-    console.log(inplessons);
 
     if (response.status === 200) {
       const result = await response.json();

@@ -1,38 +1,61 @@
-import React from "react";
-import CardProgress from "../../../components/MyLearnComponents/CardProgress";
-import UserStatMyLearn from "../../../components/MyLearnComponents/UserStatMyLearn";
-import CardMinMyLearn from "../../../components/MyLearnComponents/CardMinMyLearn";
+import React, { useEffect, useState } from 'react';
+import CardProgress from '../../../components/MyLearnComponents/CardProgress';
+import UserStatMyLearn from '../../../components/MyLearnComponents/UserStatMyLearn';
+import CardMinMyLearn from '../../../components/MyLearnComponents/CardMinMyLearn';
+import { useAppSelector } from '../../../store/hooks';
+import axios from 'axios';
 
 export default function MyLearnIndex() {
-  const zagluhskaObj = {
-    title: "HTML",
-    imgUrl: "/vite.svg",
-    completed: "14",
-    stepsNum: "101",
-    courseUrl: "nashurl",
-  };
-  const zagluhskaObjs = [
-    { ...zagluhskaObj, id: 1 },
-    { ...zagluhskaObj, id: 2 },
-    { ...zagluhskaObj, id: 3 },
-  ];
-  console.log(zagluhskaObjs);
+  const [courses, setCourses] = useState([]);
+  const [allCompleted, setAllCompleted] = useState(0);
+
+  const { user } = useAppSelector((store) => store.userSlice);
+
+  useEffect(() => {
+    void (async () => {
+      const response = await axios.get(
+        `${import.meta.env.VITE_URL}/entries/info`,
+        { withCredentials: true }
+      );
+
+      if (response.status === 200) {
+        const coursesRaw = response.data;
+        console.log(coursesRaw);
+
+        const coursesData = coursesRaw.map((el) => ({
+          id: el.id,
+          title: el.title,
+          image_url: el.image_url,
+          completed: el.progress.length,
+          stepsNum: el.stepsNum,
+        }));
+        setCourses(coursesData);
+        if (coursesData.length) {
+          const aComp = coursesData.reduce((acc, el) => acc + el.completed, 0);
+          setAllCompleted(aComp);
+        }
+      }
+    })();
+  }, []);
+
   return (
     <>
       <h1>Моё обучение</h1>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <CardProgress />
-        <UserStatMyLearn />
-      </div>
+      {courses.length > 0 && (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
+          <CardProgress course={courses[0]} />
+          <UserStatMyLearn allCompleted={allCompleted} />
+        </div>
+      )}
       <h2>Прохожу сейчас</h2>
       <div>
-        {zagluhskaObjs.map((el) => (
-          <CardMinMyLearn zagluhskaObj={el} key={el.id} />
+        {courses.map((el) => (
+          <CardMinMyLearn course={el} key={el.id} />
         ))}
       </div>
     </>

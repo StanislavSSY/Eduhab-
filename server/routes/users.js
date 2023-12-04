@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const router = require('express').Router();
+const upload = require('../middlewares/upload');
 
 const { User } = require('../db/models');
 
@@ -12,11 +13,11 @@ router.post('/login', async (req, res) => {
       const checkPass = await bcrypt.compare(password, user.password);
 
       if (checkPass) {
-        req.session.email = user.email;
-        req.session.userid = user.id;
-        req.session.lastName = user.lastName;
-        req.session.firstName = user.firstName;
-        res.json({ id: user.id, email, firstName: user.firstName, lastName: user.lastName });
+        const newcookie = structuredClone(user.get({ plain: true }));
+        delete newcookie.password;
+        req.session.user = newcookie;
+
+        res.json(newcookie);
       }
       res.json({ message: 'Неверный пароль' });
     } else {
@@ -43,12 +44,10 @@ router.post('/reg', async (req, res) => {
         password: hash,
         isAdmin: false,
       });
-      req.session.email = email;
-      req.session.userid = data.id;
-      req.session.lastName = data.lastName;
-      req.session.firstName = data.firstName;
-
-      res.json({ id: data.id, email, firstName, lastName });
+      const newcookie = structuredClone(data.get({ plain: true }));
+      delete newcookie.password;
+      req.session.user = newcookie;
+      res.json(newcookie);
     }
   } catch (err) {
     res.sendStatus(400);
@@ -70,16 +69,44 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/sessions', async (req, res) => {
+  const { user } = req.session;
   try {
-    const { userid, email, firstName, lastName } = req.session;
-    const id = structuredClone(userid);
-    if (email) {
-      res.json({ id, email, firstName, lastName });
+    if (user) {
+      res.json(user);
     } else {
       res.sendStatus(400);
     }
   } catch (error) {
     res.sendStatus(400);
+  }
+});
+
+router.patch('/', async (req, res) => {
+  const { user } = req.session;
+  const { firstName, lastName } = req.body;
+  try {
+    const userData = await User.findByPk(user.id);
+    await userData.update({ firstName, lastName });
+    req.session.user.firstName = firstName;
+    req.session.user.lastName = lastName;
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+});
+
+router.patch('/img', upload.single('image'), async (req, res) => {
+  const { user } = req.session;
+  try {
+    const userData = await User.findByPk(user.id);
+    const image = req.file.path.slice(21);
+    await userData.update({ img_url: image });
+    req.session.user.img_url = image;
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
   }
 });
 

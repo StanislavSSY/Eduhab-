@@ -1,15 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserType } from "../../types";
+import { ITypeState, UserType } from "../../types";
 
-const initialState = {
+const initialState: ITypeState = {
   user: {
-    id: 1,
-    isLoggedIn: false,
-    email: "",
-    firstName: "",
-    lastName: "",
-    avatarUrl: "",
+    firstName: '',
+    lastName: '',
   },
+  isLoggedIn: false,
 };
 
 export const userSlice = createSlice({
@@ -17,15 +14,12 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     addUser: (state, action: PayloadAction<UserType>) => {
-      state.user.id = action.payload.id;
-      state.user.email = action.payload.email;
-      state.user.isLoggedIn = true;
-      state.user.firstName = action.payload.firstName;
-      state.user.lastName = action.payload.lastName;
+      state.user = action.payload;
+      state.isLoggedIn = true;
     },
-    delUser: (state, action: PayloadAction<string>) => {
-      state.user.email = action.payload;
-      state.user.isLoggedIn = false;
+    delUser: (state, action: PayloadAction<UserType>) => {
+      state.user = initialState.user;
+      state.isLoggedIn = false;
     },
   },
 });

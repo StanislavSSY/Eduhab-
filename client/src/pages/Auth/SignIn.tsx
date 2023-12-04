@@ -37,6 +37,7 @@ function SignInForm(): JSX.Element {
 
     if (response.status === 200) {
       const result = await response.json();
+      console.log(result);
       dispatch(addUser(result));
       navigate("/");
     }

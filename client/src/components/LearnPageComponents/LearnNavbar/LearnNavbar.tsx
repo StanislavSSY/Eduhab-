@@ -7,9 +7,10 @@ import ButtomProfile from "../../ButtonProfile/ButtonProfile";
 
 export default function LearnNavbar(): JSX.Element {
   const [isUser, setIsUser] = useState<boolean>();
-  const { user, isLoggedIn } = useAppSelector((store) => store.userSlice);
-
+  const { isLoggedIn } = useAppSelector((store) => store.userSlice);
   const { steps } = useAppSelector((store) => store.stepsSlice);
+  const { entry } = useAppSelector((store) => store.entrySlice);
+
   const { lessonid, stepNum, courseid } = useParams();
 
   const navigate = useNavigate();
@@ -30,6 +31,25 @@ export default function LearnNavbar(): JSX.Element {
     }
   }
 
+  const checkStep = (step) => {
+    return entry.progress.includes(Number(step));
+  };
+
+  const styleTopNav = (stepID, stepNum, elStep) => {
+    const bool = entry.progress.includes(Number(stepID));
+    if (bool) {
+      return styled["step-box-progress"];
+    } else if (stepNum == elStep) {
+      return styled["step-box-active"];
+    } else {
+      return styled["step-box"];
+    }
+  };
+
+  // checkStep(el.id) || el.stepNum == stepNum
+  // ? styled["step-box-active"]
+  // : styled["step-box"]
+
   return (
     <div className={styled.containernavbar}>
       <div className={styled.leftcont}>
@@ -42,11 +62,7 @@ export default function LearnNavbar(): JSX.Element {
         <div className={styled.steps}>
           {steps.map((el) => (
             <Link
-              className={
-                el.stepNum == stepNum
-                  ? styled["step-box-active"]
-                  : styled["step-box"]
-              }
+              className={styleTopNav(el.id, el.stepNum, stepNum)}
               key={el.stepNum}
               to={`/teach/courses/${courseid}/lesson/${lessonid}/step/${el.stepNum}`}
             >

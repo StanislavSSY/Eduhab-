@@ -49,6 +49,20 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/progress/:courseid/", checkUser, async (req, res) => {
+  const userid = req.session.user.id;
+  const { courseid } = req.params;
+
+  const entrieProgress = await Entrie.findOne({
+    where: { userid, courseid },
+  });
+  if (entrieProgress) {
+    res.json(entrieProgress.progress);
+  } else {
+    res.json("Прогресс не найден");
+  }
+});
+
 router.patch("/:courseid/:stepid", checkUser, async (req, res) => {
   const userid = req.session.user.id;
   const { courseid, stepid } = req.params;

@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import styled from './Comment.module.css';
 
 import { BiChevronDown } from 'react-icons/bi';
-
 import { BiChevronUp } from 'react-icons/bi';
-export default function Comment({ comment }): JSX.Element {
+import { ComProps } from '../../../types';
+
+export default function Comment({ comment }: ComProps): JSX.Element {
   const [isExpanded, setIsExpanded] = useState(false);
   const [timeAgo, setTimeAgo] = useState('');
 
@@ -50,7 +51,7 @@ export default function Comment({ comment }): JSX.Element {
     <div className={styled.commentcontainer}>
       <div className={styled.headertitle}>
         <div className={styled.usernametitle}>
-          {comment.User.firstName} {comment.User.lastName}
+          {comment.User?.firstName} {comment.User?.lastName}
         </div>
         <div className={styled.createddate}>{timeAgo}</div>
       </div>

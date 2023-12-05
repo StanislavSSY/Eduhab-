@@ -19,6 +19,27 @@ export type ITypeState = {
   isLoggedIn: boolean;
 };
 
+export type ReviewType = {
+  id: number;
+  userid: number;
+  courseid: number;
+  text: string;
+  user_rate: number;
+  createdAt: Date;
+  updatedAt: Date;
+  User?: UserType
+}
+
+export type ComProps = {
+  comment: ReviewType;
+}
+
+export type VideoProps = {
+  yid: string;
+}
+
+export type ReviewsType = ReviewType[]
+
 export type CourseType = {
   id: number;
   userid: number;

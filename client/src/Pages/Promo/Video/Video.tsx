@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from './Video.module.css'
 import YouTube, { YouTubeProps } from 'react-youtube';
+import { VideoProps } from '../../../types';
 
-export default function Video({ yid }): JSX.Element {
+export default function Video({ yid } : VideoProps): JSX.Element {
 
   const onPlayerReady: YouTubeProps['onReady'] = (event) => {
     // access to player in all event handlers via event.target

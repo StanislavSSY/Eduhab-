@@ -1,13 +1,14 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
-const { Comment } = require('../db/models');
+const { Comment } = require("../db/models");
 
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   const { user } = req.session;
   const { id } = req.params;
   if (user) {
     try {
       const data = await Comment.findAll({ where: { stepid: id } });
+      // console.log("⚠️  【】➜ ", data);
       const newdata = data.map((el) => el.get({ plain: true }));
       res.json(newdata);
     } catch (error) {
@@ -16,7 +17,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   const { user } = req.session;
   if (user) {
     const { userid, text, stepid } = req.body;

@@ -1,8 +1,9 @@
-const router = require('express').Router();
+const router = require("express").Router();
+const { checkUser } = require("../middlewares/secure");
 
-const { Entrie, Course, Module, Lesson, Step } = require('../db/models');
+const { Entrie, Course, Module, Lesson, Step } = require("../db/models");
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   const { userid, courseid } = req.body;
   try {
     const course = await Course.findByPk(courseid, {
@@ -48,26 +49,45 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.patch('/:courseid/:stepid', async (req, res) => {
-  // const { userid } = req.session;
-  const { courseid, stepid } = req.params;
+router.get("/progress/:courseid/", checkUser, async (req, res) => {
   const userid = req.session.user.id;
+  const { courseid } = req.params;
+
   const entrieProgress = await Entrie.findOne({
     where: { userid, courseid },
   });
-  /* console.log(typeof entrieProgress.progress);
-  const parse = JSON.parse(entrieProgress.progress); */
-  const newProgress = structuredClone(entrieProgress.progress);
-  if (!newProgress.includes(Number(stepid))) newProgress.push(Number(stepid));
+  if (entrieProgress) {
+    res.json(entrieProgress.progress);
+  } else {
+    res.json("Прогресс не найден");
+  }
+});
 
-  /* entrieProgress.progress = JSON.stringify(parse); */
-  await entrieProgress.update({ progress: newProgress });
-  res.json(entrieProgress);
+router.patch("/:courseid/:stepid", checkUser, async (req, res) => {
+  const userid = req.session.user.id;
+  const { courseid, stepid } = req.params;
+
+  const entrieProgress = await Entrie.findOne({
+    where: { userid, courseid },
+  });
+  if (entrieProgress) {
+    const newProgress = structuredClone(entrieProgress.progress);
+    const stepIdNumber = Number(stepid);
+    if (!newProgress.includes(stepIdNumber)) {
+      newProgress.push(stepIdNumber);
+      await entrieProgress.update({ progress: newProgress });
+      res.json(entrieProgress);
+    } else {
+      res.json("Число уже есть");
+    }
+  } else {
+    res.json("Курс не найден");
+  }
 });
 
 // test router :
 
-router.post('/:id', async (req, res) => {
+router.post("/:id", async (req, res) => {
   const { user } = req.session;
   const { id } = req.params;
   if (user) {
@@ -96,7 +116,7 @@ router.post('/:id', async (req, res) => {
   }
 });
 
-router.get('/check/:id', async (req, res) => {
+router.get("/check/:id", async (req, res) => {
   const { user } = req.session;
   const { id } = req.params;
 
@@ -118,7 +138,7 @@ router.get('/check/:id', async (req, res) => {
 
 // --------------------------
 
-router.get('/info', async (req, res) => {
+router.get("/info", async (req, res) => {
   const { id } = req.session.user;
 
   try {
@@ -126,7 +146,7 @@ router.get('/info', async (req, res) => {
       where: { userid: id },
       include: {
         model: Course,
-        attributes: { exclude: ['createdAt', 'updatedAt', 'long_description'] },
+        attributes: { exclude: ["createdAt", "updatedAt", "long_description"] },
       },
     });
     if (entries.length === 0) return res.json([]);
@@ -176,7 +196,7 @@ router.get('/info', async (req, res) => {
   }
 });
 
-router.delete('/', async (req, res) => {
+router.delete("/", async (req, res) => {
   const { userid, courseid } = req.body;
   try {
     const entrie = await Entrie.findAll({

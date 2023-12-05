@@ -18,6 +18,42 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          courseid: 2,
+          title: 'Введение в основы',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          courseid: 2,
+          title: 'Функции, структуры, указатели и другое',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          courseid: 3,
+          title: 'Wprowadzenie do React.js',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          courseid: 3,
+          title: 'JSX oraz Next.js jako rdzeń projektu w React',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          courseid: 4,
+          title: 'Вводный курс',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          courseid: 4,
+          title: 'Основной курс',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

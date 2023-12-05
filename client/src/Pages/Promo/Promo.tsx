@@ -7,9 +7,10 @@ import Comment from "./Comment/Comment";
 import clsx from "clsx";
 import Video from "./Video/Video";
 import getYouTubeID from 'get-youtube-id';
+import { ReviewType, ReviewsType } from "../../types";
 
 export default function Promo(): JSX.Element {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<ReviewsType>([]);
   const [vision, setVision] = useState(false);
   const [dis, setDis] = useState(false);
   const [yid, setYid] = useState('');
@@ -42,7 +43,7 @@ export default function Promo(): JSX.Element {
         setComments(res);
         if (res.length >= 2) {
           let sumRate = 0;
-          res.forEach((el) => {
+          res.forEach((el: ReviewType) => {
             sumRate += el.user_rate;
           });
           const fullRate = sumRate / res.length;
@@ -145,7 +146,7 @@ export default function Promo(): JSX.Element {
         <div className={styled.reviewscont} id="comments">
           <div className={styled.reviewstitle}>Отзывы прошедших курс</div>
           {comments.length >= 1 ? (
-            comments.map((comment) => (
+            comments.map((comment: ReviewType) => (
               <div className={styled.percommentcont} key={comment.id}>
                 <Comment comment={comment}/>
               </div>

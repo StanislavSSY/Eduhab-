@@ -1,15 +1,18 @@
 import React, { memo, useEffect, useState } from "react";
 import styled from "./LearnTextComponent.module.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-export default function LearnTextComponent({ id, title }) {
-  const [step, setStep] = useState({});
+import { addProgress } from "../../../store/slice/entrySlice";
 
+export default function LearnTextComponent({ id, title, setUpdateNav }) {
+  const [step, setStep] = useState({});
   const { entry } = useAppSelector((store) => store.entrySlice);
   const { steps } = useAppSelector((store) => store.stepsSlice);
 
   const [buttonClicked, setButtonClicked] = useState(false);
-  const { stepNum, courseid } = useParams();
+  const dispatch = useAppDispatch();
+  const { stepNum, courseid, lessonid } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -23,6 +26,10 @@ export default function LearnTextComponent({ id, title }) {
   }, [id]);
 
   useEffect(() => {
+    setButtonClicked(false);
+  }, [stepNum]);
+
+  useEffect(() => {
     console.log("⚠️  【@@@】➜ ");
     (async () => {
       if (buttonClicked) {
@@ -34,8 +41,8 @@ export default function LearnTextComponent({ id, title }) {
           }
         );
 
-        const data = await response.json();
-        console.log("⚠️  【data】➜ ", data);
+        const result = await response.json();
+        dispatch(addProgress(result.progress));
       }
     })();
   }, [buttonClicked]);
@@ -47,7 +54,6 @@ export default function LearnTextComponent({ id, title }) {
 
     return entry.progress.includes(oneStep.id);
   };
-  console.log("⚠️  checkStep【】➜ ", checkStep());
   return (
     <>
       <div className={styled["title-content"]}>{title}</div>
@@ -60,16 +66,33 @@ export default function LearnTextComponent({ id, title }) {
       <div className={styled["footer-fragment"]}>
         <div className={styled["footer-content"]}>
           <div className={styled["button-fragment"]}>
-            <div
-              onClick={() => setButtonClicked(!checkStep())}
-              className={styled["button-next"]}
-            >
-              Изучить
-            </div>
-            <div className={styled["button-next"]}>
-              Следующий шаг{" "}
-              <i className="fa fa-angle-right" aria-hidden="true"></i>
-            </div>
+            {!checkStep() && !buttonClicked ? (
+              <div
+                onClick={() => {
+                  setButtonClicked(!checkStep());
+                }}
+                className={styled["button-next"]}
+              >
+                Изучить
+              </div>
+            ) : (
+              <></>
+            )}
+            {stepNum !== steps.at(-1).stepNum && (
+              <div
+                onClick={() =>
+                  navigate(
+                    `/teach/courses/${courseid}/lesson/${lessonid}/step/${
+                      Number(stepNum) + 1
+                    }`
+                  )
+                }
+                className={styled["button-next"]}
+              >
+                Следующий шаг{" "}
+                <i className="fa fa-angle-right" aria-hidden="true"></i>
+              </div>
+            )}
           </div>
         </div>
       </div>

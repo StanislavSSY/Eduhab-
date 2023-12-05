@@ -5,12 +5,12 @@ import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { delUser } from "../../../store/slice/userSlice";
 import ButtomProfile from "../../ButtonProfile/ButtonProfile";
 
-export default function LearnNavbar(): JSX.Element {
+export default function LearnNavbar({ updateNav }): JSX.Element {
   const [isUser, setIsUser] = useState<boolean>();
   const { isLoggedIn } = useAppSelector((store) => store.userSlice);
   const { steps } = useAppSelector((store) => store.stepsSlice);
   const { entry } = useAppSelector((store) => store.entrySlice);
-
+  console.log("⚠️  【updateNav】➜ ", updateNav);
   const { lessonid, stepNum, courseid } = useParams();
 
   const navigate = useNavigate();
@@ -31,11 +31,8 @@ export default function LearnNavbar(): JSX.Element {
     }
   }
 
-  const checkStep = (step) => {
-    return entry.progress.includes(Number(step));
-  };
-
   const styleTopNav = (stepID, stepNum, elStep) => {
+    console.log("⚠️  【entry.progress.length】➜ ", entry.progress);
     const bool = entry.progress.includes(Number(stepID));
     if (bool) {
       return styled["step-box-progress"];

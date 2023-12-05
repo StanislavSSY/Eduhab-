@@ -8,10 +8,11 @@ import { addProgress } from "../../store/slice/entrySlice";
 import { useParams } from "react-router-dom";
 export default function LearnCourse() {
   const [title, setTitle] = useState("");
+  const [updateNav, setUpdateNav] = useState(false);
   // const [progress, setProgress] = useState("");
   const { courseid } = useParams();
   const dispatch = useAppDispatch();
-
+  console.log("⚠️  【111111】➜ ", updateNav);
   useEffect(() => {
     void (async () => {
       const response = await fetch(
@@ -32,9 +33,9 @@ export default function LearnCourse() {
 
   return (
     <div className={styled["page-main"]}>
-      <LearnNavbar />
+      <LearnNavbar updateNav={updateNav} />
       <LearnSideBarMenu getTitle={setTitle} />
-      <LearnContent title={title} />
+      <LearnContent title={title} setUpdateNav={setUpdateNav} />
     </div>
   );
 }

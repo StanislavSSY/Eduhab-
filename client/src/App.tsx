@@ -23,19 +23,13 @@ import Course from "./components/Course/Course";
 import Info from "./components/Course/Info/Info";
 import EditLesson from "./components/EditLessonComponents/EditLesson";
 
-
-import "./App.css";
-
-import LearnCourse from "./Pages/LearnCourse/LearnCourse";
-
 //import './App.css';
 
-import LearnCourse from './Pages/LearnCourse/LearnCourse';
-import Stripe from './components/Stripe/Stripe';
-import AppStripe from './components/Stripe/AppStripe'
-import Payment from './components/Stripe/YoutubePayment';
-import Index from './components/Stripe/YouTubeIndex';
-
+import LearnCourse from "./Pages/LearnCourse/LearnCourse";
+import Stripe from "./components/Stripe/Stripe";
+import AppStripe from "./components/Stripe/AppStripe";
+import Payment from "./components/Stripe/YoutubePayment";
+import Index from "./components/Stripe/YouTubeIndex";
 
 import ProfileSettings from "./pages/Profile/ProfileSettings/ProfileSettings";
 import ProfileInfo from "./pages/Profile/ProfileInfo/ProfileInfo";
@@ -87,25 +81,22 @@ function App(): JSX.Element {
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
           <Route path="catalog/search" element={<CatalogSearch />} />
-
           <Route path="/teach/info" element={<TeachInfoPage />} />
           <Route path="auth" element={<Auth />} />
           <Route path="course/:id/promo" element={<Promo />} />
           <Route path="teach/courses" element={<MainTeachingPage />} />
           <Route path="teach/courses/new" element={<NewCourse />} />
-
           {/* <Route
             path="teach/courses/lesson/:id"
             element={<LessonSidebarCourse />}
           /> */}
-        
-        Index
-        <Route path="stripe4" element={<Index/>} />
-          <Route path="stripe3" element={<Payment/>} />
-          <Route path="stripe2" element={<Stripe/>} />
-          <Route path="stripe" element={<AppStripe/>} />
+          Index
+          <Route path="stripe4" element={<Index />} />
+          <Route path="stripe3" element={<Payment />} />
+          <Route path="stripe2" element={<Stripe />} />
+          <Route path="stripe" element={<AppStripe />} />
           <Route path="course/:id" element={<Course />}>
-          <Route path="payment" element={<AppStripe/>} />
+            <Route path="payment" element={<AppStripe />} />
             <Route path="info" element={<Info />} />
             <Route path="edit" element={<InfoEdit />} />
             <Route path="plan" element={<Plan />} />

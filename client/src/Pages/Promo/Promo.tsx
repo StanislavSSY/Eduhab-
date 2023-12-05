@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "../Promo/Promo.module.css";
 import { Link } from "react-router-dom";
+import Stripe from "../../components/Stripe/Stripe";
 
 export default function Promo() {
   return (
@@ -88,6 +89,11 @@ export default function Promo() {
           </div>
           <p>При оплате до 7 декабря</p>
           <div className={styled.buy}>Купить</div>
+          <div>
+ 
+
+          </div>
+         
           <div className={styled.free}>Попробовать бесплатно</div>
           <div className={styled.favorite}>Хочу пройти</div>
         </div>

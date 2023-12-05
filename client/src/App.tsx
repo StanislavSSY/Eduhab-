@@ -23,9 +23,13 @@ import Course from './components/Course/Course';
 import Info from './components/Course/Info/Info';
 import EditLesson from './components/EditLessonComponents/EditLesson';
 
-import './App.css';
+//import './App.css';
 
 import LearnCourse from './Pages/LearnCourse/LearnCourse';
+import Stripe from './components/Stripe/Stripe';
+import AppStripe from './components/Stripe/AppStripe'
+import Payment from './components/Stripe/YoutubePayment';
+import Index from './components/Stripe/YouTubeIndex';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -79,7 +83,14 @@ function App(): JSX.Element {
             path="teach/courses/lesson/:id"
             element={<LessonSidebarCourse />}
           /> */}
+        
+        Index
+        <Route path="stripe4" element={<Index/>} />
+          <Route path="stripe3" element={<Payment/>} />
+          <Route path="stripe2" element={<Stripe/>} />
+          <Route path="stripe" element={<AppStripe/>} />
           <Route path="course/:id" element={<Course />}>
+          <Route path="payment" element={<AppStripe/>} />
             <Route path="info" element={<Info />} />
             <Route path="edit" element={<InfoEdit />} />
             <Route path="plan" element={<Plan />} />

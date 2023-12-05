@@ -48,6 +48,7 @@ app.get('/', (req, res) => {
   res.send('Привет!');
 });
 
+app.use('/stripe', require('./routes/Stripe'));
 app.use('/users', require('./routes/users'));
 app.use('/comments', require('./routes/Comments'));
 app.use('/reviews', require('./routes/Reviews'));

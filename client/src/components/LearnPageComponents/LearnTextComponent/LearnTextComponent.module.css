@@ -1,0 +1,47 @@
+.title-content {
+  padding: 1rem;
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.body-fragment {
+  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+}
+
+.body-content {
+  padding: 1rem;
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.footer-fragment {
+  background: #f3f4f6;
+  flex-grow: 1;
+}
+
+.footer-content {
+  text-align: right;
+  padding: 1rem 1.6rem;
+  background: #f3f4f6;
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.button-next {
+  cursor: pointer;
+  font-size: 1rem;
+  display: inline-block;
+  background: #54ad54;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  color: #fff;
+}
+
+.button-next i {
+  margin-left: 0.5rem;
+}
+
+.button-next:hover {
+  background: #288b28;
+}

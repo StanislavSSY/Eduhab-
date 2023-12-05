@@ -53,6 +53,11 @@
   transition: 0.3s;
 }
 
+
+.imgcourse {
+  width: 52px;
+}
+
 .btnlist {
   display: flex;
   justify-content: flex-start;

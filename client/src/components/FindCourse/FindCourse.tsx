@@ -1,8 +1,23 @@
-// FindCourse.tsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./FindCourse.module.css";
+import { useNavigate } from "react-router-dom";
+
+
+
 
 export default function FindCourse(): JSX.Element {
+  const [inpData, setInpData] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(inpData);
+  },[inpData]);
+
+  function redirectHandler(): void {
+    navigate(`/catalog/search?q=${inpData}`);
+  }
+  
+
   return (
     <div className={styles["search-form"]}>
       <div className={styles["search-form__form"]}>
@@ -18,6 +33,7 @@ export default function FindCourse(): JSX.Element {
                     spellCheck="false"
                     aria-label="Search"
                     type="search"
+                    onChange={(e) => setInpData(e.target.value)}
                   />
                 </div>
               </div>
@@ -40,6 +56,7 @@ export default function FindCourse(): JSX.Element {
           type="button"
           data-ember-action=""
           data-ember-action-345="345"
+          onClick={redirectHandler}
         >
           Искать
         </button>

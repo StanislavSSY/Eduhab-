@@ -31,6 +31,12 @@ import AppStripe from './components/Stripe/AppStripe'
 import Payment from './components/Stripe/YoutubePayment';
 import Index from './components/Stripe/YouTubeIndex';
 
+import ProfileSettings from './pages/Profile/ProfileSettings/ProfileSettings';
+import ProfileInfo from './pages/Profile/ProfileInfo/ProfileInfo';
+import Profile from './pages/Profile/Profile';
+
+import CatalogSearch from './Pages/CatalogSearch/CatalogSearch';
+
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
   const user = useAppSelector((store) => store.userSlice.user);
@@ -68,17 +74,20 @@ function App(): JSX.Element {
   return (
     <>
       <Routes>
+        <Route
+          path="teach/courses/:courseid/lesson/:lessonid/step/:stepNum"
+          element={<LearnCourse />}
+        />
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
+          <Route path="catalog/search" element={<CatalogSearch />} />
+
           <Route path="/teach/info" element={<TeachInfoPage />} />
           <Route path="auth" element={<Auth />} />
-          <Route path="promo" element={<Promo />} />
+          <Route path="course/:id/promo" element={<Promo />} />
           <Route path="teach/courses" element={<MainTeachingPage />} />
           <Route path="teach/courses/new" element={<NewCourse />} />
-          <Route
-            path="teach/courses/:courseid/lesson/:lessonid/step/:stepNum"
-            element={<LearnCourse />}
-          />
+
           {/* <Route
             path="teach/courses/lesson/:id"
             element={<LessonSidebarCourse />}
@@ -105,6 +114,10 @@ function App(): JSX.Element {
           <Route path="edit-lesson">
             <Route path=":lessonid/step/:stepNum" element={<EditLesson />} />
             <Route path=":lessonid/" element={<EditLesson />} />
+          </Route>
+          <Route path="user" element={<Profile />}>
+            <Route path="profile" element={<ProfileInfo />} />
+            <Route path="settings" element={<ProfileSettings />} />
           </Route>
         </Route>
       </Routes>

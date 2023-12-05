@@ -1,0 +1,14 @@
+.resultcont {
+  width: 1300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.onlysearchcont {
+  margin: 0 0 125px 0;
+}
+
+.searchedcourses {
+  display: flex;
+  flex-wrap: wrap;
+}

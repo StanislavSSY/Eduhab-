@@ -46,8 +46,8 @@ router.get("/:id", async (req, res) => {
 });
 
 router.put('/', async (req, res) => {
-  const { email } = req.session;
-  if (email) {
+  const { user } = req.session;
+  if (user) {
     try {
       const { id, title } = req.body;
       console.log(req.body);
@@ -63,8 +63,8 @@ router.put('/', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  const { email } = req.session;
-  if (email) {
+  const { user } = req.session;
+  if (user) {
     try {
       const { id } = req.params;
       console.log('da');

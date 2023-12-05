@@ -1,0 +1,47 @@
+.menu {
+  background: #222;
+  color: #fff;
+  padding: 1rem 0;
+  position: fixed;
+  height: 100%;
+  width: 240px;
+}
+
+.menu h3 {
+  font-size: 0.9rem;
+  padding: 1rem;
+}
+
+.menu a {
+  color: #eee;
+  padding: 1rem 0rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.5em 1em 0.5em 2em;
+  position: relative;
+}
+
+.menu a:hover {
+  color: #eee;
+  background: #333;
+}
+
+.link-active {
+  background: #447744;
+}
+
+.link-active:hover {
+  background: #447744 !important;
+}
+
+.link-active:after {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  background: #fff;
+  transform: rotate(45deg);
+  position: absolute;
+  right: -0.6rem;
+}

@@ -19,25 +19,10 @@ export default function InfoEdit(): JSX.Element {
 
   async function formSubmit(e): Promise<void> {
     e.preventDefault();
-    const data = new FormData(e.target);
-    const anydata = Object.fromEntries(data);
-    console.log(anydata);
-    const formdata = {
-      title: anydata.title,
-      new_price: 123,
-      image_url: anydata.img.name,
-      time_passage: anydata.time_passage,
-      short_description: anydata.short_description,
-      long_description: anydata.long_description,
-      intro_video: anydata.intro_video,
-    }
     const response = await fetch(`${import.meta.env.VITE_URL}/courses/${id}`, {
       credentials: 'include',
       method: 'PUT',
-      headers: {
-        'Content-type': 'Application/json',
-      },
-      body: JSON.stringify(formdata),
+      body: new FormData(e.target),
     });
 
     if (response.status === 200) {
@@ -46,6 +31,14 @@ export default function InfoEdit(): JSX.Element {
       dispatch(addCourse(result));
       delay();
     }
+    // const resp = await fetch(`${import.meta.env.VITE_URL}/courses/img/${id}`, {
+    //   credentials: 'include',
+    //   method: 'PUT',
+    //   body: data,
+    // })
+    // if (resp.status === 200) {
+    //   console.log('изменил фото');
+    // }
   }
 
   return (
@@ -55,7 +48,7 @@ export default function InfoEdit(): JSX.Element {
         <div className={styled.notextcontent}>
           <div className={styled.inpimg}>
             <span>Изображение</span>
-            <input type="file" name="img" />
+            <input type="file" name="image" />
           </div>
           <div className={styled.inpvideo}>
             <span>Видео</span>

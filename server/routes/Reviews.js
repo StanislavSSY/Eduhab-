@@ -1,11 +1,18 @@
 const router = require('express').Router();
 
-const { Review, Entrie } = require('../db/models');
+const { Review, Entrie, User } = require('../db/models');
 
 router.get('/:id', async (req, res) => {
+  console.log(`() ------- => зашли в отзывы`);
   const { id } = req.params;
   try {
-    const data = await Review.findAll({ where: { courseid: id } });
+    const data = await Review.findAll({
+      where:
+      { courseid: id },
+      include: {
+        model: User,
+      },
+    });
     const newdata = data.map((el) => el.get({ plain: true }));
     res.json(newdata);
   } catch (error) {

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link, Route, useNavigate, useParams } from "react-router-dom";
 import styled from "./LearnSideBarMenu.module.css";
 
-export default function LearnSideBarMenu() {
+export default function LearnSideBarMenu({ getTitle }) {
   const [menuItems, setMenuItems] = useState([]);
-  const { courseid } = useParams();
+  const { courseid, lessonid } = useParams();
 
   useEffect(() => {
     (async () => {
@@ -17,28 +17,38 @@ export default function LearnSideBarMenu() {
       if (response.status === 200) {
         const data = await response.json();
         setMenuItems(data.Modules);
-        console.log("⚠️  【】➜ ", data.Modules);
+        // console.log("⚠️  【】➜ ", data);
+        const lessonTitle = data.Modules.reduce((acc, el) => {
+          const lesson = el.Lessons.find((les) => {
+            return les.id == lessonid;
+          });
+          if (lesson) {
+            return lesson.title;
+          } else return acc;
+        }, "");
+
+        getTitle(lessonTitle);
       }
     })();
   }, []);
-  console.log("⚠️  【】➜ ", menuItems);
 
   return (
     <div className={styled.menu}>
-      <h2>Меню курса</h2>
-      <div>Название курса</div>
+      <h3>Меню курса</h3>
+      {/* <div>Название курса</div> */}
       <ul>
         {menuItems?.map((menuItem) => (
           <li key={menuItem.id}>
-            {menuItem.title}
+            <h3>{menuItem.title}</h3>
             <ul>
               {menuItem?.Lessons?.map((lesson) => (
-                <li
-                  key={lesson.id}
-                  //   onClick={() => handleMenuItemClick(lesson.id)}
-                  //   className={selectedMenuItem === lesson.id ? "active" : ""}
-                >
+                <li key={lesson.id}>
+                  {/* {lesson.id === lessonid ? getTitle(lesson.title) : null} */}
                   <Link
+                    onClick={() => getTitle(lesson.title)}
+                    className={
+                      lesson.id == lessonid ? styled["link-active"] : ""
+                    }
                     to={`/teach/courses/${courseid}/lesson/${
                       lesson.id
                     }/step/${1}`}

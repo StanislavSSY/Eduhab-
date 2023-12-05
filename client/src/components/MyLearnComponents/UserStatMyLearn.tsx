@@ -1,10 +1,8 @@
-import React from "react";
+import React from 'react';
 
-export default function UserStatMyLearn() {
-  const { days, allCompleted } = { days: 5, allCompleted: 275 };
+export default function UserStatMyLearn({ allCompleted }) {
   return (
     <div>
-      <div>{`${days} дней без перерыва`}</div>
       <div>{`${allCompleted} задач решено`}</div>
     </div>
   );

@@ -6,10 +6,6 @@ import { useState } from "react";
 export default function LearnCourse() {
   const [title, setTitle] = useState("");
 
-  const getTitle = (data) => {
-    setTitle(data);
-  };
-
   return (
     <div className={styled["page-main"]}>
       <LearnNavbar />

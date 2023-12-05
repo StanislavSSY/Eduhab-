@@ -1,6 +1,7 @@
 import React, { memo, useEffect, useState } from "react";
 import styled from "./LearnTextComponent.module.css";
 import { useParams } from "react-router-dom";
+import { useAppSelector } from "../../../store/hooks";
 export default function LearnTextComponent({ id, title }) {
   const [step, setStep] = useState({});
   const [buttonClicked, setButtonClicked] = useState(false);
@@ -22,6 +23,7 @@ export default function LearnTextComponent({ id, title }) {
       const response = await fetch(
         `${import.meta.env.VITE_URL}/entries/${courseid}/${stepNum}`,
         {
+          credentials: "include",
           method: "PATCH",
         }
       );
@@ -42,12 +44,18 @@ export default function LearnTextComponent({ id, title }) {
       </div>
       <div className={styled["footer-fragment"]}>
         <div className={styled["footer-content"]}>
-          <div
-            onClick={() => setButtonClicked((prev) => !prev)}
-            className={styled["button-next"]}
-          >
-            Следующий шаг <i class="fa fa-angle-right" aria-hidden="true"></i>
-          </div>
+          {buttonClicked ? (
+            <div className={styled["button-next"]}>
+              Следующий шаг <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </div>
+          ) : (
+            <div
+              onClick={() => setButtonClicked(true)}
+              className={styled["button-next"]}
+            >
+              Изучить
+            </div>
+          )}
         </div>
       </div>
     </>

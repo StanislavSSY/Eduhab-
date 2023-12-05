@@ -51,14 +51,14 @@ router.post('/', async (req, res) => {
 router.patch('/:courseid/:stepid', async (req, res) => {
   // const { userid } = req.session;
   const { courseid, stepid } = req.params;
-  const userid = 1;
+  const userid = req.session.user.id;
   const entrieProgress = await Entrie.findOne({
     where: { userid, courseid },
   });
   /* console.log(typeof entrieProgress.progress);
   const parse = JSON.parse(entrieProgress.progress); */
   const newProgress = structuredClone(entrieProgress.progress);
-  newProgress.push(Number(stepid));
+  if (!newProgress.includes(Number(stepid))) newProgress.push(Number(stepid));
 
   /* entrieProgress.progress = JSON.stringify(parse); */
   await entrieProgress.update({ progress: newProgress });

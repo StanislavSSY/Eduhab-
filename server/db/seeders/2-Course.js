@@ -9,7 +9,7 @@ module.exports = {
         {
           userid: 1,
           title: 'Введение в HTML',
-          image_url: '',
+          image_url: 'stock_avatar.jpg',
           rate: 5,
           time_passage: 47,
           quantity_people: 43,

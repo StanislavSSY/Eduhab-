@@ -8,6 +8,7 @@ import ButtomProfile from "../../ButtonProfile/ButtonProfile";
 export default function LearnNavbar(): JSX.Element {
   const [isUser, setIsUser] = useState<boolean>();
   const { user, isLoggedIn } = useAppSelector((store) => store.userSlice);
+
   const { steps } = useAppSelector((store) => store.stepsSlice);
   const { lessonid, stepNum, courseid } = useParams();
 

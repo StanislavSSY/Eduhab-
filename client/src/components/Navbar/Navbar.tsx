@@ -39,9 +39,6 @@ export default function Navbar(): JSX.Element {
           <NavLink to={'/'} className={styled.title}>
             Каталог
           </NavLink>
-          <NavLink to={'teach/courses'} className={styled.title}>
-            Преподавание
-          </NavLink>
           <NavLink to={'learn'} className={styled.title}>
             Моё обучение
           </NavLink>

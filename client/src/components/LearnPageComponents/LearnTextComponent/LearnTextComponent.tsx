@@ -1,7 +1,6 @@
 import React, { memo, useEffect, useState } from "react";
 import styled from "./LearnTextComponent.module.css";
 import { useParams } from "react-router-dom";
-import { useAppSelector } from "../../../store/hooks";
 export default function LearnTextComponent({ id, title }) {
   const [step, setStep] = useState({});
   const [buttonClicked, setButtonClicked] = useState(false);
@@ -23,8 +22,8 @@ export default function LearnTextComponent({ id, title }) {
       const response = await fetch(
         `${import.meta.env.VITE_URL}/entries/${courseid}/${stepNum}`,
         {
-          credentials: "include",
           method: "PATCH",
+          credentials: "include",
         }
       );
 

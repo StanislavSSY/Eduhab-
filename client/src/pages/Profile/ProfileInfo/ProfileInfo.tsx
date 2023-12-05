@@ -38,7 +38,11 @@ export default function ProfileInfo() {
   return (
     <div>
       <div>
-        <img src={`/img/${user.img_url}`} alt="avatar" />
+        <img
+          style={{ width: '200px' }}
+          src={`/img/${user.img_url}`}
+          alt="avatar"
+        />
         <h1>{`${user.firstName} ${user.lastName}`}</h1>
       </div>
       <div>

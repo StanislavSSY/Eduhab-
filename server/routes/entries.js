@@ -151,7 +151,7 @@ router.get("/info", async (req, res) => {
     });
     if (entries.length === 0) return res.json([]);
 
-    const { count } = await Entrie.findAndCountAll({
+    /* const { count } = await Entrie.findAndCountAll({
       where: { userid: id },
       include: {
         model: Course,
@@ -160,19 +160,35 @@ router.get("/info", async (req, res) => {
           include: { model: Lesson, include: { model: Step } },
         },
       },
-    });
+    }); */
+
+    const counts = [];
+    for (let i = 0; i < entries.length; i++) {
+      const { count } = await Entrie.findAndCountAll({
+        where: { userid: id, courseid: entries[i].courseid },
+        include: {
+          model: Course,
+          include: {
+            model: Module,
+            include: { model: Lesson, include: { model: Step } },
+          },
+        },
+      });
+      counts.push(count);
+    }
     const entriesData = entries.map((el) => el.get({ plain: true }));
     const courses = entriesData
-      .map((el) => {
+      .map((el, i) => {
         const courseInfo = {
           ...el.Course,
           progress: el.progress,
           updatedAt: el.updatedAt,
-          stepsNum: count,
+          stepsNum: counts[i],
         };
         return courseInfo;
       })
       .sort((a, b) => b.updatedAt - a.updatedAt);
+    console.log(courses);
     res.json(courses);
   } catch (error) {
     console.log(error);

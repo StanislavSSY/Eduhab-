@@ -23,8 +23,9 @@ router.get('/user', async (req, res) => {
   const { user } = req.session;
   if (user) {
     try {
-      const data = await Course.findAll({ where: { id: user.id } });
+      const data = await Course.findAll({ where: { userid: user.id } });
       const newdata = data.map((el) => el.get({ plain: true }));
+      console.log(newdata);
       res.json(newdata);
     } catch (error) {
       res.sendStatus(400);

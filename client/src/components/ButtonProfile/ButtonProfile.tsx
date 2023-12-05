@@ -47,11 +47,11 @@ export default function ButtonProfile({ logOut }) {
         >
           <ul>
             <li>
-              <Link to="user/profile">Профиль</Link>
+              <Link to="/user/profile">Профиль</Link>
             </li>
 
             <li>
-              <Link to="user/settings">Настройки</Link>
+              <Link to="/user/settings">Настройки</Link>
             </li>
 
             <li>Уведомления</li>

@@ -89,7 +89,7 @@ export default function ProfileSettings() {
         <div>Аватарка</div>
         <div>
           <div>
-            <img src={imageUrl} alt="avatar" />
+            <img style={{ width: '200px' }} src={imageUrl} alt="avatar" />
           </div>
           <div>
             <input

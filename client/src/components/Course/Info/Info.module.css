@@ -77,10 +77,16 @@
 
 .teachcontent {
   display: flex;
+  align-items: center;
+}
+
+.imgteachercont {
+  margin: 0 10px 0 0;
 }
 
 .imgteacher {
-  margin: 0 10px 0 0;
+  width: 52px;
+  height: 52px;
 }
 
 .teachfirstname {

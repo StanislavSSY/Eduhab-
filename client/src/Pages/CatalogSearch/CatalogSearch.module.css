@@ -12,3 +12,8 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.resultsearchtitle {
+  font-size: 25px;
+  margin: 0 0 25px 0;
+}

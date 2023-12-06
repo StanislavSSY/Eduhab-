@@ -1,44 +1,56 @@
 import React from 'react';
 import styled from './CardCourse.module.css';
 import { Link } from 'react-router-dom';
-import { CourseType } from '../../types';
+import { CardProps } from '../../types';
 
-export default function CardCourse({ el }: CourseType): JSX.Element {
+export default function CardCourse({ el }: CardProps): JSX.Element {
+  console.log(el.new_price);
+  console.log(el.old_price);
+  
+  
   return (
-    <Link className={styled['main-link']} to={'/'}>
-      <div className={styled['course-cards']}>
+    <div className={styled.cardcontainer}>
         <div className={styled['top-block']}>
-          <span className={styled.like}>
-            <i className="fa fa-heart" aria-hidden="true"></i>
-          </span>
           <div className={styled.text}>
             <Link to={`/course/${el.id}/promo`}>
-              <h3>{el.title}</h3>
+              <div className={styled.coursename}>{el.title}</div>
             </Link>
             <Link to={'/'}>
-              <span>
+              <div className={styled.authortitle}>
                 {el.User.firstName} {el.User.lastName}
-              </span>
+              </div>
             </Link>
           </div>
-          <img src={`/img/${el.image_url}`} />
+          <img className={styled.cardimg} src={`/img/${el.image_url}`} />
         </div>
         <div className={styled.widgets}>
-          <i className="fa fa-star" aria-hidden="true"></i> {el.rate}
-          <i className="fa fa-user" aria-hidden="true"></i> {el.quantity_people}
-          <i className="fas fa-clock"></i> {el.time_passage}
+          <i className="fa fa-star" aria-hidden="true"></i>
+          <div className={styled.contentwidget}>{el.rate}</div>
+          <i className="fa fa-user" aria-hidden="true"></i>
+          <div className={styled.contentwidget}>{el.quantity_people}</div>
+          <i className="fas fa-clock"></i>
+          <div className={styled.contentwidget}>{el.time_passage}</div>
           <i className="fa fa-address-card" aria-hidden="true"></i>
         </div>
 
         <div className={styled.price}>
-          <span className={styled['last-price']}>
-            {el.old_price && el.old_price}
-          </span>
-          <span className={styled['actual-price']}>
-            {el.new_price && el.new_price}
-          </span>
+          {el.new_price ? (
+            el.old_price ? (
+            <div>
+              <span className={styled['last-price']}>
+                {el.old_price && el.old_price}
+              </span>
+              <span className={styled['actual-price']}>
+                {el.new_price && el.new_price} ₽
+              </span>
+            </div>
+            ) : (
+            <span className={styled.withoutsale}>{el.new_price} ₽</span>
+            )
+          ) : (
+            <div className={styled['free-price']}>Бесплатно</div>
+          )}
         </div>
-      </div>
-    </Link>
+    </div>
   );
 }

@@ -21,6 +21,12 @@ export default function Search({ inpvalue, setInpValue, data, setData, filtredCo
     setInpValue(e.target.textContent);
   }
 
+  function handleKeyPress(event): void {
+    if (event.key === 'Enter') {
+      searchCoursesHandler();
+    }
+  }
+
   function searchCoursesHandler(): void {
     const newData = data.filter((el) => el.title.toLowerCase().includes(inpvalue.toLowerCase()))
     setNewData(newData);
@@ -42,6 +48,7 @@ export default function Search({ inpvalue, setInpValue, data, setData, filtredCo
                     spellCheck="false"
                     aria-label="Search"
                     type="search"
+                    onKeyDown={handleKeyPress}
                     onChange={(e) => setInpValue(e.target.value)}
                     value={inpvalue}
                   />

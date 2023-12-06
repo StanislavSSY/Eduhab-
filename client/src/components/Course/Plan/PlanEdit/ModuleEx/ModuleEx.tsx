@@ -8,6 +8,7 @@ import { BiX } from "react-icons/bi";
 export default function ModuleEx({ el, i, setFuncArr }): JSX.Element {
   const [inpmodels, setInpModels] = useState({ id: el.id, title: el.title });
   const dispatch = useAppDispatch();
+  const maxChars = 55;
 
   useEffect(() => {
     if (el.id) {
@@ -53,7 +54,10 @@ export default function ModuleEx({ el, i, setFuncArr }): JSX.Element {
   return (
     <div className={styled.modulexample}>
       <div className={styled.indexmodule}>{i + 1}</div>
-      <input onChange={modulschangeHandler} className={styled.inputtitle} type="text" name={`${el.id}`} value={inpmodels.title} />
+      <div>
+        <input onChange={modulschangeHandler} className={styled.inputtitle} type="text" maxLength={maxChars} name={`${el.id}`} value={inpmodels.title} />
+        <div className={styled.symbolsnumbers}>{inpmodels.title.length}/{maxChars}</div>
+      </div>
       <button onClick={delModuleHandler} className={styled.btndellesson}>
         <BiX />
       </button>

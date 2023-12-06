@@ -6,6 +6,7 @@ import CardCourseAuthor from '../CardCourseAuthor/CardCourseAuthor';
 import { CoursesTypes } from '../../../types';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { addCourses } from '../../../store/slice/coursesSLice';
+import Search from '../Searchv3/Search';
 
 
 export default function MainTeachingPage(): JSX.Element {
@@ -30,6 +31,7 @@ export default function MainTeachingPage(): JSX.Element {
       }
     })();
   }, [])
+
     return (
       <div className={styles.containeryourcourse}>
         <div className={styles.leftcont}>
@@ -38,8 +40,7 @@ export default function MainTeachingPage(): JSX.Element {
         <div className={styles.rightcont}>
           <div className={styles.title}>Курсы</div>
           <div className={styles.filtercourse}>
-            <div className={styles.filter}>Тут будет селект фильтр</div>
-            <div>Тут будет поиск</div>
+            <Search coursesState={coursesState} setCourses={setCourses} />
           </div>
           <div className={styles.coursecontainer}>
             {coursesState.map((el) => (

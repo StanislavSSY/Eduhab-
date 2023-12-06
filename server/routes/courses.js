@@ -25,7 +25,6 @@ router.get('/user', async (req, res) => {
     try {
       const data = await Course.findAll({ where: { userid: user.id } });
       const newdata = data.map((el) => el.get({ plain: true }));
-      console.log(newdata);
       res.json(newdata);
     } catch (error) {
       res.sendStatus(400);
@@ -81,35 +80,94 @@ router.put('/:id', upload.single('image'), async (req, res) => {
     long_description,
   } = req.body;
   const intro_video = req.body?.intro_video ? req.body.intro_video : null;
+  const newnewprice = new_price ? new_price : 0;
   try {
     if (req.file) {
       const image = req.file.path.slice(21);
       const course = await Course.findByPk(id);
       if (!course) res.sendStatus(400);
-      const updatedCourse = await course.update({
-        title,
-        new_price,
-        image_url: image,
-        time_passage,
-        short_description,
-        long_description,
-        intro_video,
-      });
-      const courseData = updatedCourse.get({ plain: true });
-      res.json(courseData);
+      if (newnewprice === 0) {
+        const updatedCourse = await course.update({
+          title,
+          old_price: 0,
+          new_price: newnewprice,
+          image_url: image,
+          time_passage,
+          short_description,
+          long_description,
+          intro_video,
+        });
+        const courseData = updatedCourse.get({ plain: true });
+        res.json(courseData);
+      } else {
+        if (course.new_price) {
+          const updatedCourse = await course.update({
+            title,
+            old_price: course.new_price,
+            new_price: newnewprice,
+            image_url: image,
+            time_passage,
+            short_description,
+            long_description,
+            intro_video,
+          });
+          const courseData = updatedCourse.get({ plain: true });
+          res.json(courseData);
+        } else {
+          const updatedCourse = await course.update({
+            title,
+            new_price: newnewprice,
+            image_url: image,
+            time_passage,
+            short_description,
+            long_description,
+            intro_video,
+          });
+          const courseData = updatedCourse.get({ plain: true });
+          res.json(courseData);
+        }
+      }
     } else {
       const course = await Course.findByPk(id);
       if (!course) res.sendStatus(400);
-      const updatedCourse = await course.update({
-        title,
-        new_price,
-        time_passage,
-        short_description,
-        long_description,
-        intro_video,
-      });
-      const courseData = updatedCourse.get({ plain: true });
-      res.json(courseData);
+      if (newnewprice === 0) {
+        const updatedCourse = await course.update({
+          title,
+          old_price: 0,
+          new_price: newnewprice,
+          time_passage,
+          short_description,
+          long_description,
+          intro_video,
+        });
+        const courseData = updatedCourse.get({ plain: true });
+        res.json(courseData);
+      } else {
+        if (course.new_price) {
+          const updatedCourse = await course.update({
+            title,
+            old_price: course.new_price,
+            new_price: newnewprice,
+            time_passage,
+            short_description,
+            long_description,
+            intro_video,
+          });
+          const courseData = updatedCourse.get({ plain: true });
+          res.json(courseData);
+        } else {
+          const updatedCourse = await course.update({
+            title,
+            new_price: newnewprice,
+            time_passage,
+            short_description,
+            long_description,
+            intro_video,
+          });
+          const courseData = updatedCourse.get({ plain: true });
+          res.json(courseData);
+        }
+      }
     }
   } catch (error) {
     console.log(error);

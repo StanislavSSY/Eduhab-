@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { useAppSelector } from '../../../store/hooks';
 
 import { BiX } from "react-icons/bi";
+import { addfullCourse } from '../../../store/slice/fullCourseSlice';
 
 export default function InfoEdit(): JSX.Element {
   const [vision, setVision] = useState(false);
@@ -24,6 +25,10 @@ export default function InfoEdit(): JSX.Element {
 
   async function formSubmit(e): Promise<void> {
     e.preventDefault();
+    const data = new FormData(e.target)
+    const newdata = Object.fromEntries(data);
+    console.log(newdata);
+    
     const response = await fetch(`${import.meta.env.VITE_URL}/courses/${id}`, {
       credentials: 'include',
       method: 'PUT',
@@ -34,6 +39,7 @@ export default function InfoEdit(): JSX.Element {
       const result = await response.json();
       console.log(result);
       dispatch(addCourse(result));
+      dispatch(addfullCourse(result));
       delay();
     }
   }
@@ -87,12 +93,6 @@ export default function InfoEdit(): JSX.Element {
           <div className={styled.title}>Название</div>
           <input className={styled.inputtitle} type="text" name="title" defaultValue={course.title} />
         </div>
-        <div className={styled.categoriescontainer}>
-          <div className={styled.categorytitle}>Категории курса</div>
-          <div className={styled.btntakecont}>
-            <button className={styled.btntakecat}>Выбрать категорию</button>
-          </div>
-        </div>
         <div className={styled.shortdescripcont}>
           <div className={styled.shortdescriptitle}>Краткое описание</div>
           <textarea className={styled.shortdescriparea} name="short_description" defaultValue={course.short_description} ></textarea>
@@ -104,6 +104,10 @@ export default function InfoEdit(): JSX.Element {
         <div className={styled.timecont}>
           <div className={styled.timetitle}>Время прохождения курса</div>
           <input className={styled.inptimepassage} type="text" name="time_passage" defaultValue={course.time_passage} />
+        </div>
+        <div className={styled.pricecont}>
+          <div className={styled.pricetitle}>Цена</div>
+          <input className={styled.inpprice} type="text" name="new_price" defaultValue={course.new_price}/>
         </div>
         <div className={styled.btncontainer}>
           <div className={styled.btnsavedinfocont}>

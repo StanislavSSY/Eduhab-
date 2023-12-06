@@ -13,16 +13,32 @@ export default function CatalogSearch(): JSX.Element {
   const navigate = useNavigate();
   const queryParams = new URLSearchParams(window.location.search);
   const q = queryParams.get('q');
-  
+  const free = queryParams.get('free');
 
   useEffect(() => {
     if (q) {
-      setInpValue(q);
-      const newArg = data.filter((course: CourseType) => {
-        return course.title.toLowerCase().includes(q.toLowerCase());
-      })
-      setNewData(newArg);
-      setFlag(true);
+      if (free) {
+        setInpValue(q);
+        const newArg = data.filter((course: CourseType) => {
+          return course.title.toLowerCase().includes(q.toLowerCase());
+        })
+        const superNewArg = newArg.filter((course: CourseType) => course.new_price === 0);
+        setNewData(superNewArg);
+        setFlag(true);
+      } else {
+        setInpValue(q);
+        const newArg = data.filter((course: CourseType) => {
+          return course.title.toLowerCase().includes(q.toLowerCase());
+        })
+        setNewData(newArg);
+        setFlag(true);
+      }
+    } else {
+      if (free) {
+        const arg = data.filter((course: CourseType) => course.new_price === 0)
+        setNewData(arg);
+        setFlag(true);
+      }
     }
   }, [data])
 

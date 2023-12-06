@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from './Search.module.css';
 
 export default function Search({ inpvalue, setInpValue, data, setData, filtredCourses, setNewData }): JSX.Element {
-
+  const [free, setFree] = useState(false);
 
   useEffect(() => {
     void(async() => {
@@ -28,8 +28,14 @@ export default function Search({ inpvalue, setInpValue, data, setData, filtredCo
   }
 
   function searchCoursesHandler(): void {
-    const newData = data.filter((el) => el.title.toLowerCase().includes(inpvalue.toLowerCase()))
-    setNewData(newData);
+    if (free) {
+      const newData = data.filter((el) => el.title.toLowerCase().includes(inpvalue.toLowerCase()))
+      const newArgData = newData.filter((el) => el.new_price === 0);
+      setNewData(newArgData);
+    } else {
+      const newData = data.filter((el) => el.title.toLowerCase().includes(inpvalue.toLowerCase()))
+      setNewData(newData);
+    }
   }
 
 
@@ -71,12 +77,7 @@ export default function Search({ inpvalue, setInpValue, data, setData, filtredCo
         </div>
 
         <label className={styled['form-checkbox']}>
-          <input type="checkbox" />
-          <span>С сертификатами</span>
-        </label>
-
-        <label className={styled['form-checkbox']}>
-          <input type="checkbox" />
+          <input onChange={() => setFree(!free)} type="checkbox" />
           <span>Бесплатные</span>
         </label>
 

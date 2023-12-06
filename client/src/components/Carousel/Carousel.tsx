@@ -16,11 +16,15 @@ const Carousel = ({ children }) => {
   const slider = useRef(null);
 
   function prevHandler(): void {
+    console.log(position);
+    
     if (position === 0) {
       setPrev(true);
     } else {
       setNext(false);
-      position += 660;
+
+      position += 990
+
       slider.current.childNodes.forEach((elem) => {
         elem.style = `
         transition: .5s;
@@ -31,12 +35,17 @@ const Carousel = ({ children }) => {
   }
 
   function nextHandler(): void {
-    if (position <= -(children.length - 4) * 330) {
-      setNext(true);
-      setPrev(false);
+
+    console.log(children.length)
+    console.log(position <= -(children.length - 1) * 330);
+    
+    console.log(position);
+    if (position <= -(children.length - 1) * 330) {
+      setNext(true)
+      setPrev(false)
     } else {
-      setPrev(false);
-      position -= 660;
+      setPrev(false)
+      position -= 990
       slider.current.childNodes.forEach((elem) => {
         elem.style = `
         transition: .5s;

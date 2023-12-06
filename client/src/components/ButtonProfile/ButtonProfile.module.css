@@ -30,8 +30,6 @@
 
 .dropdown-menu ul {
   list-style-type: none;
-  display: block;
-  color: #bbb;
 }
 
 .dropdown-menu hr {
@@ -42,11 +40,22 @@
 }
 
 .dropdown-menu li {
-  cursor: pointer;
-  padding: 0.5rem 1.2rem 0.5rem 0;
 }
 
-.dropdown-menu li:hover {
+.dropdown-menu a,
+.logout {
+  border: none;
+  display: block;
+  color: #bbb;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem 1.2rem 0.5rem 0;
+  transition: 0s;
+}
+
+.dropdown-menu a:hover,
+.logout:hover {
   color: #5aa95a;
   background: #333;
+  transition: 0s;
 }

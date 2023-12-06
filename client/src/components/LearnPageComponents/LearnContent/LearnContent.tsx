@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import { initSteps } from "../../../store/thunkActions";
 import LearnTextComponent from "../LearnTextComponent/LearnTextComponent";
 
-function LearnContent({ title, setUpdateNav }) {
+function LearnContent({ title }) {
   const dispatch = useAppDispatch();
   const { steps } = useAppSelector((store) => store.stepsSlice);
   const [actualComponent, setActualComponent] = useState(<></>);
@@ -20,11 +20,7 @@ function LearnContent({ title, setUpdateNav }) {
     if (stepFinded) {
       if (stepFinded?.type === "TEXT") {
         setActualComponent(
-          <LearnTextComponent
-            title={title}
-            id={stepFinded.id}
-            setUpdateNav={setUpdateNav}
-          />
+          <LearnTextComponent title={title} id={stepFinded.id} />
         );
       }
     }

@@ -1,10 +1,11 @@
 import React, { memo, useEffect, useState } from "react";
 import styled from "./LearnTextComponent.module.css";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { addProgress } from "../../../store/slice/entrySlice";
+import LearnComment from "../LearnComment/LearnComment";
 
-export default function LearnTextComponent({ id, title, setUpdateNav }) {
+export default function LearnTextComponent({ id, title }) {
   const [step, setStep] = useState({});
   const { entry } = useAppSelector((store) => store.entrySlice);
   const { steps } = useAppSelector((store) => store.stepsSlice);
@@ -94,6 +95,7 @@ export default function LearnTextComponent({ id, title, setUpdateNav }) {
               </div>
             )}
           </div>
+          <LearnComment />
         </div>
       </div>
     </>

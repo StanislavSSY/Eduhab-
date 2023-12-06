@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import styles from "./FindCourse.module.css";
 import { useNavigate } from "react-router-dom";
 
-
 export default function FindCourse(): JSX.Element {
+
   const [inpData, setInpData] = useState('');
   const [free, setFree] = useState(false);
   const navigate = useNavigate();
@@ -13,8 +13,9 @@ export default function FindCourse(): JSX.Element {
     console.log(free); 
   },[inpData, free]);
 
-  function handleKeyPress (event): void {
-    if (event.key === 'Enter') {
+
+  function handleKeyPress(event): void {
+    if (event.key === "Enter") {
       redirectHandler();
     }
   }

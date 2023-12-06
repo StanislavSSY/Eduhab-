@@ -2,11 +2,12 @@
   width: 300px;
   height: 90px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border-radius: 15px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
   margin: 10px 15px 10px 15px;
+  padding: 1rem;
   transition: 1s;
 }
 
@@ -34,7 +35,8 @@
   display: flex;
 }
 
-.imgcontainer, .imgauthor {
+.imgcontainer,
+.imgauthor {
   width: 60px;
   height: 60px;
 }
@@ -43,7 +45,8 @@
   margin-right: 10px;
 }
 
-.coursecontainer, .subscontainer {
+.coursecontainer,
+.subscontainer {
   font-size: 13px;
-  color: rgba(0, 0, 0, 0.6)
+  color: rgba(0, 0, 0, 0.6);
 }

@@ -41,6 +41,7 @@ router.post('/reg', async (req, res) => {
         firstName,
         lastName,
         email,
+        img_url: 'stock_avatar.jpg',
         password: hash,
         isAdmin: false,
       });

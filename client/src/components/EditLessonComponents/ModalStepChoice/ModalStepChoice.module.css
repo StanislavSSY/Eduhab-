@@ -1,0 +1,140 @@
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  z-index: 1;
+
+  height: 100vh;
+}
+
+.modal-full {
+  display: block;
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.modal-bg {
+  background: rgba(0, 0, 0, 0.9);
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 100%;
+  z-index: 24;
+  color: #000;
+  transform: translateZ(0);
+}
+
+.modal-block {
+  width: 900px;
+  max-width: 100%;
+  position: relative;
+  margin: 10vh auto;
+  transform: translate(0);
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-inner {
+  border-radius: 5px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-close-div {
+  margin-left: auto;
+  display: block;
+  color: #000;
+  cursor: pointer;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 10;
+  opacity: 0.7;
+}
+svg {
+  position: relative;
+}
+.svg {
+  transition: 1s;
+}
+
+.svg:hover {
+  transform: scale(1.2);
+  opacity: 1;
+  fill: red;
+  color: red;
+}
+.svg:hover > .path {
+  opacity: 1;
+  fill: red;
+  color: red;
+}
+
+.path {
+  transition: 1s;
+  fill: black;
+}
+
+.modal-content {
+  padding: 10px 30px 20px;
+  position: relative;
+}
+
+.modal-content-wrapper {
+  padding: 1.875em;
+}
+
+.modal-wrapper h1 {
+  text-align: center;
+  margin: 0 0 1em;
+  font-weight: 400;
+}
+
+.variant-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.modal-wrapper li {
+  flex-basis: 49%;
+  gap: 10px;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  padding: 0.75em;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modal-wrapper li:hover {
+  background-color: #ececec;
+}
+
+.li-title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+}
+.li-text {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 15px;
+  color: #a5a5a5;
+  vertical-align: middle;
+}

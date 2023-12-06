@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const router = require('express').Router();
 const upload = require('../middlewares/upload');
 
-const { User } = require('../db/models');
+const { User, Course } = require('../db/models');
 
 router.post('/login', async (req, res) => {
   try {
@@ -103,10 +103,25 @@ router.patch('/img', upload.single('image'), async (req, res) => {
     const image = req.file.path.slice(21);
     await userData.update({ img_url: image });
     req.session.user.img_url = image;
-    res.sendStatus(200);
-  } catch (error) {
+    res.json(req.session.user);
+  } catch (userData) {
     console.log(error);
     res.sendStatus(500);
+  }
+});
+
+router.get('/', async (req, res) => {
+  try {
+    const data = await User.findAll({
+      include: {
+        model: Course,
+      },
+    });
+    const newdata = data.map((el) => el.get({ plain: true }));
+    const filterdata = newdata.filter((el) => el.Courses.length >= 1);
+    res.json(filterdata);
+  } catch (error) {
+    res.sendStatus(400);
   }
 });
 

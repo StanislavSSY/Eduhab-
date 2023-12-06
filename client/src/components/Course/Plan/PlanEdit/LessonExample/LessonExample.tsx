@@ -10,6 +10,7 @@ function LessonExample({ elem, i, l, setFuncArr }): JSX.Element {
   const [inpData, setInpData] = useState<InpType>({ id: elem.id, title: elem.title });
   const dispatch = useAppDispatch();
   const id = elem.id;
+  const maxChars = 55;
 
   useEffect(() => {
     if (elem.id) {
@@ -56,13 +57,16 @@ function LessonExample({ elem, i, l, setFuncArr }): JSX.Element {
 
   return (
     <div className={styled.lessonexample} key={elem.id}>
-      <div className={styled.containerleftcont}>
-        <div className={styled.lessonindex}>{i}.{l}</div>
-        <input onChange={lessonsChangeHandler} className={styled.inputlessontitle} type="text" name={`${elem.id}`} value={inpData.title} />
+      <div className={styled.maincontent}>
+        <div className={styled.containerleftcont}>
+            <div className={styled.lessonindex}>{i}.{l}</div>
+            <input onChange={lessonsChangeHandler} className={styled.inputlessontitle} type="text" maxLength={maxChars} name={`${elem.id}`} value={inpData.title} />
+        </div>
+        <button onClick={delLessonHandler} className={styled.btndellesson}>
+          <BiX />
+        </button>
       </div>
-      <button onClick={delLessonHandler} className={styled.btndellesson}>
-        <BiX />
-      </button>
+      <div className={styled.symbolsnumbers}>{inpData.title.length}/{maxChars}</div>
   </div>
   )
 }

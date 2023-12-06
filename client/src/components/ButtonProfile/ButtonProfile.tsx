@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useAppSelector } from '../../store/hooks';
-import styled from './ButtonProfile.module.css';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import { useAppSelector } from "../../store/hooks";
+import styled from "./ButtonProfile.module.css";
+import { Link } from "react-router-dom";
 
 export default function ButtonProfile({ logOut }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,40 +25,41 @@ export default function ButtonProfile({ logOut }) {
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
   return (
-    <div className={styled['dropdown-container']} ref={dropdownRef}>
-      <div className={styled['button-icon']} onClick={toggleMenu}>
+    <div className={styled["dropdown-container"]} ref={dropdownRef}>
+      <div className={styled["button-icon"]} onClick={toggleMenu}>
         {firstName[0].toLocaleUpperCase()}
         {lastName[0].toLocaleUpperCase()}
       </div>
 
       {isOpen && (
         <div
-          className={styled['dropdown-menu']}
+          className={styled["dropdown-menu"]}
           onBlur={closeMenu}
           tabIndex="0"
         >
           <ul>
             <li>
-              <Link to="/user/profile">Профиль</Link>
+              <Link onClick={closeMenu} to="/user/profile">
+                Профиль
+              </Link>
             </li>
 
             <li>
-              <Link to="/user/settings">Настройки</Link>
+              <Link onClick={closeMenu} to="/user/settings">
+                Настройки
+              </Link>
             </li>
-
-            <li>Уведомления</li>
-            <li>Что нового</li>
             <hr />
             <li>
               <div className={styled.logout} onClick={logOut}>
-                Выход {''}
+                Выход {""}
                 <i className="fa fa-sign-out" aria-hidden="true"></i>
               </div>
             </li>

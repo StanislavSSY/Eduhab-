@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react";
 import styles from "./FindCourse.module.css";
 import { useNavigate } from "react-router-dom";
 
-
 export default function FindCourse(): JSX.Element {
-  const [inpData, setInpData] = useState('');
+  const [inpData, setInpData] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     console.log(inpData);
-  },[inpData]);
+  }, [inpData]);
 
-  function handleKeyPress (event): void {
-    if (event.key === 'Enter') {
+  function handleKeyPress(event): void {
+    if (event.key === "Enter") {
       redirectHandler();
     }
   }
@@ -20,7 +19,6 @@ export default function FindCourse(): JSX.Element {
   function redirectHandler(): void {
     navigate(`/catalog/search?q=${inpData}`);
   }
-  
 
   return (
     <div className={styles["search-form"]}>

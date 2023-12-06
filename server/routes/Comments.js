@@ -11,6 +11,7 @@ router.get("/:id", async (req, res) => {
       // console.log("⚠️  【】➜ ", data);
       const newdata = data.map((el) => el.get({ plain: true }));
       res.json(newdata);
+      console.log("⚠️  【newdata】➜ ", newdata);
     } catch (error) {
       res.sendStatus(400);
     }

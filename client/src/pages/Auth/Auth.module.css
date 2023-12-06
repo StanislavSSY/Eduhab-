@@ -4,6 +4,7 @@
 .AppAuth {
   font-family: sans-serif;
   text-align: center;
+  margin: 50px 0;
 }
 
 .AppAuth h1 {
@@ -36,9 +37,11 @@
 
 .AppAuth button {
   cursor: pointer;
-  border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
+  border-radius: 5px;
+  /* border: 1px solid #ff4b2b;
+  background-color: #ff4b2b; */
+  border: 1px solid #235227;
+  background-color: #235227;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
@@ -46,6 +49,7 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  margin-top: 4px;
 }
 
 .AppAuth button:active {
@@ -69,6 +73,7 @@
   background-color: #ffffff;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   justify-content: center;
   flex-direction: column;
   padding: 0 50px;
@@ -80,7 +85,7 @@
   background-color: #eee;
   border: none;
   padding: 12px 15px;
-  margin: 8px 0;
+  margin: 4px 0;
   width: 100%;
 }
 
@@ -157,8 +162,9 @@
 
 .overlay {
   background: #ff416c;
-  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  /* background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+  background: linear-gradient(to right, #ff4b2b, #ff416c); */
+  background: linear-gradient(to right, #59c761, #2b5f2f);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;

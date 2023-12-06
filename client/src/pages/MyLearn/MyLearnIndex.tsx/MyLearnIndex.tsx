@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import CardProgress from '../../../components/MyLearnComponents/CardProgress';
-import UserStatMyLearn from '../../../components/MyLearnComponents/UserStatMyLearn';
-import CardMinMyLearn from '../../../components/MyLearnComponents/CardMinMyLearn';
-import { useAppSelector } from '../../../store/hooks';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import CardProgress from "../../../components/MyLearnComponents/CardProgress";
+import UserStatMyLearn from "../../../components/MyLearnComponents/UserStatMyLearn";
+import CardMinMyLearn from "../../../components/MyLearnComponents/CardMinMyLearn";
+import { useAppSelector } from "../../../store/hooks";
+import styled from "./MyLearnIndex.module.css";
+import axios from "axios";
 
 export default function MyLearnIndex() {
   const [courses, setCourses] = useState([]);
@@ -39,13 +40,13 @@ export default function MyLearnIndex() {
   }, []);
 
   return (
-    <>
+    <div className={styled.container}>
       <h1>Моё обучение</h1>
       {courses.length > 0 && (
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'space-between',
+            display: "flex",
+            justifyContent: "space-between",
           }}
         >
           <CardProgress course={courses[0]} />
@@ -58,6 +59,6 @@ export default function MyLearnIndex() {
           <CardMinMyLearn course={el} key={el.id} />
         ))}
       </div>
-    </>
+    </div>
   );
 }

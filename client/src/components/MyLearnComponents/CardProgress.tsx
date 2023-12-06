@@ -1,19 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "./CardProgress.module.css";
 export default function CardProgress({ course }): JSX.Element {
   return (
-    <div>
-      <div>
+    <div className={styled.container}>
+      <div className={styled["top-box"]}>
         <h3>{course.title}</h3>
-        <img
-          style={{ width: '100px' }}
-          src={`/img/${course.image_url}`}
-          alt={`${course.title} image`}
-        />
+        <img src={`/img/${course.image_url}`} alt={`${course.title} image`} />
       </div>
       <div>
-        <progress value={Number(course.completed) / Number(course.stepsNum)} />
+        <div className={styled["progress-conteiner"]}>
+          <div
+            className={styled.progress}
+            style={{
+              width: `${
+                (Number(course.completed) / Number(course.stepsNum)) * 100
+              }%`,
+            }}
+          ></div>
+        </div>
+        {/* <progress value={Number(course.completed) / Number(course.stepsNum)} /> */}
         <p>{`${Math.floor(
           (Number(course.completed) / Number(course.stepsNum)) * 100
         )}%`}</p>

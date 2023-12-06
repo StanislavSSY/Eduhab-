@@ -1,44 +1,44 @@
 import React, { useState } from "react";
 import { useCollapse } from "react-collapsed";
 import { Link } from "react-router-dom";
+import styled from "./MenuMyLearn.module.css";
 
 export default function MenuMyLearn() {
   const [isExpanded, setExpanded] = useState(true);
   const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
   return (
-    <nav>
+    <nav className={styled.nav}>
       <ul>
         <li>
           <Link to="">
-            <button type="button">Моё обучение</button>
+            <i class="fa fa-home" aria-hidden="true"></i> Моё обучение
           </Link>
         </li>
         <li>
-          <button
+          <div
             {...getToggleProps({
               onClick: () => setExpanded((prevExpanded) => !prevExpanded),
             })}
           >
-            <span>Курсы</span>
-          </button>
+            <span>
+              <i class="fa fa-graduation-cap" aria-hidden="true"></i> Курсы{" "}
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </div>
           <ul {...getCollapseProps()}>
             <ul>
               <li>
-                <Link to="courses">
-                  <button type="button">Прохожу</button>
-                </Link>
+                <Link to="courses">Прохожу</Link>
               </li>
               <li>
-                <Link to="favorites">
-                  <button type="button">Избранное</button>
-                </Link>
+                <Link to="favorites">Избранное</Link>
               </li>
             </ul>
           </ul>
         </li>
         <li>
           <Link to="notifications">
-            <button type="button">Уведомления</button>
+            <i class="fa fa-bell" aria-hidden="true"></i> Уведомления
           </Link>
         </li>
       </ul>

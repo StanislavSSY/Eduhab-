@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import CardMinMyLearn from '../../../components/MyLearnComponents/CardMinMyLearn';
-import axios from 'axios';
-import { useAppSelector } from '../../../store/hooks';
+import React, { useEffect, useState } from "react";
+import CardMinMyLearn from "../../../components/MyLearnComponents/CardMinMyLearn";
+import axios from "axios";
+import { useAppSelector } from "../../../store/hooks";
 
 export default function MyLearnCourses() {
   const [courses, setCourses] = useState([]);

@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "../Promo/Promo.module.css";
+
+
+import Stripe from "../../components/Stripe/Stripe";
+
 import { Link, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { addfullCourse } from "../../store/slice/fullCourseSlice";
@@ -84,6 +88,7 @@ export default function Promo(): JSX.Element {
   }
 
 
+
   return (
     <div className={styled["main-promo"]}>
       <div className={styled["page-fragment"]}>
@@ -113,6 +118,7 @@ export default function Promo(): JSX.Element {
           <p>{course.long_description}</p>
         </div>
         <div className={styled["side-bar"]}>
+
           {course.new_price ? (
             <>
               <div className={styled.price}>
@@ -140,6 +146,7 @@ export default function Promo(): JSX.Element {
             </>
             )
           )}
+
         </div>
       </section>
       <div className={styled.footerpromopage}>

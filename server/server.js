@@ -49,12 +49,15 @@ app.get("/", (req, res) => {
   res.send("Привет!");
 });
 
-app.use("/users", require("./routes/users"));
-app.use("/comments", require("./routes/Comments"));
-app.use("/reviews", require("./routes/Reviews"));
-app.use("/study", require("./routes/Study"));
-app.use("/modules", require("./routes/Modules"));
-app.use("/lessons", require("./routes/Lessons"));
+
+app.use('/stripe', require('./routes/Stripe'));
+app.use('/users', require('./routes/users'));
+app.use('/comments', require('./routes/Comments'));
+app.use('/reviews', require('./routes/Reviews'));
+app.use('/study', require('./routes/Study'));
+app.use('/modules', require('./routes/Modules'));
+app.use('/lessons', require('./routes/Lessons'));
+
 
 app.use("/courses", require("./routes/courses"));
 app.use("/steps", require("./routes/steps"));

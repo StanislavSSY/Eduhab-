@@ -1,9 +1,10 @@
 .lessonexample {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
   width: 650px;
   height: 100px;
+  margin: 0 0 25px 0;
 }
 
 .inputlessontitle {
@@ -57,4 +58,17 @@
 
 .btncreatelesson.disable:hover {
   color: rgba(157,36,63, 0.3);
+}
+
+.headercontentlesson {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 650px;
+  height: 100px;
+}
+
+.sybmolsnumbers {
+  font-size: 13px;
+  margin: 5px 0 0 350px;
 }

@@ -313,3 +313,7 @@
   transition: 1s;
   transform: translateY(-25px);
 }
+
+.conteinerconstructoredit {
+  margin: 0 0 35px 0;
+}

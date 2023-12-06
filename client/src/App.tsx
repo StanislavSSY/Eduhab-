@@ -23,10 +23,6 @@ import Course from './components/Course/Course';
 import Info from './components/Course/Info/Info';
 import EditLesson from './components/EditLessonComponents/EditLesson';
 
-import './App.css';
-
-import LearnCourse from './Pages/LearnCourse/LearnCourse';
-
 //import './App.css';
 
 import Stripe from './components/Stripe/Stripe';

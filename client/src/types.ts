@@ -38,6 +38,10 @@ export type VideoProps = {
   yid: string;
 }
 
+export type CardProps = {
+  el: CourseType
+}
+
 export type ReviewsType = ReviewType[]
 
 export type CourseType = {
@@ -55,6 +59,7 @@ export type CourseType = {
   intro_video: string;
   createdAt: Date;
   updatedAt: Date;
+  User?: UserType
 };
 
 export type CoursesType = {

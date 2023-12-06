@@ -3,42 +3,26 @@
   display: flex;
   flex-direction: column;
   justify-content: baseline;
-  padding: 1.2rem 1rem;
+  padding: 15px;
 
   font-size: 0.8rem;
   /* background: red; */
 }
 
-.course-cards h3 {
-  font-size: 1.2rem;
-}
-
-.main-link {
-  text-decoration: none;
-  border-radius: 1rem;
-  display: block;
-  width: 324px;
-  box-shadow: 0 0 4px -1px #bfb9b9;
-}
 .main-link,
 a {
   color: #222;
 }
 
-.main-link:hover {
-  box-shadow: 0 0 15px -4px rgb(154, 183, 255);
+.text {
+  height: 72px;
 }
 
 .text a {
   text-decoration: none;
-  /* font-size: 1.2rem; */
   margin-bottom: 0.7rem;
-  /* font-weight: bold; */
 }
 
-.text span {
-  /* font-size: 0.9rem; */
-}
 
 .text a:hover {
   text-decoration: underline;
@@ -46,65 +30,7 @@ a {
 
 .top-block {
   display: flex;
-  margin-bottom: 2rem;
-}
-
-.like {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  /* padding: 0.2rem 0.3rem; */
-  /* height: 20px;
-  width: 20px; */
-  /* border: 1px solid #eee; */
-  /* border-radius: 1rem;
-  background: #f6f6f6; */
-}
-
-.like i:hover {
-  background: #e9f9e9;
-  border: 1px solid #56ae56;
-}
-
-.like i {
-  height: 20px;
-  width: 20px;
-  color: #999;
-  line-height: 1.2rem;
-  display: flex;
-  align-items: center;
-  padding: 0.75rem;
-  background: #000;
-  border: 1px solid #eee;
-  border-radius: 3rem;
-  background: #f6f6f6;
-  justify-content: center;
-}
-
-.like:hover::before {
-  content: "Хочу пройти";
-  background: #3a3c47;
-  color: white;
-  padding: 0.5rem;
-  /* min-width: 80px; */
-  position: absolute;
-  top: -2.5rem;
-  left: -2.2rem;
-  white-space: nowrap;
-  z-index: 1;
-  border-radius: 4px;
-  transition: 5s;
-}
-.like:hover::after {
-  content: "";
-  width: 1rem;
-  height: 1rem;
-  background: #3a3c47;
-  position: absolute;
-  transform: rotate(45deg);
-  bottom: 2rem;
-  left: 5px;
-  z-index: 0;
+  margin-bottom: 55px;
 }
 
 .text {
@@ -112,7 +38,6 @@ a {
   flex-direction: column;
 }
 .course-cards img {
-  /* position: absolute; */
   top: 0;
   right: 0;
   width: 72px;
@@ -121,10 +46,11 @@ a {
 }
 
 .widgets i {
-  /* color: #999; */
-  margin-bottom: 1rem;
-  margin-left: 0.5rem;
-  /* font-size: 0.9rem; */
+  font-size: 12px;
+}
+
+.contentwidget {
+  font-size: 12px;
 }
 
 .widgets {
@@ -135,16 +61,57 @@ a {
 
 .price {
   display: flex;
-  gap: 0.5rem;
+  margin: 15px 0 0 0;
 }
 
 .last-price {
+  margin: 0 5px 0 0;
+  font-size: 12px;
   text-decoration: line-through;
   color: #6c7bdf;
+}
+
+.free-price {
+  font-size: 14px;
+  font-weight: bold;
+  color: #6c6;
 }
 
 .actual-price {
   color: #ff7965;
   font-size: 1rem;
   font-weight: bold;
+}
+
+.withoutsale {
+  color : #6c7bdf;
+  font-weight: bold;
+}
+
+.coursename {
+  font-weight: bold;
+  width: 205px;
+  word-break: break-all;
+  
+}
+
+.cardcontainer {
+  padding: 15px;
+  width: 324px;
+  height: 210px;
+  box-shadow: 0 0 4px -1px #bfb9b9;
+  border-radius: 10px;
+}
+
+.cardcontainer:hover {
+  box-shadow: 0 0 15px -4px rgb(154, 183, 255);
+}
+
+.cardimg {
+  width: 72px;
+  height: 72px;
+}
+
+.authortitle {
+  font-size: 13px;
 }

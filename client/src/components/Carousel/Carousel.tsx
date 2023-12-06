@@ -11,6 +11,8 @@ const Carousel = ({ children }) => {
   const slider = useRef(null);
 
   function prevHandler(): void {
+    console.log(position);
+    
     if (position === 0) {
       setPrev(true)
     } else {
@@ -26,7 +28,10 @@ const Carousel = ({ children }) => {
   }
 
   function nextHandler(): void {
-    if (position <= -(children.length - 4) * 330) {
+    console.log(position <= -(children.length - 3) * 330);
+    
+    console.log(position);
+    if (position <= -(children.length - 3) * 330) {
       setNext(true)
       setPrev(false)
     } else {

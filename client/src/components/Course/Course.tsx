@@ -80,7 +80,7 @@ export default function Course(): JSX.Element {
               </li>
             </ul>
           </li>
-          <li className={styled.mainli}>
+          {/* <li className={styled.mainli}>
             <button onClick={() => setSettingsIsOpen(!settingsIsOpen)} className={styled.btnlist}>
               <div className={styled.listcont}>Настройки</div>
             </button>
@@ -89,7 +89,7 @@ export default function Course(): JSX.Element {
                 <Link className={styled.reflink} to={'publication'}>Публикация</Link>
               </li>
             </ul>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className={styled.rightcont}>

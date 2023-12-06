@@ -47,8 +47,8 @@ export default function Info(): JSX.Element {
             <div className={styled.teachercont}>
                 <div className={styled.teacherheader}>Преподаватели</div>
                 <div className={styled.teachcontent}>
-                  <div className={styled.imgteacher}>
-                    <img src="/src/assets/react.svg" alt="" />
+                  <div className={styled.imgteachercont}>
+                    <img className={styled.imgteacher} src={`/img/${user.img_url}`} alt="" />
                   </div>
                   <div className={styled.teachfirstname}>{user.firstName}</div>
                   <div className={styled.teachlastname}>{user.lastName}</div>

@@ -3,8 +3,6 @@ import styles from "./FindCourse.module.css";
 import { useNavigate } from "react-router-dom";
 
 
-
-
 export default function FindCourse(): JSX.Element {
   const [inpData, setInpData] = useState('');
   const navigate = useNavigate();
@@ -12,6 +10,12 @@ export default function FindCourse(): JSX.Element {
   useEffect(() => {
     console.log(inpData);
   },[inpData]);
+
+  function handleKeyPress (event): void {
+    if (event.key === 'Enter') {
+      redirectHandler();
+    }
+  }
 
   function redirectHandler(): void {
     navigate(`/catalog/search?q=${inpData}`);
@@ -33,6 +37,7 @@ export default function FindCourse(): JSX.Element {
                     spellCheck="false"
                     aria-label="Search"
                     type="search"
+                    onKeyDown={handleKeyPress}
                     onChange={(e) => setInpData(e.target.value)}
                   />
                 </div>

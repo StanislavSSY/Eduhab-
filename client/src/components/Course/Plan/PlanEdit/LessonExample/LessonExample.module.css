@@ -1,5 +1,13 @@
 .lessonexample {
   display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 650px;
+  height: 100px;
+}
+
+.maincontent {
+  display: flex;
   justify-content: space-around;
   align-items: center;
   width: 650px;
@@ -37,6 +45,17 @@
   align-items: center;
 }
 
+.inpwithi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .lessonindex {
   margin: 0 10px 0 0;
+}
+
+.symbolsnumbers {
+  margin: 0 0 0 65px;
+  font-size: 13px;
 }

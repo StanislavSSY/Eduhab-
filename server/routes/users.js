@@ -103,8 +103,8 @@ router.patch('/img', upload.single('image'), async (req, res) => {
     const image = req.file.path.slice(21);
     await userData.update({ img_url: image });
     req.session.user.img_url = image;
-    res.sendStatus(200);
-  } catch (error) {
+    res.json(req.session.user);
+  } catch (userData) {
     console.log(error);
     res.sendStatus(500);
   }

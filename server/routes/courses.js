@@ -41,7 +41,7 @@ router.post('/', async (req, res) => {
       title,
       old_price: null,
       new_price: null,
-      image_url: '',
+      image_url: 'stock_avatar.jpg',
       rate: 5,
       time_passage: 0,
       quantity_people: 1,

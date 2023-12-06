@@ -49,7 +49,10 @@ export default function ProfileSettings() {
         method: 'PATCH',
         body: formData,
       });
-      dispatch(updateImg(imageUrl));
+      if (response.status === 200) {
+        const dataUser = await response.json();
+        dispatch(updateImg(dataUser.img_url));
+      }
     }
   };
 

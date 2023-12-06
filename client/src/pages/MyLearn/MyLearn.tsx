@@ -11,14 +11,12 @@ import Footer from "../../components/Footer/Footer";
 export default function MyLearn() {
   return (
     <>
-      <Navbar />
       <div className={styled.container}>
         <MenuMyLearn />
         <div>
           <Outlet />
         </div>
       </div>
-      <Footer />
     </>
   );
 }

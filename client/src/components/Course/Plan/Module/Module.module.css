@@ -30,6 +30,10 @@
   font-size: 20px;
 }
 
+.headertitle {
+  white-space: nowrap;
+}
+
 .counter {
   margin-right: 5px;
 }

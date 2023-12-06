@@ -1,0 +1,56 @@
+.searchcontainer {
+  display: flex;
+}
+
+.inpcontainer {
+  border: solid 1px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  width: 250px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 0 10px;
+  color:rgba(0, 0, 0, 0.6)
+}
+
+.delIcon {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px 0 0;
+  font-size: 17px;
+}
+
+.maininp {
+  outline: none;
+  border: none;
+  font-size: 14px;
+  width: 195px;
+}
+
+.maininp::placeholder {
+  color:rgba(0, 0, 0, 0.6);
+  font-weight: bold;
+}
+
+.btnsearchcont {
+  margin: 0 0 0 10px;
+
+}
+
+.btnsearch {
+  border: none;
+  outline: none;
+  background-color: none;
+  color: white;
+  background: #288b28;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 8px 16px;
+}

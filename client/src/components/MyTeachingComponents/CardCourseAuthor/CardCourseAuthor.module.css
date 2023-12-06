@@ -1,92 +1,103 @@
-.course-cards {
-  position: relative;
+.cardcontainer {
+  margin: 25px;
+  width: 570px;
+}
+
+.headercontent {
   display: flex;
-  flex-direction: column;
-  justify-content: baseline;
-  padding: 1rem;
-  width: 650px;
-  background-color: #f8e6e6;
-
-  border-radius: 12px;
-   
+  width: 570px;
 }
 
-.main-link {
-  width: 400px;
+.leftcontent {
+  display: flex;
+}
+
+.textcont {
+  width: 450px;
+}
+
+.texttile {
   text-decoration: none;
-  border-radius: 10px;
-  margin: 25px 0 25px 0;
-}
-.main-link,
-a {
-  color: #222;
 }
 
-.text a {
-  text-decoration: none;
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-.text span {
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.text a:hover {
+.texttile:hover {
   text-decoration: underline;
 }
 
-.top-block {
+.btnrefedit {
   display: flex;
-  margin-bottom: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: 18px;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: none;
+  margin: 10px;
 }
-
-.like {
-  position: absolute;
-  top: 0.4rem;
-  right: 0.4rem;
-  padding: 0.2rem 0.3rem;
-  border: 1px solid #eee;
-  border-radius: 1rem;
-  background: #f6f6f6;
-}
-
-.like:hover {
-  background: #e9f9e9;
-  border: 1px solid #56ae56;
-}
-
-.like i {
-  color: #999;
-}
-
-.text {
-  display: flex;
-  flex-direction: column;
-}
-.course-cards img {
-  /* position: absolute; */
-  top: 0;
-  right: 1;
-  width: 82px;
-  margin-left: 3rem;
-}
-
-.widgets i {
-  color: #700707;
-  margin-bottom: 1rem;
-  margin-left: 2rem;
-
-  padding: 5px;
+.btnrefedit:hover {
+  background-color: rgba(80, 76, 76, 0.1);
 }
 
 .btndelcourse {
-  width: 200px;
-  height: 25px;
+  height: 18px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  margin: 0 10px 10px 10px;
+}
+.btndelcourse:hover {
+  background-color: rgba(80, 76, 76, 0.1);
 }
 
 .imgcourse {
-  width: 16px;
+  margin: 0 15px 0 0;
+  width: 72px;
+  height: 72px;
+}
+
+.vertmenu {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.5)
+}
+
+.vertmenu:hover {
+  color: rgba(0, 0, 0, 1)
+}
+
+.rightcontent {
+  position: relative;
+}
+
+.cardvertmenu {
+  position: absolute;
+  bottom: 20px;
+  width: 125px;
+  height: 65px;
+  display: flex;
+  visibility: hidden;
+  top: 15px;
+  right: 25px;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 0 4px -1px #bfb9b9;
+}
+
+.cardvertmenu.visible {
+  visibility: visible;
+  transition: 0.3s;
+  transform: translateY(20px);
+}
+
+
+.footercontent {
+  margin: 0 0 15px 0;
+}
+
+.polocka {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.3);
 }

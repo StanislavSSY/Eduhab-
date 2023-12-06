@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from './NewCourse.module.css'
 import MenuMyTeaching from '../MenuMyTeaching/MenuMyTeaching'
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { addCoursein } from '../../../store/slice/coursesSLice';
 import { addCourse } from '../../../store/slice/courseSlice';
@@ -57,8 +57,8 @@ export default function NewCourse(): JSX.Element {
           <div className={styled.cluetitle}>Название курса *</div>
           <div className={styled.divinp}>
             <form onSubmit={onSubmitHandle} className={styled.formcreator}>
-              <input onChange={changeHandle} className={styled.maininpcreator} type="text" name="title" maxLength={64} />
-              <div className={styled.cluenumbers}>Максимум 64 символа</div>
+              <input onChange={changeHandle} className={styled.maininpcreator} type="text" name="title" maxLength={55} />
+              <div className={styled.cluenumbers}>Максимум 55 символов</div>
               <div className={styled.containerbtn}>
                 <button className={styled.btncreatecourse} type='submit'>Создать курс</button>
               </div>

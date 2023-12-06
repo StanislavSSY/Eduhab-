@@ -42,7 +42,7 @@ export default function Navbar(): JSX.Element {
           <NavLink to={"learn"} className={styled.title}>
             Моё обучение
           </NavLink>
-          <NavLink to={"teach/courses"} className={styled.title}>
+          <NavLink to={"/teach/courses"} className={styled.title}>
             Преподавание
           </NavLink>
         </div>

@@ -1,6 +1,13 @@
-import React, { useState, useEffect} from 'react'
-import styled from './Course.module.css'
-import { Link, Outlet, Route, Routes, useNavigate, useParams } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import styled from './Course.module.css';
+import {
+  Link,
+  Outlet,
+  Route,
+  Routes,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { CourseInt, CourseType } from '../../types';
 import clsx from 'clsx';
 import { useDispatch } from 'react-redux';
@@ -21,62 +28,72 @@ export default function Course(): JSX.Element {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    void(async() => {
-      if (course.title === '') {
-        const response = await fetch(`${import.meta.env.VITE_URL}/courses/${id}`, {
+    setData(course);
+  },[course]);
+
+  useEffect(() => {
+    void (async () => {
+      const response = await fetch(
+        `${import.meta.env.VITE_URL}/courses/${id}`,
+        {
           credentials: 'include',
+        }
+      );
+
+      if (response.status === 200) {
+        const result = await response.json();
+        dispatch(addCourse(result));
+        const resp = await fetch(`${import.meta.env.VITE_URL}/study/${id}`, {
+          credentials: 'include',
+          method: 'GET',
         });
-  
-        if (response.status === 200) {
-          const result = await response.json();
-          console.log(result);
-          setData(result);
-          dispatch(addCourse(result));
-          const resp = await fetch(`${import.meta.env.VITE_URL}/study/${id}`, {
-            credentials: 'include',
-            method: 'GET',
-          });
-          if (resp.status === 200) {
-            const res = await resp.json();
-            dispatch(addfullCourse(res));
-          }
+        if (resp.status === 200) {
+          const res = await resp.json();
+          dispatch(addfullCourse(res));
+          setData(res);
         }
       }
     })();
   }, []);
 
-  useEffect(() => {
-    if (course.title !== '') {
-      setData(course)
-      console.log(course);
-    }
-  }, [course])
-
-  // useEffect(() => {
-  //   navigate('info');
-  // },[data])
-
   return (
     <div className={styled.coursecontainer}>
       <div className={styled.leftcont}>
         <div className={styled.imgcont}>
-          <img className={styled.imgcourse} src={`/img/${course.image_url}`} alt="" />
+          <img
+            className={styled.imgcourse}
+            src={`/img/${data.image_url}`}
+            alt=""
+          />
         </div>
-        <div className={styled.coursetitle}>{data.title}</div>
-        <div className={styled.btnpubliccont}>
+        <div className={styled.coursetitle}>{course.title}</div>
+        {/* <div className={styled.btnpubliccont}>
           <button className={styled.btnpubliccourse}>Опубликовать</button>
-        </div>
+        </div> */}
         <ul className={styled.mainul}>
           <li className={styled.mainli}>
-            <button onClick={() => setIsOpen(!isOpen)} className={styled.btnlist}>
-            <div className={styled.listcont}>Курс</div>
-          </button>
-          <ul className={clsx(`${styled.podul} ${styled.vision} ${isOpen ? styled.active : ''}`)}>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={styled.btnlist}
+            >
+              <div className={styled.listcont}>Курс</div>
+            </button>
+            <ul
+              className={clsx(
+                `${styled.podul} ${styled.vision} ${
+                  isOpen ? styled.active : ''
+                }`
+              )}
+            >
               <li className={styled.podli}>
-                <Link className={styled.reflink} to={'info'}>Описание</Link>
+                <Link className={styled.reflink} to={'info'}>
+                  Описание
+                </Link>
               </li>
               <li className={styled.podli}>
-                <Link className={styled.reflink} to={'plan'}>Содержание</Link>
+                <Link className={styled.reflink} to={'plan'}>
+                  Содержание
+                </Link>
               </li>
             </ul>
           </li>
@@ -96,5 +113,5 @@ export default function Course(): JSX.Element {
         <Outlet />
       </div>
     </div>
-  )
+  );
 }

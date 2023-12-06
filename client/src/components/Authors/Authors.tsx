@@ -14,12 +14,15 @@ export default function Authors(): JSX.Element {
 
       if (response.status === 200) {
         const result = await response.json();
-        console.log(result);
-        
         setAuthors(result);
       }
     })();
   }, [])
+
+  useEffect(() => {
+    console.log(authors);
+  },[authors]);
+
   return (
     <div className={styled.authorscontainer}>
       <div className={styled.aboutblock}>

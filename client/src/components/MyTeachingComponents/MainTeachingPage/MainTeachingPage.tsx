@@ -40,7 +40,6 @@ export default function MainTeachingPage(): JSX.Element {
         <div className={styles.rightcont}>
           <div className={styles.title}>Курсы</div>
           <div className={styles.filtercourse}>
-            {/* <div className={styles.filter}>Тут будет селект фильтр</div> */}
             <Search coursesState={coursesState} setCourses={setCourses} />
           </div>
           <div className={styles.coursecontainer}>

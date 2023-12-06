@@ -2,6 +2,8 @@
 
 .search-form {
   justify-content: space-between;
+  width: 800px;
+  margin: 0 auto;
   margin-top: 20px;
   background: #f3f4f6;
   border-radius: 12px; /* Задаем радиус для скругления углов */

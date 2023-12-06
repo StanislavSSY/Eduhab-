@@ -42,20 +42,23 @@ export default function MyLearnIndex() {
   return (
     <div className={styled.container}>
       <h1>Моё обучение</h1>
-      {courses.length > 0 && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-          }}
-        >
+      <UserStatMyLearn allCompleted={allCompleted} />
+      <h2>Недавний курс</h2>
+      {courses.length > 0 ? (
+        <div>
           <CardProgress course={courses[0]} />
-          <UserStatMyLearn allCompleted={allCompleted} />
         </div>
+      ) : (
+        <>
+          <h1>Моё обучение</h1>
+          <h2>Недавний курс</h2>
+        </>
       )}
-      <h2>Прохожу сейчас</h2>
-      <div>
-        {courses.map((el) => (
+      <h2>
+        <i className="fa fa-paperclip" aria-hidden="true"></i> Прохожу сейчас
+      </h2>
+      <div className={styled["card-min-my-learn"]}>
+        {courses.slice(0, 3).map((el) => (
           <CardMinMyLearn course={el} key={el.id} />
         ))}
       </div>

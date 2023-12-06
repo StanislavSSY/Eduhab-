@@ -5,7 +5,8 @@
   background: linear-gradient(92.32deg, #f4f5fd 47.03%, #e9f2ff 100.95%);
   padding: 1.5rem;
   border-radius: 1rem;
-  width: 400px;
+  width: 300px;
+  overflow: hidden;
 }
 
 .container a {

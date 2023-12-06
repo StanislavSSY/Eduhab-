@@ -1,4 +1,7 @@
 .container {
   display: flex;
-  gap: 80px;
+  justify-content: center;
+  gap: 3rem;
+  margin: 4rem 0;
+  /* max-width: 1400px; */
 }

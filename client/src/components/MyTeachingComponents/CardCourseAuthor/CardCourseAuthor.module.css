@@ -1,15 +1,26 @@
 .cardcontainer {
   margin: 25px;
   width: 570px;
+  height: 90px;
+  box-shadow: 0 0 4px -1px #bfb9b9;
+}
+
+.cardcontainer:hover {
+  box-shadow: 0 0 15px -4px rgb(154, 183, 255);
 }
 
 .headercontent {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
   width: 570px;
 }
 
 .leftcontent {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .textcont {

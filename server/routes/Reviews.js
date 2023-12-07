@@ -3,7 +3,6 @@ const router = require('express').Router();
 const { Review, Entrie, User } = require('../db/models');
 
 router.get('/:id', async (req, res) => {
-  console.log(`() ------- => зашли в отзывы`);
   const { id } = req.params;
   try {
     const data = await Review.findAll({
@@ -23,7 +22,6 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   const { user } = req.session;
   const { courseid, text, user_rate } = req.body;
-
   if (user) {
     try {
       const data = await Entrie.findOne({ where: { userid: user.id, courseid } });
@@ -33,6 +31,20 @@ router.post('/', async (req, res) => {
       }
     } catch (error) {
       res.sendStatus(400);
+    }
+  }
+});
+
+router.get('/check/:id', async (req, res) => {
+  const { user } = req.session;
+  const { id } = req.params;
+
+  if (user) {
+    const data = await Review.findOne({ where: { userid: user.id, courseid: id } });
+    if (data) {
+      res.json(data);
+    } else {
+      res.sendStatus(404);
     }
   }
 });

@@ -62,3 +62,4 @@ app.use('/lessons', require('./routes/Lessons'));
 app.use("/courses", require("./routes/courses"));
 app.use("/steps", require("./routes/steps"));
 app.use("/entries", require("./routes/entries"));
+app.use("/anyendpoints", require('./routes/AnyEndpoints'));

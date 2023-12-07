@@ -256,7 +256,7 @@
 }
 
 .edit-container .arrow-wrapper {
-  padding-top: 1px;
+  padding-top: 2px;
   height: 30px;
   margin-right: 5px;
 }
@@ -274,6 +274,10 @@
 }
 
 .edit-container .btn-back {
+  background: 0 0;
+  text-align: inherit;
+  font-size: inherit;
+
   border: #ffba39 solid 1px;
   border-radius: 5px;
   cursor: pointer;
@@ -284,6 +288,13 @@
   align-items: center;
   color: #ffba39;
   width: 16em;
+
+  text-align: inherit;
+  font-size: large;
+
+  line-height: normal;
+  text-transform: none;
+  padding-left: 20px;
 }
 
 .edit-container .btn-back:hover {
@@ -316,4 +327,8 @@
   flex-direction: column;
   justify-content: end;
   position: relative;
+}
+
+.soder {
+  font-size: 17px;
 }

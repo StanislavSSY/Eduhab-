@@ -49,7 +49,10 @@ function EditText({ data, setData, id, stepNum }: IEditTextProps) {
   return (
     <>
       <div className="App">
-        <h2>Шаг {stepNum}</h2>
+        <div className="edit-one-step-header">
+          <p>Шаг {stepNum} | Текст</p>
+          <DeleteStepButton id={id} />
+        </div>
         {isData && (
           <CKEditor
             editor={ClassicEditor}
@@ -71,7 +74,6 @@ function EditText({ data, setData, id, stepNum }: IEditTextProps) {
           />
         )}
       </div>
-      <DeleteStepButton id={id} />
     </>
   );
 }

@@ -32,7 +32,7 @@ export default function ModalStepChoice({ setIsModal, newStepHandler }) {
               <div className={styles['modal-content-wrapper']}>
                 <h1>Выберите тип шага</h1>
                 <ul className={styles['variant-list']}>
-                  <li onClick={() => void newStepHandler('TEXT')}>
+                  <li onClick={() => void newStepHandler('TEXT', '')}>
                     <span>
                       <svg
                         width="40px"
@@ -60,7 +60,14 @@ export default function ModalStepChoice({ setIsModal, newStepHandler }) {
                       </div>
                     </div>
                   </li>
-                  <li onClick={() => void newStepHandler('VIDEO')}>
+                  <li
+                    onClick={() =>
+                      void newStepHandler(
+                        'VIDEO',
+                        'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+                      )
+                    }
+                  >
                     <span>
                       <svg
                         fill="#000000"

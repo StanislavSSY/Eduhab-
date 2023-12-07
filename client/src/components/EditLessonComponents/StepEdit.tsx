@@ -50,27 +50,58 @@ function StepEdit({ data, setData, setStepId }: IStepEdit) {
     }
   }
 
-  async function newStepHandler(type: string) {
+  async function newStepHandler(type: string, dataNew: string) {
     const newStepNum = steps.length > 0 ? Number(steps.at(-1).stepNum) + 1 : 1;
-    await dispatch(addStep({ lessonid, type, data: '' }));
+    await dispatch(addStep({ lessonid, type, data: dataNew }));
     setIsModal(false);
     navigate(`/edit-lesson/${lessonid}/step/${newStepNum}`);
   }
 
   return (
-    <div style={{ width: '1200px' }}>
-      <div className="step-pins-wrapper" style={{ display: 'flex' }}>
-        {steps.map((el) => (
-          <Link key={el.id} to={`/edit-lesson/${lessonid}/step/${el.stepNum}`}>
-            <button
-              type="button"
-              style={el.stepNum == stepNum ? { backgroundColor: 'green' } : {}}
-            >
-              <span>Some image</span>
-            </button>
-          </Link>
-        ))}
-        <button onClick={() => void setIsModal(true)}>new step</button>
+    <div>
+      <div className="step-pins-wrapper">
+        <div className="step-button-cnt">
+          {steps.map((el) => (
+            <>
+              <Link
+                key={el.id}
+                to={`/edit-lesson/${lessonid}/step/${el.stepNum}`}
+              >
+                <div
+                  data-step-num={el.stepNum}
+                  className={`lesson-edit-step ${
+                    el.stepNum == stepNum ? 'clicked-step' : ''
+                  }`}
+                >
+                  <div className="icon-cont">
+                    {el.type == 'TEXT' ? (
+                      <img
+                        className="svg-icon-steps"
+                        src="/icons/read-book-icon.svg"
+                      ></img>
+                    ) : (
+                      <img
+                        className="svg-icon-steps"
+                        src="/icons/youtube-svgrepo-com.svg"
+                      ></img>
+                    )}
+                  </div>
+                </div>
+              </Link>
+            </>
+          ))}
+        </div>
+
+        <div className="add-btn" onClick={() => void setIsModal(true)}>
+          <div className="click-cont"></div>
+          <div className="icon-cont">
+            <object
+              className="svg-icon"
+              data="/icons/plus.svg"
+              type="image/svg+xml"
+            ></object>
+          </div>
+        </div>
       </div>
       {actualComponent}
       {isModal && (

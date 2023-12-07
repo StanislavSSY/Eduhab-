@@ -35,6 +35,7 @@ import ProfileInfo from './pages/Profile/ProfileInfo/ProfileInfo';
 import Profile from './pages/Profile/Profile';
 
 import CatalogSearch from './Pages/CatalogSearch/CatalogSearch';
+import LearnCourse from './Pages/LearnCourse/LearnCourse';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();

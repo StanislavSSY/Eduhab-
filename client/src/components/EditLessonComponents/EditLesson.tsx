@@ -1,8 +1,10 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import StepEdit from './StepEdit';
 import { useAppDispatch } from '../../store/hooks';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { initSteps } from '../../store/thunkActions';
+
+import './EditLesson.css';
 
 export default function EditLesson() {
   const { lessonid } = useParams();
@@ -10,12 +12,14 @@ export default function EditLesson() {
   const [data, setData] = useState('');
   const [stepId, setStepId] = useState({ id: '', type: '' });
   const dispatch = useAppDispatch();
+  const [courseid, setCourseid] = useState('');
 
   useEffect(() => {
     void (async () => {
       const lesson = await fetch(`http://localhost:3100/lessons/${lessonid}`);
       const lessonData = await lesson.json();
       setInput({ title: lessonData.title });
+      setCourseid(lessonData.Module.courseid);
     })();
   }, []);
 
@@ -24,7 +28,9 @@ export default function EditLesson() {
   }, [dispatch]);
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>): void => {
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setInput((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
   };
 
   const submitHandler = async () => {
@@ -53,22 +59,55 @@ export default function EditLesson() {
   };
   return (
     <div className="edit-container">
-      <div>
-        <div>Настройки урока</div>
+      <div className="lesson-header">
+        <div className="lesson-editor-header">Настройки урока</div>
         <div>
-          <input
-            onChange={changeHandler}
-            type="text"
-            name="title"
-            id="title"
-            value={input.title}
-          />
+          <div className="lesson-editor-title">
+            <div className="lesson-widget">
+              <div className="lesson-image" />
+            </div>
+            <div className="lesson-editor-info">
+              <div className="lesson-title-edit">
+                <input
+                  onChange={changeHandler}
+                  type="text"
+                  name="title"
+                  id="title"
+                  value={input.title}
+                  className="input-editor"
+                  maxLength={55}
+                />
+                <div className="symbols-left">{`${
+                  55 - Number(input.title.length)
+                } characters left`}</div>
+              </div>
+              <div className="zaglushka-div" />
+            </div>
+          </div>
         </div>
       </div>
       <StepEdit data={data} setData={setData} setStepId={setStepId} />
-      <button onClick={() => void submitHandler()} type="button">
-        СОХРАНИТЬ
-      </button>
+      <div className={`${!stepId.id ? 'empty-page' : ''}`}>
+        <div className="buttons-wrapper">
+          <Link to={`/course/${courseid}/plan`}>
+            <div className="btn-back">
+              <span className="arrow-wrapper">
+                <img
+                  className="back-arrow"
+                  src="/icons/noun-arrow-back.svg"
+                  alt=""
+                />
+              </span>
+              <span style={{ paddingBottom: '3px' }}>
+                Вернуться к содержимому
+              </span>
+            </div>
+          </Link>
+          <div className="btn-save" onClick={() => void submitHandler()}>
+            <div>Сохранить</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

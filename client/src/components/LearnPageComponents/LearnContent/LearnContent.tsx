@@ -7,6 +7,8 @@ import { initSteps } from "../../../store/thunkActions";
 import LearnTextComponent from "../LearnTextComponent/LearnTextComponent";
 import LearnComment from "../LearnComment/LearnComment";
 
+import VideoStep from "./VideoStep";
+
 function LearnContent({ title }) {
   const dispatch = useAppDispatch();
   const { steps } = useAppSelector((store) => store.stepsSlice);
@@ -25,6 +27,8 @@ function LearnContent({ title }) {
           <LearnTextComponent title={title} id={stepFinded.id} />
         );
         setActualID(stepFinded.id);
+      } else if (stepFinded?.type === "VIDEO") {
+        setActualComponent(<VideoStep title={title} id={stepFinded.id} />);
       }
     }
   }, [stepNum, steps, title]);

@@ -98,7 +98,7 @@ export default function EditLesson() {
                   alt=""
                 />
               </span>
-              <span style={{ paddingBottom: '3px' }}>
+              <span className="soder" style={{ paddingBottom: '3px' }}>
                 Вернуться к содержимому
               </span>
             </div>

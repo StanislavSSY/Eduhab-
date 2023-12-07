@@ -11,6 +11,7 @@ import clsx from 'clsx';
 import Video from './Video/Video';
 import getYouTubeID from 'get-youtube-id';
 import { ReviewType, ReviewsType } from '../../types';
+import Index from '../../components/Stripe/YouTubeIndex';
 
 
 export default function Promo(): JSX.Element {
@@ -271,6 +272,10 @@ export default function Promo(): JSX.Element {
                   Начать прохождение
                 </button>
               </div>
+              <br />
+              Также вы можете поддержать автора и оплатить данный курс, стоимость всех курсов одинаковая и составляет  1850 руб.
+              <br />
+              <Index />
             </>
           )}
         </div>

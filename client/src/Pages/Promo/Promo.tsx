@@ -122,8 +122,8 @@ export default function Promo(): JSX.Element {
 
   useEffect(() => {
     if (allSteps.length >= 1) {
-      if (userSteps.progress?.length >= 1) {
-        const newprocent = (userSteps.progress?.length / allSteps.length) * 100;
+      if (userSteps?.progress?.length >= 1) {
+        const newprocent = (userSteps?.progress?.length / allSteps.length) * 100;
         setProcent(newprocent);
       }
     }

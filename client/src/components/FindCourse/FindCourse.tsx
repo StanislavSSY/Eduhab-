@@ -28,7 +28,7 @@ export default function FindCourse(): JSX.Element {
         navigate(`/catalog/search?free=true`);
       }
     } else {
-      navigate(`/catalog/search?q=${inpData}`);
+      navigate(`/catalog/search?q=${inpData}&?free=false`);
     }
   }
 

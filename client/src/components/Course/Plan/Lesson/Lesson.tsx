@@ -16,7 +16,7 @@ export default function Lesson({ lesson, m, l}): JSX.Element {
         </div>
         <div className={styled.counter}>{m}.{l}.</div>
         <div className={styled.lessontitle}>
-          <Link className={styled.reftitle} to={`/teach/courses/${id}/lesson/${l}/step/1`} >{lesson.title}</Link>
+          <Link className={styled.reftitle} to={`/teach/courses/${id}/lesson/${lesson.id}/step/1`} >{lesson.title}</Link>
         </div>
       </div>
       <div className={styled.rightcont}>

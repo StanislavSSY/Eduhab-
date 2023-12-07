@@ -9,7 +9,6 @@
   /* background: red; */
 }
 
-
 .main-link,
 a {
   color: #222;
@@ -92,7 +91,6 @@ a {
 .coursename {
   font-weight: bold;
   width: 205px;
-  word-break: break-all;
 }
 
 .cardcontainer {

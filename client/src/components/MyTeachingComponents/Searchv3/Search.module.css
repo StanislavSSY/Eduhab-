@@ -41,10 +41,10 @@
 
 .btnsearchcont {
   margin: 0 0 0 10px;
-
 }
 
 .btnsearch {
+  cursor: pointer;
   border: none;
   outline: none;
   background-color: none;

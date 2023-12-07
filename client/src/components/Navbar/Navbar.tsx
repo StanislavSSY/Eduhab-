@@ -32,7 +32,7 @@ export default function Navbar(): JSX.Element {
         {" "}
         <Link to={"/"} className={styled.title}>
           <h3>
-            <span>G</span> Galera
+            <span>E</span> EDUHUB
           </h3>
         </Link>
         <div className={styled.titlecont}>

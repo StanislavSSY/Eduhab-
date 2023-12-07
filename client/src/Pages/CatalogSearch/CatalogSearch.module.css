@@ -1,5 +1,11 @@
+.searchcontainer {
+  max-width: 1024px;
+  margin-bottom: 3rem;
+}
+
 .resultcont {
-  width: 1300px;
+
+  width: 1000px;
   display: flex;
   flex-direction: column;
 }

@@ -1,5 +1,5 @@
 DB_USER=stanislavstanislav
 DB_PASSWORD=stas
 DB_NAME=final
-PORT=3000
+PORT=3100
 SECRET_KEY_SESSION=vedro

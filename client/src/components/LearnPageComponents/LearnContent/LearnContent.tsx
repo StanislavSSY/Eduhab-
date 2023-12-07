@@ -5,12 +5,12 @@ import styled from "./LearnContent.module.css";
 import { Link, useParams } from "react-router-dom";
 import { initSteps } from "../../../store/thunkActions";
 import LearnTextComponent from "../LearnTextComponent/LearnTextComponent";
+import VideoStep from "./VideoStep";
 
 function LearnContent({ title }) {
   const dispatch = useAppDispatch();
   const { steps } = useAppSelector((store) => store.stepsSlice);
   const [actualComponent, setActualComponent] = useState(<></>);
-
   const { lessonid, stepNum, courseid } = useParams();
 
   useEffect(() => {
@@ -22,6 +22,8 @@ function LearnContent({ title }) {
         setActualComponent(
           <LearnTextComponent title={title} id={stepFinded.id} />
         );
+      } else if (stepFinded?.type === "VIDEO") {
+        setActualComponent(<VideoStep title={title} id={stepFinded.id} />);
       }
     }
   }, [stepNum, steps, title]);

@@ -1,18 +1,25 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-const { Lesson } = require("../db/models");
+const { Lesson, Module, Course } = require('../db/models');
 
-router.get("/:id", async (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    const data = (await Lesson.findByPk(id)).get({ plain: true });
+    const data = (
+      await Lesson.findByPk(id, {
+        include: {
+          model: Module,
+          attributes: ['id', 'courseid'],
+        },
+      })
+    ).get({ plain: true });
     res.json(data);
   } catch (error) {
     res.sendStatus(400);
   }
 });
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { moduleid, title } = req.body;
     const data = await Lesson.create({ moduleid, title });
@@ -22,7 +29,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.patch("/:id", async (req, res) => {
+router.patch('/:id', async (req, res) => {
   const { id } = req.params;
   const { title } = req.body;
   try {
@@ -35,7 +42,7 @@ router.patch("/:id", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const data = (await Lesson.findByPk(id)).get({ plain: true });

@@ -1,0 +1,319 @@
+.edit-container {
+  width: 100%;
+  max-width: 900px;
+}
+
+.edit-container .lesson-header {
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 0.75em;
+}
+
+.edit-container .lesson-editor-header {
+  line-height: 2em;
+  position: relative;
+  margin: 0 auto;
+  background: #eee;
+  padding: 0.5em 1em;
+  max-width: 62.25em;
+  overflow: hidden;
+}
+
+.edit-container .lesson-editor-title {
+  padding: 12px 25px;
+  display: flex;
+  flex-direction: row;
+}
+
+.edit-container .lesson-widget {
+  position: relative;
+  margin-right: 20px;
+}
+
+.edit-container .lesson-image {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5BNjrIsOsJe1wiM433me8eW5O282aBSm_KA&usqp=CAU');
+  height: 75px;
+  width: 75px;
+  border-radius: 0;
+  font-size: 24px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+  font-weight: 300;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.edit-container .lesson-editor-info {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  min-width: 0;
+  margin-right: auto;
+  flex-basis: 95%;
+}
+
+.edit-container .lesson-title-edit {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  font-size: 18px;
+  line-height: 1.33;
+  position: relative;
+}
+
+.edit-container .input-editor {
+  font-size: 14px;
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 0.125em;
+  border-width: 1px;
+  border-style: solid;
+  height: 2.625em;
+  color: rgba(0, 0, 0, 0.75);
+  background-color: #fff;
+  line-height: normal;
+}
+
+.edit-container .zaglushka-div {
+  height: 30px;
+  width: 100%;
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+    70deg,
+    rgb(253, 195, 3),
+    rgb(255, 242, 205)
+  );
+}
+
+.edit-container .symbols-left {
+  position: absolute;
+  right: 1em;
+  top: 0.78462em;
+  font-size: 0.65em;
+  color: #a5a5a5;
+}
+
+.edit-container .step-pins-wrapper {
+  margin: 1.25em 0;
+  height: 3.75em;
+  max-width: 62em;
+  white-space: nowrap;
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.edit-container .step-button-cnt {
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+  height: 62px;
+}
+
+.edit-container .lesson-edit-step {
+  vertical-align: bottom;
+  display: inline-flex;
+  margin-right: 5px;
+  width: 57px;
+  height: 57px;
+  border-radius: 4px;
+  background: #d8d8d8;
+  position: relative;
+}
+
+.lesson-edit-step::before {
+  content: attr(data-step-num);
+  position: absolute;
+  left: 0;
+  top: -22px;
+  width: 100%;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.edit-container .add-btn {
+  vertical-align: bottom;
+  display: inline-flex;
+  margin-right: 5px;
+  width: 57px;
+  height: 57px;
+  border-radius: 4px;
+  background: rgb(255, 241, 177);
+  position: relative;
+}
+.edit-container .icon-cont {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-container .svg-icon {
+  width: 20px;
+  z-index: 1;
+}
+
+.edit-container .svg-icon-steps {
+  width: 30px;
+  z-index: 1;
+}
+
+.edit-container .click-cont {
+  vertical-align: bottom;
+  display: inline-flex;
+  margin-right: 5px;
+  width: 57px;
+  height: 57px;
+  border-radius: 4px;
+  z-index: 10;
+  position: absolute;
+  cursor: pointer;
+}
+
+.edit-container .lesson-edit-step:hover {
+  background: #a7a7a7;
+}
+
+.edit-container .lesson-edit-step.clicked-step {
+  background: rgb(255, 195, 83);
+}
+
+.edit-container .lesson-edit-step.clicked-step:hover {
+  background: rgb(199, 140, 31);
+}
+
+.edit-container .add-btn:hover {
+  background: rgb(214, 191, 87);
+}
+
+.edit-container .edit-one-step-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: larger;
+  line-height: 2em;
+  position: relative;
+  margin: 0 auto;
+  background: #e6e6e6;
+  padding: 0.5em 1em;
+  max-width: 62.25em;
+  overflow: hidden;
+}
+
+.edit-container .delete-btn {
+  margin-left: auto;
+  color: #777;
+  white-space: nowrap;
+  float: right;
+  border: none;
+  background: 0 0;
+  text-align: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border-radius: 1px;
+  line-height: normal;
+  text-transform: none;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.edit-container .delete-btn:hover {
+  color: #000;
+}
+
+.edit-container .delete-btn:hover .svg-delete-btn {
+  fill: #000;
+}
+
+.edit-container .svg-delete-btn-wrap {
+  overflow: hidden;
+  height: 25px;
+}
+
+.edit-container .delete-btn-text {
+  font-size: smaller;
+}
+
+.edit-container .edit-video-wrap {
+  padding: 20px;
+  background: #f5f5f5;
+}
+
+.edit-container .video-label {
+  margin-bottom: 5px;
+}
+
+.edit-container .arrow-wrapper {
+  padding-top: 1px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.edit-container .back-arrow {
+  height: 30px;
+}
+
+.edit-container .buttons-wrapper {
+  height: 45px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-container .btn-back {
+  border: #ffba39 solid 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffba39;
+  width: 16em;
+}
+
+.edit-container .btn-back:hover {
+  background-color: rgb(255, 252, 222);
+}
+
+.edit-container .btn-save {
+  cursor: pointer;
+  width: 16em;
+  border-radius: 5px;
+  padding: 10px;
+  height: 100%;
+  background: rgb(255, 195, 83);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-container .btn-save:hover {
+  background: rgb(223, 167, 64);
+}
+
+.edit-container a {
+  text-decoration: none;
+}
+
+.edit-container .empty-page {
+  height: calc(100% - 260px);
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  position: relative;
+}

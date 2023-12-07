@@ -6,12 +6,12 @@ export default function Footer() {
   return (
     <footer className={styled.footer}>
       <div className={styled["body-footer"]}>
-        <ul>
+        {/* <ul>
           <li>Есть вопросы? Звоните!</li>
           <li>8-800-535-35-35</li>
           <li>Это всегда проще</li>
         </ul>
-        <hr />
+        <hr /> */}
         {/* <ul>
           <li>Договор услуг копирайтинга</li>
           <li>Лицензионное соглашение</li>
@@ -72,7 +72,7 @@ export default function Footer() {
           </li>
         </ul>
         <ul>
-          <li>Galera © 2023 Все права защищены</li>
+          <li>EDUHUB © 2023 Все права защищены</li>
         </ul>
       </div>
     </footer>

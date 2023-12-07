@@ -40,6 +40,13 @@
 .actual-component {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  /* height: 100vh; */
   padding-top: 50px;
+}
+
+.commentscontent {
+  display: flex;
+  max-width: 1024px;
+  margin: 35px auto 0 auto;
+  padding: 1rem;
 }

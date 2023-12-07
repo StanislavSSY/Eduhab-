@@ -1,0 +1,50 @@
+.commentcontainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 25px 0 25px 0;
+}
+
+.content {
+  display: flex;
+}
+
+.leftcont {
+  margin: 0 15px 0 0;
+}
+
+.headercont {
+  display: flex;
+  align-items: center;
+  margin: 0 0 15px 0;
+}
+
+.rightcont {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+
+.userimg {
+  width: 32px;
+}
+
+.usernametitle {
+  margin: 0 5px 0 0;
+  font-weight: bold;
+}
+
+.timepassed {
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.bodycont {
+  max-width: 1022px;
+}
+
+.commenttitle {
+  font-size: 15px;
+  white-space: normal;
+}

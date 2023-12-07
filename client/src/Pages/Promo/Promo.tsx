@@ -246,7 +246,7 @@ export default function Promo(): JSX.Element {
               <div className={styled.buy}>
                 <button className={styled.btnbuycourse}>Купить</button>
               </div>
-              <div className={styled.favorite}>Добавить в избранные</div>
+              {/* <div className={styled.favorite}>Добавить в избранные</div> */}
             </>
           ) : dis ? (
             <>

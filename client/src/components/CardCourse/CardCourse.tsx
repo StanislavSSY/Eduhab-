@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { CardProps } from "../../types";
 
 export default function CardCourse({ el }: CardProps): JSX.Element {
-
   return (
     <div className={styled.cardcontainer}>
       <div className={styled["top-block"]}>
@@ -33,10 +32,9 @@ export default function CardCourse({ el }: CardProps): JSX.Element {
         <i className="fa fa-address-card" aria-hidden="true"></i>
       </div>
 
-        <div className={styled.price}>
-          {el.new_price ? (
-            el.old_price !== 0 ? (
-
+      <div className={styled.price}>
+        {el.new_price ? (
+          el.old_price !== 0 ? (
             <div>
               <span className={styled["last-price"]}>
                 {el.old_price && el.old_price}

@@ -1,20 +1,20 @@
-'use strict';
+"use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      'Courses',
+      "Courses",
       [
         {
-          userid: 1,
-          title: 'Введение в HTML',
+          userid: 4,
+          title: "Введение в HTML5 и CSS3",
           new_price: 0,
-          image_url: 'stock_avatar.jpg',
+          image_url: "html-course.jpg",
           rate: 5,
           time_passage: 47,
           quantity_people: 3,
-          short_description: 'Простой курс для простых людей с простым HTML',
+          short_description: "Простой курс для простых людей с простым HTML",
           long_description: `Я в своем познании настолько преисполнился, что я как будто бы уже
           сто триллионов миллиардов лет проживаю на триллионах и
           триллионах таких же планет, как эта Земля, мне этот мир абсолютно
@@ -49,46 +49,56 @@ module.exports = {
         },
         {
           userid: 1,
-          title: 'Программирование на Golang',
+          title: "Как сменить Галеру на перспективный проект",
           new_price: 0,
-          image_url: 'stock_avatar.jpg',
+          image_url: "galera-course.jpg",
           rate: 5,
           time_passage: 15,
           quantity_people: 3,
-          short_description:
-            'Курс посвящен основам языка программирования Golang. Курс будет полезен тем, кто уже имеет базовый опыт в программировании. На курсе будет рассмотрена теория, подкрепленная практикой.',
-          long_description:
-            'В этом курсе по программированию на языке Golang (Go) вы познакомитесь с основными возможностями этого языка. Например, циклы, срезы, горутины, работа с JSON и многое другое. Нельзя научиться программировать без практики, поэтому вам будет предложено довольно много задач разного уровня, в которых вы сможете потренировать своё умение программировать. Ваши решения будут проверяться автоматической системой, поэтому вы будете получать быструю обратную связь. Преподаватели постараются отвечать на любые вопросы в комментариях, поэтому если у вас будут возникать проблемы, то их всегда можно обсудить с преподавателями и однокурсниками в комментариях к задачам.',
+          short_description: "Греби",
+          long_description: "Быстрее",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           userid: 2,
-          title: 'Введение в REACT',
+          title: "Думай быстро решай еще быстрее",
           new_price: 0,
-          image_url: 'stock_avatar.jpg',
+          image_url: "fast-course.jpg",
           rate: 5,
-          time_passage: 9999,
+          time_passage: 0,
           quantity_people: 2,
-          short_description:
-            'Wykład oraz zadania laboratoryjne z przedmiotu Technologie front-end prowadzone na kierunku Informatyka w Uniwersytecie Gdańskim',
-          long_description:
-            'Kurs będzie składał się z 15 modułów podstawowych, w którym będą występować zadania do zrealizowania. Zadania będą sprawdzać wiedzę z wykładu. Na koniec będzie trzeba przedstawić projekt programistyczny wykonany za pomocą React.js.',
+          short_description: "Все понятно",
+          long_description: "Все легко",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           userid: 3,
-          title: 'Трейдинг в Steam',
+          title: "7 навыков высокоэффективных консолей",
           new_price: 0,
-          image_url: 'stock_avatar.jpg',
+          image_url: "log-course.jpg",
           rate: 5,
-          time_passage: 0,
-          quantity_people: 2,
+          time_passage: 7,
+          quantity_people: 7,
           short_description:
             'В рамках этого курса вы узнаете о стратегии перепродажи предметов в многопользовательской игре "Dota 2"',
           long_description:
             'Курс "Трейдинг в Steam" предназначен для тех, кто хочет научиться зарабатывать на платформе Steam, путем покупки и продажи игровых предметов. В ходе курса вы узнаете основные принципы трейдинга, стратегии для получения прибыли, а также получите практические навыки, необходимые для успешного трейдинга в Steam.',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+
+        {
+          userid: 5,
+          title: "Ребрендинг проекта за 60 секунд",
+          new_price: 0,
+          image_url: "60sec-course.jpg",
+          rate: 5,
+          time_passage: 0,
+          quantity_people: 4,
+          short_description: "Ребрендинг",
+          long_description: "Проекта",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -98,6 +108,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Courses', null, {});
+    await queryInterface.bulkDelete("Courses", null, {});
   },
 };

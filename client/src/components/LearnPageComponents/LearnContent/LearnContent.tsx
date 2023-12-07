@@ -5,11 +5,13 @@ import styled from "./LearnContent.module.css";
 import { Link, useParams } from "react-router-dom";
 import { initSteps } from "../../../store/thunkActions";
 import LearnTextComponent from "../LearnTextComponent/LearnTextComponent";
+import LearnComment from "../LearnComment/LearnComment";
 
 function LearnContent({ title }) {
   const dispatch = useAppDispatch();
   const { steps } = useAppSelector((store) => store.stepsSlice);
   const [actualComponent, setActualComponent] = useState(<></>);
+  const [actualid, setActualID] = useState(0);
 
   const { lessonid, stepNum, courseid } = useParams();
 
@@ -22,6 +24,7 @@ function LearnContent({ title }) {
         setActualComponent(
           <LearnTextComponent title={title} id={stepFinded.id} />
         );
+        setActualID(stepFinded.id);
       }
     }
   }, [stepNum, steps, title]);
@@ -33,6 +36,9 @@ function LearnContent({ title }) {
   return (
     <div className={styled["content-main"]}>
       <div className={styled["actual-component"]}>{actualComponent}</div>{" "}
+      <div className={styled.commentscontent}>
+        <LearnComment />
+      </div>
     </div>
   );
 }

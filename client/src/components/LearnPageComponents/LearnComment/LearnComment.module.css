@@ -1,0 +1,141 @@
+.commentscontainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1024px;
+}
+
+.othercontent {
+  width: 100%;
+  max-width: 1024px;
+}
+
+.contenttitle {
+  font-size: 16px;
+  margin: 0 0 10px 0;
+}
+
+.inpcont {
+  width: 100%;
+}
+
+.polocka {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+.newcomment {
+  display: flex;
+  max-width: 1024px;
+  width: 100%;
+  margin: 35px 0 35px 0;
+}
+
+.userimgcont {
+  margin: 0 5px 0 0;
+}
+
+.imguser {
+  width: 32px;
+}
+
+.fakeinp {
+  padding: 10px;
+  font-size: 15px;
+  width: 100%;
+  outline: none;
+  background: none;
+  border:none;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.7);
+}
+
+.newtextarecont {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.areainp {
+  padding: 10px;
+  width: 100%;
+  font-size: 16px
+}
+
+.btnscontainer {
+  margin: 15px 0 0 0;
+  display: flex;
+}
+
+
+.btnsendcomcont {
+  background-color: #54ad54;
+  margin: 0 10px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  width: 225px;
+  height: 35px;
+  transition: 0.3s;
+}
+
+.btnsendcomcont:hover {
+  background-color: #288b28;
+  transition: 0.3s;
+}
+
+.btnsendcom.block {
+  background-color: #aad6aa;
+  border-radius: 5px;
+}
+
+.btnsendcom {
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.8);
+  width: 225px;
+  height: 35px;
+  transition: 0.3s;
+}
+
+.btnsendcom:hover {
+  color: rgba(255, 255, 255, 1);
+  transition: 0.3s;
+}
+
+.btnsendcom.block {
+  cursor: not-allowed;
+}
+
+.btntobackcont {
+  border: solid 1px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 1);
+  transition: 0.3s;
+  width: 120px;
+  height: 35px;
+}
+
+.btntobackcont:hover {
+  border: solid 1px rgba(0, 0, 0, 1);
+  transition: 0.3s;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.btntoback {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  transition: 0.3s;
+  width: 120px;
+  height: 35px;
+}
+
+.btntoback:hover {
+  color: rgba(0, 0, 0, 1);
+}

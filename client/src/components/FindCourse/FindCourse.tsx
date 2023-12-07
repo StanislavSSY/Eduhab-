@@ -2,25 +2,35 @@ import React, { useState, useEffect } from "react";
 import styles from "./FindCourse.module.css";
 import { useNavigate } from "react-router-dom";
 
-
 export default function FindCourse(): JSX.Element {
+
   const [inpData, setInpData] = useState('');
+  const [free, setFree] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     console.log(inpData);
-  },[inpData]);
+    console.log(free); 
+  },[inpData, free]);
 
-  function handleKeyPress (event): void {
-    if (event.key === 'Enter') {
+
+  function handleKeyPress(event): void {
+    if (event.key === "Enter") {
       redirectHandler();
     }
   }
 
   function redirectHandler(): void {
-    navigate(`/catalog/search?q=${inpData}`);
+    if (free) {
+      if (inpData) {
+        navigate(`/catalog/search?q=${inpData}&?free=true`);
+      } else {
+        navigate(`/catalog/search?free=true`);
+      }
+    } else {
+      navigate(`/catalog/search?q=${inpData}`);
+    }
   }
-  
 
   return (
     <div className={styles["search-form"]}>
@@ -32,7 +42,7 @@ export default function FindCourse(): JSX.Element {
                 <div className={styles["with-autocomplete__content"]}>
                   <input
                     className={styles["search-form__input"]}
-                    placeholder="Название курса, автор или предмет"
+                    placeholder="Название курса или ключевое слово"
                     autoComplete="off"
                     spellCheck="false"
                     aria-label="Search"
@@ -47,12 +57,7 @@ export default function FindCourse(): JSX.Element {
         </div>
 
         <label className={styles["form-checkbox"]}>
-          <input type="checkbox" />
-          <span>С сертификатами</span>
-        </label>
-
-        <label className={styles["form-checkbox"]}>
-          <input type="checkbox" />
+          <input onChange={() => setFree(!free)} type="checkbox"  />
           <span>Бесплатные</span>
         </label>
 

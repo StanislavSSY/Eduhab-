@@ -2,13 +2,12 @@
 
 .search-form {
   justify-content: space-between;
-  margin: 20px;
-
-  border: 1px solid #d7ddde; /* Добавляем бордер вокруг компонента */
-border-radius: 12px; /* Задаем радиус для скругления углов */
-padding: 16px; /* Добавляем отступ внутри компонента */
-
- 
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 20px;
+  background: #f3f4f6;
+  border-radius: 12px; /* Задаем радиус для скругления углов */
+  padding: 16px; /* Добавляем отступ внутри компонента */
 }
 
 .search-form__form {
@@ -17,7 +16,13 @@ padding: 16px; /* Добавляем отступ внутри компонен�
   align-items: center;
   gap: 30px;
   flex-wrap: wrap;
- 
+}
+
+.search-form__form input[type="checkbox"] {
+  outline: 0;
+  content: none;
+  appearance: none;
+  margin-right: 0.5rem;
 }
 
 .with-autocomplete__content {
@@ -47,14 +52,44 @@ padding: 16px; /* Добавляем отступ внутри компонен�
 .autocomplete_item:hover {
   background: rgb(180, 180, 180);
   cursor: pointer;
-  transition: cubic-bezier(1, 0, 0, 1) .1s all;
+  transition: cubic-bezier(1, 0, 0, 1) 0.1s all;
+}
+
+.search-form__form input[type="checkbox"]:before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "FontAwesome";
+  content: "\f00c";
+  /* font-size: 15px; */
+  color: transparent !important;
+  /* display: block; */
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #999;
+  border-radius: 2px;
+}
+
+.search-form__form input[type="checkbox"]:checked:before {
+  color: #fff !important;
+  background: #3967c7;
+  border-color: #3967c7;
 }
 
 .search-form__input {
   width: 500px;
   padding: 10px;
   font-size: 16px;
-  position: relative;
+  border-radius: 5px;
+  border: 1px solid #eaecf0; /* Добавляем бордер вокруг компонента */
+}
+
+.search-form__input:focus {
+  outline: 1px solid #ccc;
+}
+
+.search-form__input::placeholder {
+  color: #a5a5a5;
 }
 
 .search-form__reset {
@@ -62,12 +97,10 @@ padding: 16px; /* Добавляем отступ внутри компонен�
   background: none;
   border: none;
   padding: 0;
-
 }
 
 .select-box {
   position: relative;
-  
 }
 
 .select-box__toggle-btn {
@@ -86,26 +119,28 @@ padding: 16px; /* Добавляем отступ внутри компонен�
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   position: absolute;
   z-index: 1;
-  
 }
 
 .select-box-option__content {
   display: block;
   padding: 10px;
   cursor: pointer;
-  
 }
 
 .form-checkbox {
+  cursor: pointer;
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 14px;
+}
+
+.form-checkbox:hover input[type="checkbox"]:before {
+  border-color: #222;
 }
 
 .form-checkbox input {
   margin-right: 5px;
-   border: 1px  #12bcd3;
-
+  border: 1px #12bcd3;
 }
 
 .catalog__search-all-filters-mobile {
@@ -114,14 +149,12 @@ padding: 16px; /* Добавляем отступ внутри компонен�
   border: none;
   padding: 10px;
   font-size: 16px;
-  
 }
 
 .search-form__submit {
-  
-  background-color: #007BFF; /* Цвет фона кнопки */
+  background-color: #5ba045; /* Цвет фона кнопки */
   color: #fff; /* Цвет текста кнопки */
-  border-radius: 12px;
+  border-radius: 5px;
   border: none; /* Убираем границу кнопки */
   padding: 10px 20px; /* Задаем отступы внутри кнопки */
   font-size: 16px; /* Размер шрифта */
@@ -130,5 +163,5 @@ padding: 16px; /* Добавляем отступ внутри компонен�
 }
 
 .search-form__submit:hover {
-  background-color: #0056b3; /* Изменяем цвет фона при наведении курсора */
+  background-color: #457b33; /* Изменяем цвет фона при наведении курсора */
 }

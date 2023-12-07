@@ -35,17 +35,6 @@ export default function CardCourseAuthor({ el }: CoursesType): JSX.Element {
     setStatus(true);
   }
 
-  // function menuHandler(): void {
-  //   console.log('123');
-  //   console.log(status);
-    
-  //   if (status) {
-  //     setStatus(false);
-  //   } else {
-  //     setStatus(true);
-  //   }
-  // }
-
   function handleClickOutside(e): void {
     if (dropmenu.current && !dropmenu.current.contains(e.target)) {
       closeMenu();
@@ -66,6 +55,24 @@ export default function CardCourseAuthor({ el }: CoursesType): JSX.Element {
           <img className={styled.imgcourse} src= {`/img/${el.image_url}`}/>
           <div className={styled.textcont}>
             <Link className={styled.texttile} to={`/course/${el.id}/info`}>{el.title}</Link>
+            <div className={styled.price}>
+            {el.new_price ? (
+              el.old_price !== 0 ? (
+              <div>
+                <span className={styled['last-price']}>
+                  {el.old_price && el.old_price}
+                </span>
+                <span className={styled['actual-price']}>
+                  {el.new_price && el.new_price} ₽
+                </span>
+              </div>
+              ) : (
+              <span className={styled.withoutsale}>{el.new_price} ₽</span>
+              )
+            ) : (
+              <div className={styled['free-price']}>Бесплатно</div>
+            )}
+            </div>
           </div>
         </div>
 
@@ -78,11 +85,6 @@ export default function CardCourseAuthor({ el }: CoursesType): JSX.Element {
             <button onClick={() => void delCourseHandler()} className={styled.btndelcourse}>удалить</button>
           </div>
         </div>
-        {/* <div className={styled.price}>
-          <span className={styled["last-price"]}>Начальная стоимость: 1 299 руб.</span>
-          <br />
-          <span className={styled["actual-price"]}>Актуальная стоимость: 899 руб.</span>
-        </div> */}
       </div>
       <div className={styled.footercontent}>
       </div>

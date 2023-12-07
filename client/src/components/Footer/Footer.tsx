@@ -8,7 +8,8 @@ export default function Footer() {
       <div className={styled["body-footer"]}>
         <ul>
           <li>Есть вопросы? Звоните!</li>
-          <li>+7 (495) 532-69-02</li>
+          <li>8-800-535-35-35</li>
+          <li>Это всегда проще</li>
         </ul>
         <hr />
         {/* <ul>

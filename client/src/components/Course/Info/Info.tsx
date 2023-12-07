@@ -4,9 +4,10 @@ import Course from '../Course'
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { addfullCourse } from '../../../store/slice/fullCourseSlice';
+import { CourseType } from '../../../types';
 
 export default function Info(): JSX.Element {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<CourseType>({});
   const user = useAppSelector((store) => store.userSlice.user);
   const course = useAppSelector((store) => store.courseSlice.course);
   const dispatch = useAppDispatch();
@@ -21,7 +22,7 @@ export default function Info(): JSX.Element {
       if (response.status === 200) {
         const result = await response.json();
         dispatch(addfullCourse(result));
-        console.log('info');
+        setData(result);
       }
     })();
   }, []);

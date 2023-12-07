@@ -9,6 +9,7 @@ module.exports = {
         {
           userid: 1,
           title: 'Введение в HTML',
+          new_price: 0,
           image_url: 'stock_avatar.jpg',
           rate: 5,
           time_passage: 47,
@@ -49,6 +50,7 @@ module.exports = {
         {
           userid: 1,
           title: 'Программирование на Golang',
+          new_price: 0,
           image_url: 'stock_avatar.jpg',
           rate: 5,
           time_passage: 15,
@@ -63,6 +65,7 @@ module.exports = {
         {
           userid: 2,
           title: 'Введение в REACT',
+          new_price: 0,
           image_url: 'stock_avatar.jpg',
           rate: 5,
           time_passage: 9999,
@@ -77,6 +80,7 @@ module.exports = {
         {
           userid: 3,
           title: 'Трейдинг в Steam',
+          new_price: 0,
           image_url: 'stock_avatar.jpg',
           rate: 5,
           time_passage: 0,

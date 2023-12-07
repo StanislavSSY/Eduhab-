@@ -10,9 +10,22 @@
 }
 
 .carobtn {
+  /* position: relative; */
   cursor: pointer;
-  font-size: 35px;
+  font-size: 2rem;
   border: none;
   outline: none;
   background: none;
+  color: #000;
 }
+
+/* .carobtn::before {
+  content: "";
+  background: #eee;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  border-radius: 50%;
+  left: -0.4rem;
+  z-index: -1;
+} */

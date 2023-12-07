@@ -1,46 +1,64 @@
 import React, { useState } from "react";
 import { useCollapse } from "react-collapsed";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import styled from "./MenuMyLearn.module.css";
 
 export default function MenuMyLearn() {
-  const [isExpanded, setExpanded] = useState(true);
+  const { pathname } = useLocation();
+
+  const isActive = (to) => {
+    console.log("⚠️  【】➜ ", pathname.endsWith(`${to}`));
+    if (pathname.endsWith(`${to}`)) return true;
+    // if (pathname.split("/")[pathname.split("/").length - 1] === to) return true;
+  };
+  console.log('⚠️    isActive("courses");【】➜ ', isActive("courses"));
+  const [isExpanded, setExpanded] = useState(false);
   const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
   return (
-    <nav>
+    <nav className={styled.nav}>
       <ul>
         <li>
-          <Link to="">
-            <button type="button">Моё обучение</button>
+          <Link to="" className={isActive("courses") ? "" : styled.active}>
+            <i className="fa fa-home" aria-hidden="true"></i> Моё обучение
           </Link>
         </li>
         <li>
-          <button
+          <Link
+            to="courses"
+            className={isActive("courses") ? styled.active : ""}
+          >
+            <i className="fa fa-graduation-cap" aria-hidden="true"></i> Прохожу
+          </Link>
+        </li>
+        {/* <li>
+          <div
             {...getToggleProps({
               onClick: () => setExpanded((prevExpanded) => !prevExpanded),
             })}
           >
-            <span>Курсы</span>
-          </button>
+            <span>
+              <i className="fa fa-graduation-cap" aria-hidden="true"></i> Курсы{" "}
+              <i className="fa fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </div>
           <ul {...getCollapseProps()}>
             <ul>
               <li>
-                <Link to="courses">
-                  <button type="button">Прохожу</button>
-                </Link>
-              </li>
-              <li>
-                <Link to="favorites">
-                  <button type="button">Избранное</button>
+                <Link
+                  to="courses"
+                  className={isActive("courses") ? styled.active : ""}
+                >
+                  Прохожу
                 </Link>
               </li>
             </ul>
           </ul>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <Link to="notifications">
-            <button type="button">Уведомления</button>
+            <i class="fa fa-bell" aria-hidden="true"></i> Уведомления
           </Link>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

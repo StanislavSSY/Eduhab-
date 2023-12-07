@@ -78,7 +78,13 @@ function App(): JSX.Element {
           path="teach/courses/:courseid/lesson/:lessonid/step/:stepNum"
           element={<LearnCourse />}
         />
+
         <Route path="/" element={<Layout />}>
+          <Route path="learn" element={<MyLearn />}>
+            <Route path="" element={<MyLearnIndex />} />
+            <Route path="courses" element={<MyLearnCourses />} />
+            <Route path="notifications" />
+          </Route>
           <Route index element={<Main />} />
           <Route path="catalog/search" element={<CatalogSearch />} />
           <Route path="/teach/info" element={<TeachInfoPage />} />
@@ -101,12 +107,6 @@ function App(): JSX.Element {
             <Route path="edit" element={<InfoEdit />} />
             <Route path="plan" element={<Plan />} />
             <Route path="plan/edit" element={<PlanEdit />} />
-          </Route>
-          <Route path="learn" element={<MyLearn />}>
-            <Route path="" element={<MyLearnIndex />} />
-            <Route path="courses" element={<MyLearnCourses />} />
-            <Route path="favorites" />
-            <Route path="notifications" />
           </Route>
           <Route path="edit-lesson">
             <Route path=":lessonid/step/:stepNum" element={<EditLesson />} />

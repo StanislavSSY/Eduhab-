@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import CardMinMyLearn from '../../../components/MyLearnComponents/CardMinMyLearn';
-import axios from 'axios';
-import { useAppSelector } from '../../../store/hooks';
+import React, { useEffect, useState } from "react";
+import CardMinMyLearn from "../../../components/MyLearnComponents/CardMinMyLearn";
+import axios from "axios";
+import { useAppSelector } from "../../../store/hooks";
+import styled from "./MyLearnCourses.module.css";
 
 export default function MyLearnCourses() {
   const [courses, setCourses] = useState([]);
@@ -31,13 +32,13 @@ export default function MyLearnCourses() {
     })();
   }, []);
   return (
-    <>
-      <h1>Курсы</h1>
-      <div>
+    <div className={styled.container}>
+      <h1>Мои курсы</h1>
+      <div className={styled["card-min-my-learn"]}>
         {courses.map((el) => (
           <CardMinMyLearn course={el} key={el.id} />
         ))}
       </div>
-    </>
+    </div>
   );
 }

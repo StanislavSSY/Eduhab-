@@ -86,8 +86,6 @@ export default function CardCourseAuthor({ el }: CoursesType): JSX.Element {
           </div>
         </div>
       </div>
-      <div className={styled.footercontent}>
-      </div>
       <div className={styled.polocka}></div>
     </div>
   );

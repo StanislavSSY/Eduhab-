@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "../Promo/Promo.module.css";
 
-
 import Stripe from "../../components/Stripe/Stripe";
 
 import { Link, useParams } from "react-router-dom";
@@ -10,24 +9,27 @@ import { addfullCourse } from "../../store/slice/fullCourseSlice";
 import Comment from "./Comment/Comment";
 import clsx from "clsx";
 import Video from "./Video/Video";
-import getYouTubeID from 'get-youtube-id';
+import getYouTubeID from "get-youtube-id";
 import { ReviewType, ReviewsType } from "../../types";
 
 export default function Promo(): JSX.Element {
   const [comments, setComments] = useState<ReviewsType>([]);
   const [vision, setVision] = useState(false);
   const [dis, setDis] = useState(false);
-  const [yid, setYid] = useState('');
+  const [yid, setYid] = useState("");
   const [rate, setRate] = useState(0);
   const course = useAppSelector((store) => store.fullCourseSlice.course);
   const dispatch = useAppDispatch();
   const { id } = useParams();
 
   useEffect(() => {
-    void(async() => {
-      const response = await fetch(`${import.meta.env.VITE_URL}/courses/${id}`, {
-        credentials: 'include',
-      });
+    void (async () => {
+      const response = await fetch(
+        `${import.meta.env.VITE_URL}/courses/${id}`,
+        {
+          credentials: "include",
+        }
+      );
       if (response.status === 200) {
         const result = await response.json();
         dispatch(addfullCourse(result));
@@ -35,15 +37,14 @@ export default function Promo(): JSX.Element {
         if (youtubeid) {
           setYid(youtubeid);
         }
-          
       }
       const resp = await fetch(`${import.meta.env.VITE_URL}/reviews/${id}`, {
-        credentials: 'include',
+        credentials: "include",
       });
 
       if (resp.status === 200) {
         const res = await resp.json();
-        console.log((res));
+        console.log(res);
         setComments(res);
         if (res.length >= 2) {
           let sumRate = 0;
@@ -55,14 +56,16 @@ export default function Promo(): JSX.Element {
         }
       }
 
-      const res = await fetch(`${import.meta.env.VITE_URL}/entries/check/${id}`, { 
-        credentials: 'include',
-      });
+      const res = await fetch(
+        `${import.meta.env.VITE_URL}/entries/check/${id}`,
+        {
+          credentials: "include",
+        }
+      );
 
       if (res.status === 200) {
         setDis(true);
       }
-
     })();
   }, []);
 
@@ -76,7 +79,7 @@ export default function Promo(): JSX.Element {
   async function freeAddCourseHandler(): Promise<void> {
     const response = await fetch(`${import.meta.env.VITE_URL}/entries/${id}`, {
       credentials: "include",
-      method: 'POST',
+      method: "POST",
     });
 
     if (response.status === 200) {
@@ -87,8 +90,6 @@ export default function Promo(): JSX.Element {
     }
   }
 
-
-
   return (
     <div className={styled["main-promo"]}>
       <div className={styled["page-fragment"]}>
@@ -97,7 +98,7 @@ export default function Promo(): JSX.Element {
             <h1>{course.title}</h1>
             <p>{course.short_description}</p>
             <ul>
-              <li>Сертификат Galera</li>
+              <li>Сертификат EDUHUB</li>
             </ul>
           </article>
           <article>
@@ -106,7 +107,11 @@ export default function Promo(): JSX.Element {
             </Link>
             <div className={styled.feedback}>
               <div>{rate} Оценка курса</div>
-              <a href="#comments">{comments.length === 1 ? '1 отзыв' : `${comments.length} отзывов`}</a>
+              <a href="#comments">
+                {comments.length === 1
+                  ? "1 отзыв"
+                  : `${comments.length} отзывов`}
+              </a>
             </div>
             <p>{`${course.quantity_people} учащихся`}</p>
           </article>
@@ -118,35 +123,48 @@ export default function Promo(): JSX.Element {
           <p>{course.long_description}</p>
         </div>
         <div className={styled["side-bar"]}>
-
           {course.new_price ? (
             <>
               <div className={styled.price}>
-              <span className={styled["new-price"]}>{`${course.new_price} ₽`}</span>
-              <span className={styled["prev-price"]}>{course.old_price ? course.old_price : ''}</span>
-            </div>
-            {course.old_price && <p>При оплате до 7 декабря</p>}
-            <div className={styled.buy}>
-              <button className={styled.btnbuycourse}>Купить</button>
-            </div>
-            <div className={styled.favorite}>Добавить в избранные</div>
+                <span
+                  className={styled["new-price"]}
+                >{`${course.new_price} ₽`}</span>
+                <span className={styled["prev-price"]}>
+                  {course.old_price ? course.old_price : ""}
+                </span>
+              </div>
+              {course.old_price && <p>При оплате до 7 декабря</p>}
+              <div className={styled.buy}>
+                <button className={styled.btnbuycourse}>Купить</button>
+              </div>
+              <div className={styled.favorite}>Добавить в избранные</div>
             </>
-          ) : (
-            dis ? (
-              <>
-                <div className={styled.btncontinuecont}>
-                  <Link className={styled.btncontinue} to={`/teach/courses/${id}/lesson/1/step/1`}>Перейти к прохождению</Link>
-                </div>
-              </>
-            ) : (
+          ) : dis ? (
             <>
-              <div className={styled.freebtncont}>
-                <button onClick={freeAddCourseHandler} disabled={dis} className={`${styled.btnfreeEntrie} ${dis ? styled.disa : ''}`}>Начать прохождение</button>
+              <div className={styled.btncontinuecont}>
+                <Link
+                  className={styled.btncontinue}
+                  to={`/teach/courses/${id}/lesson/1/step/1`}
+                >
+                  Перейти к прохождению
+                </Link>
               </div>
             </>
-            )
+          ) : (
+            <>
+              <div className={styled.freebtncont}>
+                <button
+                  onClick={freeAddCourseHandler}
+                  disabled={dis}
+                  className={`${styled.btnfreeEntrie} ${
+                    dis ? styled.disa : ""
+                  }`}
+                >
+                  Начать прохождение
+                </button>
+              </div>
+            </>
           )}
-
         </div>
       </section>
       <div className={styled.footerpromopage}>
@@ -155,7 +173,7 @@ export default function Promo(): JSX.Element {
           {comments.length >= 1 ? (
             comments.map((comment: ReviewType) => (
               <div className={styled.percommentcont} key={comment.id}>
-                <Comment comment={comment}/>
+                <Comment comment={comment} />
               </div>
             ))
           ) : (
@@ -163,9 +181,9 @@ export default function Promo(): JSX.Element {
           )}
         </div>
       </div>
-      <div className={clsx(`${styled.modal} ${vision ? styled.vision : ''}`)}>
-          Курс успешно добавлен
-        </div>
+      <div className={clsx(`${styled.modal} ${vision ? styled.vision : ""}`)}>
+        Курс успешно добавлен
+      </div>
     </div>
   );
 }

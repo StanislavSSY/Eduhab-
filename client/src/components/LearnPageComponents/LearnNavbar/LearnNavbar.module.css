@@ -36,9 +36,10 @@
 }
 
 .containernavbar h3 span {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: #ff416c;
   display: inline-block;
-  /* font-size: 1.4rem; */
+  font-size: 1.2rem;
   transform: rotate(-20deg);
   margin-right: 0.5rem;
 }

@@ -139,7 +139,7 @@ router.get("/check/:id", async (req, res) => {
 // --------------------------
 
 router.get("/info", async (req, res) => {
-  const { id } = req.session.user;
+  const  {id}  = req.session.user;
 
   try {
     const entries = await Entrie.findAll({

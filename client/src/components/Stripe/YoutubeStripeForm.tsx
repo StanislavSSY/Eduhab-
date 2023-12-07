@@ -36,7 +36,7 @@ const CheckoutForm2 = ({ success = () => {}, amount }) => {
           id,
           amount,
         })
-        alert(data.status)
+        alert("Ваш платеж принят! Спасибо, что поддержали автора :)")
         success()
       } catch ({ message, response }) {
         console.log(response ? response.data : message)
@@ -55,7 +55,7 @@ const CheckoutForm2 = ({ success = () => {}, amount }) => {
           display: inline-block;
           padding: 0.5em 1em;
           text-decoration: none;
-          background: #668ad8; /*Button Color*/
+          background: #54ad54; /*Button Color*/
           color: #fff;
           border-bottom: solid 4px #627295;
           border-radius: 3px;

@@ -32,9 +32,5 @@ export default function LearnComment() {
 
   console.log("⚠️  【comment】➜ ", comment);
 
-  return (
-    <div>
-      <a>fwefwef</a>
-    </div>
-  );
+  return <div>{/* <a>fwefwef</a> */}</div>;
 }

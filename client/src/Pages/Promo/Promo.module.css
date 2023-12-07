@@ -191,6 +191,12 @@ section article:nth-child(2) p {
   background-color: #288b28;
 }
 
+.content p {
+  font-size: 1rem;
+  margin-top: 1rem;
+  line-height: 1.5rem;
+}
+
 .btnfreeEntrie {
   width: 300px;
   cursor: pointer;

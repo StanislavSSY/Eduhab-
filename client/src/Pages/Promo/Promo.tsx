@@ -12,11 +12,12 @@ import Video from './Video/Video';
 import getYouTubeID from 'get-youtube-id';
 import { ReviewType, ReviewsType } from '../../types';
 
+
 export default function Promo(): JSX.Element {
   const [comments, setComments] = useState<ReviewsType>([]);
   const [vision, setVision] = useState(false);
   const [dis, setDis] = useState(false);
-  const [yid, setYid] = useState('');
+  const [yid, setYid] = useState("");
   const [rate, setRate] = useState(0);
   const [status, setStatus] = useState(false);
   const [twoStatus, setTwoStatus] = useState(true);
@@ -35,7 +36,9 @@ export default function Promo(): JSX.Element {
       const response = await fetch(
         `${import.meta.env.VITE_URL}/courses/${id}`,
         {
+
           credentials: 'include',
+
         }
       );
       if (response.status === 200) {
@@ -47,11 +50,12 @@ export default function Promo(): JSX.Element {
         }
       }
       const resp = await fetch(`${import.meta.env.VITE_URL}/reviews/${id}`, {
-        credentials: 'include',
+        credentials: "include",
       });
 
       if (resp.status === 200) {
         const res = await resp.json();
+
         setComments(res);
         if (res.length >= 1) {
           let sumRate = 0;
@@ -99,6 +103,7 @@ export default function Promo(): JSX.Element {
         const newresult = resul.filter((el) => el.id === Number(id));
         setUserSteps(newresult[0]);
       }
+
     })();
   }, []);
 
@@ -111,6 +116,7 @@ export default function Promo(): JSX.Element {
       if (response.status === 200) {
         setTwoStatus(false);
       }
+
     })();
   }, []);
 
@@ -140,6 +146,7 @@ export default function Promo(): JSX.Element {
     const response = await fetch(`${import.meta.env.VITE_URL}/entries/${id}`, {
       credentials: 'include',
       method: 'POST',
+
     });
 
     if (response.status === 200) {
@@ -196,7 +203,7 @@ export default function Promo(): JSX.Element {
             <h1>{course.title}</h1>
             <p>{course.short_description}</p>
             <ul>
-              <li>Сертификат Galera</li>
+              <li>Сертификат EDUHUB</li>
             </ul>
           </article>
           <article>
@@ -208,6 +215,7 @@ export default function Promo(): JSX.Element {
               <a href="#comments">
                 {comments.length === 1
                   ? '1 отзыв'
+
                   : `${comments.length} отзывов`}
               </a>
             </div>
@@ -220,7 +228,9 @@ export default function Promo(): JSX.Element {
           <h2>О курсе</h2>
           <p>{course.long_description}</p>
         </div>
+
         <div className={styled['side-bar']}>
+
           {course.new_price ? (
             <>
               <div className={styled.price}>
@@ -306,6 +316,7 @@ export default function Promo(): JSX.Element {
           )}
         </div>
       </div>
+
       <div className={clsx(`${styled.modal} ${vision ? styled.vision : ''}`)}>
         Курс успешно добавлен
       </div>

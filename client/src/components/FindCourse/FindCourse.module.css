@@ -4,7 +4,7 @@
   justify-content: space-between;
   width: 800px;
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 2rem;
   background: #f3f4f6;
   border-radius: 12px; /* Задаем радиус для скругления углов */
   padding: 16px; /* Добавляем отступ внутри компонента */

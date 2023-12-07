@@ -1,5 +1,9 @@
+.searchcontainer {
+  max-width: 1024px;
+  margin-bottom: 3rem;
+}
+
 .resultcont {
-  width: 1300px;
   display: flex;
   flex-direction: column;
 }

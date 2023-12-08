@@ -39,12 +39,18 @@ export default function Navbar(): JSX.Element {
           <NavLink to={"/"} className={styled.title}>
             Каталог
           </NavLink>
-          <NavLink to={"learn"} className={styled.title}>
-            Моё обучение
-          </NavLink>
-          <NavLink to={"/teach/courses"} className={styled.title}>
-            Преподавание
-          </NavLink>
+          {isLoggedIn ? (
+            <div>
+              <NavLink to={"learn"} className={styled.title}>
+                Моё обучение
+              </NavLink>
+              <NavLink to={"/teach/courses"} className={styled.title}>
+                Преподавание
+              </NavLink>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
       <div className={styled.rightcont}>

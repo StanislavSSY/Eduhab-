@@ -95,7 +95,6 @@ export default function LearnTextComponent({ id, title }) {
               </div>
             )}
           </div>
-          <LearnComment />
         </div>
       </div>
     </>

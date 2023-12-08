@@ -116,7 +116,7 @@ export default function ProfileSettings() {
         </div>
       </div>
 
-      <div className={styled['btn-save']} onClick={() => void submitForm(e)}>
+      <div className={styled['btn-save']} onClick={(e) => void submitForm(e)}>
         <div>Сохранить</div>
       </div>
     </div>

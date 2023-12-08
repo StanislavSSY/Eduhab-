@@ -72,7 +72,7 @@ module.exports = {
           lastName: "EduHub",
           email: "email@email.ed",
           password: await bcrypt.hash("7", 10),
-          img_url: "varname.jpg",
+          img_url: "stock_avatar.jpg",
           isAdmin: false,
           createdAt: new Date(),
           updatedAt: new Date(),

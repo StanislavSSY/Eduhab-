@@ -22,6 +22,9 @@ export default function MenuMyTeaching(): JSX.Element {
   
   return (
     <div className={styled.mymenucontainer}>
+      <Link to="/teach/info">
+        <div>Конструктор?</div>
+      </Link>
       <Link to="/teach/courses" className={`${styled.mycoursecontainer} ${active ? styled.act : ''}`}>
         <div className={styled.icon}>
           <BsFillBookFill />

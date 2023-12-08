@@ -24,7 +24,7 @@ export default function TeachInfoPage(): JSX.Element {
           </a>
         </div>
         <div className={styled.rightcont}>
-          <Link className={styled.reftocreatecourse} to={"/"}>
+          <Link className={styled.reftocreatecourse} to={"/teach/courses/new"}>
             Создать курс
           </Link>
         </div>
@@ -32,7 +32,7 @@ export default function TeachInfoPage(): JSX.Element {
       <div className={styled.bodycontent}>
         <div className={styled.aboutservice}>
           <div className={styled.servicetitle}>
-            Создайте собственный курс с помощью конструктора Galera
+            Создайте собственный курс с помощью конструктора EduHub
           </div>
           <div className={styled.serviceaftertitle}>
             Делитесь знаниями на крупнейшей образовательной платформе в России и
@@ -40,14 +40,14 @@ export default function TeachInfoPage(): JSX.Element {
             платных
           </div>
           <div className={styled.fakebtn}>
-            <Link className={styled.reftocoursecreatetwo} to={"/"}>
+            <Link className={styled.reftocoursecreatetwo} to={"/teach/courses/new"}>
               Создать курс
             </Link>
           </div>
           <div>wait img</div>
         </div>
         <div className={styled.aboutGalera} id="aboutproject">
-          <div className={styled.galeratitle}>Что такое Galera?</div>
+          <div className={styled.galeratitle}>Что такое EduHub?</div>
           <div className={styled.titleresponse}>
             Многофункциональная и гибкая платформа для создания и размещения
             образовательных материалов
@@ -62,7 +62,7 @@ export default function TeachInfoPage(): JSX.Element {
             <div className={styled.contpremcenter}>
               <div className={styled.premcentertitle}>Большая аудитория</div>
               <div className={styled.premcenterrespo}>
-                7 000 000 пользователей используют Galera для обучения и
+                7 000 000 пользователей используют EduHub для обучения и
                 создания курсов
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function TeachInfoPage(): JSX.Element {
                 Любой автор может разместить курс на продажу в рублях или
                 долларах. Мы берём небольшую комиссию, принимаем и обрабатываем
                 платежи. Вам будут доступны все функции создания курсов. Ваш
-                курс будет доступен десяткам тысяч пользователей Galera.
+                курс будет доступен десяткам тысяч пользователей EduHub.
               </div>
             </div>
             <div className={styled.freetype}>
@@ -100,7 +100,7 @@ export default function TeachInfoPage(): JSX.Element {
                 Обучайте тому, в чем отлично разбираетесь. В каталоге собраны
                 курсы по темам от биоинформатики до японского языка. Добавьте
                 бесплатный курс по своей теме для тысяч человек аудитории
-                Galera. Для бесплатного курса доступны базовые функции
+                EduHub. Для бесплатного курса доступны базовые функции
                 платформы.
               </div>
             </div>

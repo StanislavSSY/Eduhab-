@@ -1,7 +1,7 @@
 import React, { useState , useEffect } from 'react';
 import styled from './MenuMyTeaching.module.css';
 import { Link, useLocation } from "react-router-dom";
-import { BsBook, BsFillBookFill } from "react-icons/bs";
+import { BsBook, BsFillBookFill, BsFillInfoCircleFill } from "react-icons/bs";
 
 export default function MenuMyTeaching(): JSX.Element {
   const [active, setActive] = useState(false);
@@ -22,8 +22,11 @@ export default function MenuMyTeaching(): JSX.Element {
   
   return (
     <div className={styled.mymenucontainer}>
-      <Link to="/teach/info">
-        <div>Конструктор?</div>
+      <Link className={styled.moreinforef} to="/teach/info">
+        <div className={styled.icon}>
+          <BsFillInfoCircleFill />
+        </div>
+        <div className={styled.moreinfoconstruct}>Подробнее</div>
       </Link>
       <Link to="/teach/courses" className={`${styled.mycoursecontainer} ${active ? styled.act : ''}`}>
         <div className={styled.icon}>

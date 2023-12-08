@@ -125,6 +125,7 @@ export default function TeachInfoPage(): JSX.Element {
                     Узнать больше
                   </Link>
                 </div>
+                <div className={styled.indev}>В разработке *</div>
               </div>
             </div>
             <div className={styled.pricefree}>
@@ -141,7 +142,7 @@ export default function TeachInfoPage(): JSX.Element {
                   Создавайте открытые курсы без коммерческих целей
                 </div>
                 <div className={styled.pricefakebtncontainerfree}>
-                  <Link className={styled.reftomoreinfopaidcoursefree} to={"/"}>
+                  <Link className={styled.reftomoreinfopaidcoursefree} to={"/teach/courses/new"}>
                     Создать открытый курс
                   </Link>
                 </div>

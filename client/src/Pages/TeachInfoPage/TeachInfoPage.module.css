@@ -198,11 +198,21 @@ html {
 .typecontainer {
   margin-top: 75px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paidtype, .freetype {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .typetitle {
   text-align: center;
   width: 350px;
+  height: 115px;
   font-size: 30px;
   margin-bottom: 25px;
 }
@@ -301,6 +311,10 @@ html {
   background-color: white;
   border-radius: 10px;
   transition: 1s;
+}
+
+.indev {
+  margin: 15px 0 0 25px;
 }
 
 .pricefakebtncontainer:hover {

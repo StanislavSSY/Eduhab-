@@ -1,9 +1,9 @@
-import React, { memo, useEffect, useState } from "react";
-import styled from "./LearnTextComponent.module.css";
-import { useParams, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { addProgress } from "../../../store/slice/entrySlice";
-import LearnComment from "../LearnComment/LearnComment";
+import React, { memo, useEffect, useState } from 'react';
+import styled from './LearnTextComponent.module.css';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { addProgress } from '../../../store/slice/entrySlice';
+import LearnComment from '../LearnComment/LearnComment';
 
 export default function LearnTextComponent({ id, title }) {
   const [step, setStep] = useState({});
@@ -18,7 +18,7 @@ export default function LearnTextComponent({ id, title }) {
   useEffect(() => {
     (async () => {
       const response = await fetch(`${import.meta.env.VITE_URL}/steps/${id}`, {
-        credentials: "include",
+        credentials: 'include',
       });
 
       const data = await response.json();
@@ -31,14 +31,14 @@ export default function LearnTextComponent({ id, title }) {
   }, [stepNum]);
 
   useEffect(() => {
-    console.log("⚠️  【@@@】➜ ");
+    console.log('⚠️  【@@@】➜ ');
     (async () => {
       if (buttonClicked) {
         const response = await fetch(
           `${import.meta.env.VITE_URL}/entries/${courseid}/${step.id}`,
           {
-            method: "PATCH",
-            credentials: "include",
+            method: 'PATCH',
+            credentials: 'include',
           }
         );
 
@@ -57,22 +57,22 @@ export default function LearnTextComponent({ id, title }) {
   };
   return (
     <>
-      <div className={styled["title-content"]}>{title}</div>
-      <div className={styled["body-fragment"]}>
+      <div className={styled['title-content']}>{title}</div>
+      <div className={styled['body-fragment']}>
         <div
-          className={styled["body-content"]}
+          className={styled['body-content']}
           dangerouslySetInnerHTML={{ __html: step.data }}
         ></div>
       </div>
-      <div className={styled["footer-fragment"]}>
-        <div className={styled["footer-content"]}>
-          <div className={styled["button-fragment"]}>
+      <div className={styled['footer-fragment']}>
+        <div className={styled['footer-content']}>
+          <div className={styled['button-fragment']}>
             {!checkStep() && !buttonClicked ? (
               <div
                 onClick={() => {
                   setButtonClicked(!checkStep());
                 }}
-                className={styled["button-next"]}
+                className={styled['button-next']}
               >
                 Изучить
               </div>
@@ -88,9 +88,9 @@ export default function LearnTextComponent({ id, title }) {
                     }`
                   )
                 }
-                className={styled["button-next"]}
+                className={styled['button-next']}
               >
-                Следующий шаг{" "}
+                Следующий шаг{' '}
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </div>
             )}

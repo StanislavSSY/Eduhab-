@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Link, Route, useNavigate, useParams } from "react-router-dom";
-import styled from "./LearnSideBarMenu.module.css";
+import React, { useState, useEffect } from 'react';
+import { Link, Route, useNavigate, useParams } from 'react-router-dom';
+import styled from './LearnSideBarMenu.module.css';
 
 export default function LearnSideBarMenu({ getTitle }) {
   const [menuItems, setMenuItems] = useState([]);
   const { courseid, lessonid } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
       const response = await fetch(
         `${import.meta.env.VITE_URL}/study/${courseid}`,
         {
-          credentials: "include",
+          credentials: 'include',
         }
       );
       if (response.status === 200) {
@@ -25,7 +26,12 @@ export default function LearnSideBarMenu({ getTitle }) {
           if (lesson) {
             return lesson.title;
           } else return acc;
-        }, "");
+        }, '');
+        if (!lessonTitle) {
+          navigate(
+            `/teach/courses/${courseid}/lesson/${data.Modules[0].Lessons[0].id}/step/1`
+          );
+        }
 
         getTitle(lessonTitle);
       }
@@ -47,7 +53,7 @@ export default function LearnSideBarMenu({ getTitle }) {
                   <Link
                     onClick={() => getTitle(lesson.title)}
                     className={
-                      lesson.id == lessonid ? styled["link-active"] : ""
+                      lesson.id == lessonid ? styled['link-active'] : ''
                     }
                     to={`/teach/courses/${courseid}/lesson/${
                       lesson.id

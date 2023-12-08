@@ -6,9 +6,13 @@ import { Link } from "react-router-dom";
 export default function ButtonProfile({ logOut }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const { firstName, lastName } = useAppSelector(
+  const { firstName, lastName, img_url } = useAppSelector(
     (store) => store.userSlice.user
   );
+
+  useEffect(() => {
+    console.log(img_url);
+  },[img_url]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -33,10 +37,16 @@ export default function ButtonProfile({ logOut }) {
 
   return (
     <div className={styled["dropdown-container"]} ref={dropdownRef}>
-      <div className={styled["button-icon"]} onClick={toggleMenu}>
-        {firstName[0].toLocaleUpperCase()}
-        {lastName[0].toLocaleUpperCase()}
+      {img_url !== 'stock_avatar.jpg' ? (
+      <div className={styled["button-icon-two"]} onClick={toggleMenu}>
+        <img className={styled.imgprofile} src={`/img/${img_url}`} alt="" />
       </div>
+      ) : (
+        <div className={styled["button-icon"]} onClick={toggleMenu}>
+          {firstName[0].toLocaleUpperCase()}
+          {lastName[0].toLocaleUpperCase()}
+        </div>
+      )}
 
       {isOpen && (
         <div

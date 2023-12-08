@@ -24,7 +24,11 @@ export const userSlice = createSlice({
     updateImg: (state, action: PayloadAction<string>) => {
       state.user.img_url = action.payload;
     },
+    updateName: (state, action) => {
+      state.user.firstName = action.payload.firstName;
+      state.user.lastName = action.payload.lastName;
+    },
   },
 });
 
-export const { addUser, delUser, updateImg } = userSlice.actions;
+export const { addUser, delUser, updateImg, updateName } = userSlice.actions;

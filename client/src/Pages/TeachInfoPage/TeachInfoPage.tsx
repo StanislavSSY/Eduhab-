@@ -44,7 +44,9 @@ export default function TeachInfoPage(): JSX.Element {
               Создать курс
             </Link>
           </div>
-          <div>wait img</div>
+          <div>
+            <img src="/icons/mblast.png" alt="" />
+          </div>
         </div>
         <div className={styled.aboutGalera} id="aboutproject">
           <div className={styled.galeratitle}>Что такое EduHub?</div>

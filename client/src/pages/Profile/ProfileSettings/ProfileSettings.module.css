@@ -1,0 +1,87 @@
+.flex-row {
+  margin-top: 0.5em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 0 1 auto;
+}
+
+.form_header {
+  padding-top: 10px;
+  border-bottom: 1px solid #f3f4f6;
+  margin-bottom: 2rem;
+  margin-top: 0;
+  flex-basis: 100%;
+  max-width: 100%;
+  flex: 0 0 auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  font-size: 1.4375em;
+}
+
+.input_title {
+  flex-basis: 25%;
+  max-width: 25%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  font-size: 16px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  line-height: 18px;
+  color: #5e5e5e;
+  font-weight: 400;
+}
+
+.input_wrapper {
+  flex-basis: 75%;
+  max-width: 75%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.input {
+  padding: 0.5em;
+  height: 2.625em;
+  border-radius: 0.125em;
+  width: 100%;
+  font-size: 16px;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 11px;
+  line-height: 18px;
+  background-color: #fff;
+  font-family: inherit;
+  color: rgba(0, 0, 0, 0.75);
+  display: inline-block !important;
+  outline: 0;
+  border: 1px solid;
+  writing-mode: horizontal-tb !important;
+  padding-block: 1px;
+  padding-inline: 2px;
+}
+
+.input:focus {
+  box-shadow: orange 2px 2px;
+  outline: 0 !important;
+}
+
+.edit-img {
+  flex-basis: 75%;
+  max-width: 75%;
+  padding: 16px;
+  background-color: #f6f6f6;
+  border-radius: 4px;
+  margin-bottom: 32px;
+}
+
+.btn-save {
+  cursor: pointer;
+  width: 16em;
+  border-radius: 5px;
+  padding: 10px;
+  height: 100%;
+  background: rgb(255, 195, 83);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

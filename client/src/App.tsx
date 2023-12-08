@@ -81,7 +81,7 @@ function App(): JSX.Element {
 
         <Route path="/" element={<Layout />}>
           <Route path="learn" element={<MyLearn />}>
-            <Route path="" element={<MyLearnIndex />} />
+            <Route path="" element={<MyLearnIndex title="Моё обучение" />} />
             <Route path="courses" element={<MyLearnCourses />} />
             <Route path="notifications" />
           </Route>

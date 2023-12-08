@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import CertificateCard from '../../../components/ProfileComponents/CertificateCard';
 import axios from 'axios';
 import { useAppSelector } from '../../../store/hooks';
+import MyLearnIndex from '../../MyLearn/MyLearnIndex.tsx/MyLearnIndex';
 
 export default function ProfileInfo() {
   const [completedNum, setCompletedNum] = useState('');
   const [certificates, setCertificates] = useState([]);
-
-  const { user } = useAppSelector((store) => store.userSlice);
 
   useEffect(() => {
     void (async () => {
@@ -37,22 +36,9 @@ export default function ProfileInfo() {
   }, []);
   return (
     <div>
-      <div>
-        <img
-          style={{ width: '200px' }}
-          src={`/img/${user.img_url}`}
-          alt="avatar"
-        />
-        <h1>{`${user.firstName} ${user.lastName}`}</h1>
-      </div>
-      <div>
-        <h2>Активность</h2>
-        <p>
-          <strong>{completedNum}</strong>
-        </p>
-        <p>Задач решено</p>
-      </div>
-      <div>
+      <MyLearnIndex title="Профиль" />
+
+      <div style={{ marginTop: '15px' }}>
         <h2>Сертификаты</h2>
         <div>
           {certificates.map((el) => (

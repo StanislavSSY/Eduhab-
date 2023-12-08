@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import CardProgress from "../../../components/MyLearnComponents/CardProgress";
-import UserStatMyLearn from "../../../components/MyLearnComponents/UserStatMyLearn";
-import CardMinMyLearn from "../../../components/MyLearnComponents/CardMinMyLearn";
-import { useAppSelector } from "../../../store/hooks";
-import styled from "./MyLearnIndex.module.css";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import CardProgress from '../../../components/MyLearnComponents/CardProgress';
+import UserStatMyLearn from '../../../components/MyLearnComponents/UserStatMyLearn';
+import CardMinMyLearn from '../../../components/MyLearnComponents/CardMinMyLearn';
+import { useAppSelector } from '../../../store/hooks';
+import styled from './MyLearnIndex.module.css';
+import axios from 'axios';
 
-export default function MyLearnIndex() {
+export default function MyLearnIndex({ title }) {
   const [courses, setCourses] = useState([]);
   const [allCompleted, setAllCompleted] = useState(0);
 
@@ -41,7 +41,7 @@ export default function MyLearnIndex() {
 
   return (
     <div className={styled.container}>
-      <h1>Моё обучение</h1>
+      <h1>{title}</h1>
       <UserStatMyLearn allCompleted={allCompleted} />
       <h2>Недавний курс</h2>
       {courses.length > 0 ? (
@@ -57,7 +57,7 @@ export default function MyLearnIndex() {
       <h2>
         <i className="fa fa-paperclip" aria-hidden="true"></i> Прохожу сейчас
       </h2>
-      <div className={styled["card-min-my-learn"]}>
+      <div className={styled['card-min-my-learn']}>
         {courses.slice(0, 3).map((el) => (
           <CardMinMyLearn course={el} key={el.id} />
         ))}

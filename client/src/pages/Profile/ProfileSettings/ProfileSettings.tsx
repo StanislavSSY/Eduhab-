@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useAppSelector } from '../../../store/hooks';
 import { useDispatch } from 'react-redux';
-import { updateImg } from '../../../store/slice/userSlice';
+import { updateImg, updateName } from '../../../store/slice/userSlice';
+import styled from './ProfileSettings.module.css';
+import clsx from 'clsx';
 
 export default function ProfileSettings() {
   const { user } = useAppSelector((store) => store.userSlice);
@@ -40,6 +42,7 @@ export default function ProfileSettings() {
     });
     if (response.status === 200) {
       console.log('запись firstName и lastName удалась');
+      dispatch(updateName(inputs));
     }
     if (image) {
       const formData = new FormData();
@@ -58,11 +61,15 @@ export default function ProfileSettings() {
 
   return (
     <div>
-      <h4>Редактирование профиля</h4>
-      <div>
-        <div>Ваше имя</div>
-        <div>
+      <div className={styled['flex-row']}>
+        <h4 className={styled.form_header}>Редактирование профиля</h4>
+      </div>
+
+      <div className={clsx(styled['flex-row'], styled['form-row'])}>
+        <div className={styled.input_title}>Ваше имя*</div>
+        <div className={styled.input_wrapper}>
           <input
+            className={styled.input}
             onChange={changeHandler}
             type="text"
             name="firstName"
@@ -72,10 +79,12 @@ export default function ProfileSettings() {
           />
         </div>
       </div>
-      <div>
-        <div>Фамилия</div>
-        <div>
+
+      <div className={clsx(styled['flex-row'], styled['form-row'])}>
+        <div className={styled.input_title}>Фамилия*</div>
+        <div className={styled.input_wrapper}>
           <input
+            className={styled.input}
             onChange={changeHandler}
             type="text"
             name="lastName"
@@ -83,14 +92,15 @@ export default function ProfileSettings() {
             maxLength={30}
             defaultValue={inputs.lastName}
           />
-          <label htmlFor="lastName">
+          {/* <label htmlFor="lastName">
             Ваше имя и фамилия будут использоваться в сертификате
-          </label>
+          </label> */}
         </div>
       </div>
-      <div>
-        <div>Аватарка</div>
-        <div>
+
+      <div className={clsx(styled['flex-row'], styled['form-row'])}>
+        <div className={styled.input_title}>Аватарка</div>
+        <div className={styled['edit-img']}>
           <div>
             <img style={{ width: '200px' }} src={imageUrl} alt="avatar" />
           </div>
@@ -105,9 +115,10 @@ export default function ProfileSettings() {
           </div>
         </div>
       </div>
-      <button onClick={(e) => void submitForm(e)} type="button">
-        Применить изменения
-      </button>
+
+      <div className={styled['btn-save']} onClick={() => void submitForm(e)}>
+        <div>Сохранить</div>
+      </div>
     </div>
   );
 }

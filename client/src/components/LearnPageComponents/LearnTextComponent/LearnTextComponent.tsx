@@ -53,7 +53,7 @@ export default function LearnTextComponent({ id, title }) {
       return el.stepNum === stepNum;
     });
 
-    return entry.progress.includes(oneStep.id);
+    return entry.progress.includes(oneStep?.id);
   };
   return (
     <>

@@ -144,6 +144,8 @@ export default function Promo(): JSX.Element {
   }
 
   async function freeAddCourseHandler(): Promise<void> {
+    console.log('da');
+    
     const response = await fetch(`${import.meta.env.VITE_URL}/entries/${id}`, {
       credentials: 'include',
       method: 'POST',
@@ -233,7 +235,19 @@ export default function Promo(): JSX.Element {
         <div className={styled['side-bar']}>
 
           {course.new_price ? (
-            <>
+            dis ? (
+              <>
+              <div className={styled.btncontinuecont}>
+                <Link
+                  className={styled.btncontinue}
+                  to={`/teach/courses/${id}/lesson/1/step/1`}
+                >
+                  Перейти к прохождению
+                </Link>
+              </div>
+            </>
+            ) : (
+              <>
               <div className={styled.price}>
                 <span
                   className={styled['new-price']}
@@ -244,10 +258,10 @@ export default function Promo(): JSX.Element {
               </div>
               {course.old_price && <p>При оплате до 1 января</p>}
               <div className={styled.buy}>
-                <button className={styled.btnbuycourse}>Купить</button>
+                <button onClick={freeAddCourseHandler} className={styled.btnbuycourse}>Купить</button>
               </div>
-              {/* <div className={styled.favorite}>Добавить в избранные</div> */}
             </>
+            )
           ) : dis ? (
             <>
               <div className={styled.btncontinuecont}>

@@ -1,5 +1,9 @@
+
+
 DB_USER=stanislavstanislav
 DB_PASSWORD=stas
 DB_NAME=final
 PORT=3100
 SECRET_KEY_SESSION=vedro
+DATABASEPROD=postgres://postgres:1@db:5432/docker
+DATABASE=postgres://stanislavstanislav:stas@db:5432/final

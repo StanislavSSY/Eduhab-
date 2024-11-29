@@ -138,34 +138,79 @@ router.get("/check/:id", async (req, res) => {
 
 // --------------------------
 
+// router.get("/info", async (req, res) => {
+//   const  {id}  = req.session.user;
+
+//   try {
+//     const entries = await Entrie.findAll({
+//       where: { userid: id },
+//       include: {
+//         model: Course,
+//         attributes: { exclude: ["createdAt", "updatedAt", "long_description"] },
+//       },
+//     });
+//     if (entries.length === 0) return res.json([]);
+
+//     /* const { count } = await Entrie.findAndCountAll({
+//       where: { userid: id },
+//       include: {
+//         model: Course,
+//         include: {
+//           model: Module,
+//           include: { model: Lesson, include: { model: Step } },
+//         },
+//       },
+//     }); */
+
+//     const counts = [];
+//     for (let i = 0; i < entries.length; i++) {
+//       const { count } = await Entrie.findAndCountAll({
+//         where: { userid: id, courseid: entries[i].courseid },
+//         include: {
+//           model: Course,
+//           include: {
+//             model: Module,
+//             include: { model: Lesson, include: { model: Step } },
+//           },
+//         },
+//       });
+//       counts.push(count);
+//     }
+//     const entriesData = entries.map((el) => el.get({ plain: true }));
+//     const courses = entriesData
+//       .map((el, i) => {
+//         const courseInfo = {
+//           ...el.Course,
+//           progress: el.progress,
+//           updatedAt: el.updatedAt,
+//           stepsNum: counts[i],
+//         };
+//         return courseInfo;
+//       })
+//       .sort((a, b) => b.updatedAt - a.updatedAt);
+//     console.log(courses);
+//     res.json(courses);
+//   } catch (error) {
+//     console.log(error);
+//     res.sendStatus(500);
+//   }
+// });
 router.get("/info", async (req, res) => {
-  const  {id}  = req.session.user;
+  if (req.session && req.session.user) {
+    const { id } = req.session.user;
 
-  try {
-    const entries = await Entrie.findAll({
-      where: { userid: id },
-      include: {
-        model: Course,
-        attributes: { exclude: ["createdAt", "updatedAt", "long_description"] },
-      },
-    });
-    if (entries.length === 0) return res.json([]);
-
-    /* const { count } = await Entrie.findAndCountAll({
-      where: { userid: id },
-      include: {
-        model: Course,
+    try {
+      const entries = await Entrie.findAll({
+        where: { userid: id },
         include: {
-          model: Module,
-          include: { model: Lesson, include: { model: Step } },
+          model: Course,
+          attributes: { exclude: ["createdAt", "updatedAt", "long_description"] },
         },
-      },
-    }); */
+      });
+      if (entries.length === 0) return res.json([]);
 
-    const counts = [];
-    for (let i = 0; i < entries.length; i++) {
-      const { count } = await Entrie.findAndCountAll({
-        where: { userid: id, courseid: entries[i].courseid },
+      /* const { count } = await Entrie.findAndCountAll({
+        where: { userid: id },
         include: {
           model: Course,
           include: {
@@ -173,28 +218,45 @@ router.get("/info", async (req, res) => {
             include: { model: Lesson, include: { model: Step } },
           },
         },
-      });
-      counts.push(count);
+      }); */
+
+      const counts = [];
+      for (let i = 0; i < entries.length; i++) {
+        const { count } = await Entrie.findAndCountAll({
+          where: { userid: id, courseid: entries[i].courseid },
+          include: {
+            model: Course,
+            include: {
+              model: Module,
+              include: { model: Lesson, include: { model: Step } },
+            },
+          },
+        });
+        counts.push(count);
+      }
+      const entriesData = entries.map((el) => el.get({ plain: true }));
+      const courses = entriesData
+        .map((el, i) => {
+          const courseInfo = {
+            ...el.Course,
+            progress: el.progress,
+            updatedAt: el.updatedAt,
+            stepsNum: counts[i],
+          };
+          return courseInfo;
+        })
+        .sort((a, b) => b.updatedAt - a.updatedAt);
+      console.log(courses);
+      res.json(courses);
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
     }
-    const entriesData = entries.map((el) => el.get({ plain: true }));
-    const courses = entriesData
-      .map((el, i) => {
-        const courseInfo = {
-          ...el.Course,
-          progress: el.progress,
-          updatedAt: el.updatedAt,
-          stepsNum: counts[i],
-        };
-        return courseInfo;
-      })
-      .sort((a, b) => b.updatedAt - a.updatedAt);
-    console.log(courses);
-    res.json(courses);
-  } catch (error) {
-    console.log(error);
-    res.sendStatus(500);
+  } else {
+    res.status(401).send('User not authenticated');
   }
 });
+
 
 router.delete("/", async (req, res) => {
   const { userid, courseid } = req.body;

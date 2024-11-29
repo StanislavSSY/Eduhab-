@@ -1,0 +1,42 @@
+version: '3.8' # версия docker-compose
+services:
+  mainServer: # сервис основного сервера
+    container_name: mainServer # имя контейнера
+    image: server:1.0 # название образа
+    restart: always # перезапустит контейнер, если тот вдруг остановится
+    build:
+      context: ./server
+    ports:
+      - '3100:3100' # хост-порт:контейнер-порт
+    environment:
+      - DATABASE=${DATABASE}
+      - DBUSER=${DBUSER}
+      - DBPASSWORD=${DBPASSWORD}
+      - DBNAME=${DBNAME}
+     # строка авторизации в pg из env для сервера
+    depends_on:
+      - db # подождет контейнер db
+  mainClient: # сервис основного сервера
+    container_name: mainClient # имя контейнера
+    image: client:1.0 # название образа
+    restart: always # перезапустит контейнер, если тот вдруг остановится
+    build:
+      context: ./client
+    ports:
+      - '5173:5173' # хост-порт:контейнер-порт
+    environment:
+      - DATABASE=${DATABASE} # строка авторизации в pg из env для сервера
+    depends_on:
+      - mainServer # подождет контейнер db
+  db: # сервис базы данных
+    image: postgres:15.4-alpine # образ из dockerhub
+    container_name: db # имя контейнера
+    environment:
+      - POSTGRES_DB=${DBNAME} # создаст бд с названием из env
+      - POSTGRES_USER=${DBUSER} # создаст пользователя с правами superuser
+      - POSTGRES_PASSWORD=${DBPASSWORD} # присвоит пользователю пароль
+      - PGDATA=/var/lib/postgresql/data/pgdata # путь к pgdata в образе
+    volumes:
+      - ${PGPATH}/var/lib/postgresql/data # путь к postgres
+    ports:
+      - '5432:5432' # хост-порт:контейнер-порт

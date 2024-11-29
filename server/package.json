@@ -7,7 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js --ext js,jsx",
     "initdb": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed:all",
-    "start": "node server.js"
+    "start": "node server.js",
+    "undo": "npx sequelize db:migrate:undo:all",
+    "migrate": "npx sequelize db:migrate",
+    "seed": "npx sequelize db:seed:all",
+    "undo-prod": "npx sequelize db:migrate:undo:all --env production",
+    "migrate-prod": "npx sequelize db:migrate --env production",
+    "seed-prod": "npx sequelize db:seed:all --env production",
+    "initdb-prod": "npx sequelize db:migrate:undo:all && npx sequelize db:migrate && npx sequelize db:seed:all --env production"
   },
   "keywords": [],
   "author": "",
